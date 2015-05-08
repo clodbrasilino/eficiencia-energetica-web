@@ -2,14 +2,32 @@ package br.edu.ifpi.see.model;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity
 public class Sala {
 	
+	@Id @GeneratedValue
+	private long id;
 	private String numero;
 	private String descricao;
 	private int pavimento;
+	
+	@Transient
+	private Status status;
+	
+	@ManyToOne
 	private Usuario usuario;
-	private ArrayList<MicroControlador> listaMicroControlador = new ArrayList<MicroControlador>();
-	private ArrayList<HistoricoSala> listaHistorico = new ArrayList<HistoricoSala>();
+	
+	@OneToMany(mappedBy="sala")
+	private ArrayList<MicroControlador> listaMicroControlador;
+	@OneToMany(mappedBy="sala")
+	private ArrayList<HistoricoSala> listaHistorico;
 	
 	public Sala() {
 		super();
@@ -26,6 +44,14 @@ public class Sala {
 		this.usuario = usuario;
 		this.listaMicroControlador = listaMicroControlador;
 		this.listaHistorico = listaHistorico;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNumero() {

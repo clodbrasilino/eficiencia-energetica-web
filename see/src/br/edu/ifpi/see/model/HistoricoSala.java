@@ -2,12 +2,21 @@ package br.edu.ifpi.see.model;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class HistoricoSala {
 	
+	@Id @GeneratedValue
 	private long id;
 	private Date data;
 	private String hora;
 	private String status;
+	
+	@ManyToOne
 	private Sala sala;
 	
 	public HistoricoSala() {

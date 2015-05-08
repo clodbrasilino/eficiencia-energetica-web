@@ -3,17 +3,29 @@ package br.edu.ifpi.see.model;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class MicroControlador {
 	
+	@Id @GeneratedValue
 	private long id;
 	private Date dtInstalacao;
 	private String ip;
-	private Sala sala;
 	private SensorPorta sPorta;
 	private SensorPresenca sPresenca;
 	private SensorAr sAr;
 	private SensorLampada sLampada;
-	private ArrayList<HistoricoMicroControlador> listaHistorico = new ArrayList<HistoricoMicroControlador>();
+	
+	@ManyToOne
+	private Sala sala;
+	
+	@OneToMany(mappedBy="microControlador")
+	private ArrayList<HistoricoMicroControlador> listaHistorico;
 	
 	public MicroControlador() {
 		super();

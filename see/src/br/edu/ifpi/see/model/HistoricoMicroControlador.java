@@ -2,16 +2,25 @@ package br.edu.ifpi.see.model;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class HistoricoMicroControlador {
 	
+	@Id @GeneratedValue
 	private long id;
 	private Date data;
 	private String hora;
-	private MicroControlador microControlador;
 	private String sPorta;
 	private String sPresenca;
 	private String sAr;
 	private String sLampadas;
+	
+	@ManyToOne
+	private MicroControlador microControlador;
 	
 	public HistoricoMicroControlador() {
 		super();

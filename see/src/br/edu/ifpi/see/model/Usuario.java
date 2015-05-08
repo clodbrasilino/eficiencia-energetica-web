@@ -2,8 +2,15 @@ package br.edu.ifpi.see.model;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Usuario {
 	
+	@Id @GeneratedValue
 	private long id;
 	private String nome;
 	private String endereco;
@@ -11,7 +18,9 @@ public class Usuario {
 	private String telefone;
 	private String senha;
 	private int tipo;
-	private ArrayList<Sala> listaSala = new ArrayList<Sala>();
+	
+	@OneToMany(mappedBy="usuario")
+	private ArrayList<Sala> listaSala;
 	
 	public Usuario() {
 		super();
