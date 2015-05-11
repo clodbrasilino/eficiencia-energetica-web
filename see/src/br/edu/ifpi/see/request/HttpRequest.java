@@ -23,20 +23,19 @@ public class HttpRequest {
 			response.append(inputLine);
 		}
 		
-		String[] sensores = response.toString().split("&");
-		System.out.println("Início");
-		for (int i = 0; i < sensores.length; i++) {
-			System.out.println(sensores[i]);
-		}
-		System.out.println("Fim\n");
+		// Separação dos números
+		String sensores = response.toString().replace("=", "&");
+		String[] valores = sensores.split("&");
+		
 		in.close();
 		
 		Response r = new Response();
 		r.setCode(responseCode);
-		r.setPorta(sensores[0]);
-		r.setPresenca(sensores[1]);
-		r.setLampadas(sensores[2]);
-		r.setAr(sensores[3]);
+		r.setPorta(valores[1]);
+		r.setPresenca(valores[3]);
+		r.setLampadas(valores[5]);
+		r.setAr(valores[7]);
+		
 		return r;
 	}
 
