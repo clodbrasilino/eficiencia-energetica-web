@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 
 public class HttpRequest {
 	
@@ -24,17 +25,22 @@ public class HttpRequest {
 		}
 		
 		// Separação dos números
-		String sensores = response.toString().replace("=", "&");
-		String[] valores = sensores.split("&");
+		//String sensores = response.toString().replace("=", "&");
+		String[] valores = response.toString().split("&");
+		HashMap<String, String> parametros = new HashMap<String, String>();
+		for (String par: valores){
+			String[] partesparametro = par.split("=");
+			parametros.put(partesparametro[0], partesparametro[1]);
+		}
 		
 		in.close();
 		
 		Response r = new Response();
 		r.setCode(responseCode);
-		r.setPorta(valores[1]);
-		r.setPresenca(valores[3]);
-		r.setLampadas(valores[5]);
-		r.setAr(valores[7]);
+		r.setPorta(parametros.get("porta"));
+		r.setPresenca(parametros.get("presenca"));
+		r.setLampadas(parametros.get("lampada"));
+		r.setAr(parametros.get("ar"));
 		
 		return r;
 	}

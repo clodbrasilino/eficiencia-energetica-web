@@ -7,7 +7,6 @@ public class SensorAr {
 	
 	public SensorAr() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public SensorAr(boolean ativo, String valor) {

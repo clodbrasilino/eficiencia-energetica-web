@@ -21,7 +21,6 @@ public class HistoricoSala {
 	
 	public HistoricoSala() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public HistoricoSala(long id, Date data, String hora, String status,

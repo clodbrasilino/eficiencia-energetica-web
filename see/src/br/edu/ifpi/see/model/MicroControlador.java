@@ -1,13 +1,14 @@
 package br.edu.ifpi.see.model;
 
 import java.sql.Date;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+//import javax.persistence.Transient;
 
 @Entity
 public class MicroControlador {
@@ -16,50 +17,57 @@ public class MicroControlador {
 	private long id;
 	private Date dtInstalacao;
 	private String ip;
-	private SensorPorta sPorta;
+	private int sensorPorta;
+	private int sensorPresenca;
+	private int sensorAr;
+	private int sensorLampada;
+/*	private SensorPorta sPorta;
 	private SensorPresenca sPresenca;
 	private SensorAr sAr;
-	private SensorLampada sLampada;
+	private SensorLampada sLampada;*/
 	
 	@ManyToOne
 	private Sala sala;
 	
 	@OneToMany(mappedBy="microControlador")
-	private ArrayList<HistoricoMicroControlador> listaHistorico;
+	private List<HistoricoMicroControlador> listaHistorico;
 	
 	public MicroControlador() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
+	// FIXME Verificar construtores (nova estrutura dos dados dos sensores)
 
 	public MicroControlador(long id, Date dtInstalacao, String ip, Sala sala,
 			SensorPorta sPorta, SensorPresenca sPresenca, SensorAr sAr,
 			SensorLampada sLampada,
-			ArrayList<HistoricoMicroControlador> listaHistorico) {
+			List<HistoricoMicroControlador> listaHistorico) {
 		super();
 		this.id = id;
 		this.dtInstalacao = dtInstalacao;
 		this.ip = ip;
 		this.sala = sala;
-		this.sPorta = sPorta;
+/*		this.sPorta = sPorta;
 		this.sPresenca = sPresenca;
 		this.sAr = sAr;
-		this.sLampada = sLampada;
+		this.sLampada = sLampada;*/
 		this.listaHistorico = listaHistorico;
 	}
 
+	// FIXME Verificar construtores (nova estrutura dos dados dos sensores)
+	
 	public MicroControlador(Date dtInstalacao, String ip, Sala sala,
 			SensorPorta sPorta, SensorPresenca sPresenca, SensorAr sAr,
 			SensorLampada sLampada,
-			ArrayList<HistoricoMicroControlador> listaHistorico) {
+			List<HistoricoMicroControlador> listaHistorico) {
 		super();
 		this.dtInstalacao = dtInstalacao;
 		this.ip = ip;
 		this.sala = sala;
-		this.sPorta = sPorta;
+/*		this.sPorta = sPorta;
 		this.sPresenca = sPresenca;
 		this.sAr = sAr;
-		this.sLampada = sLampada;
+		this.sLampada = sLampada;*/
 		this.listaHistorico = listaHistorico;
 	}
 
@@ -95,6 +103,7 @@ public class MicroControlador {
 		this.sala = sala;
 	}
 
+/*	@Transient
 	public SensorPorta getsPorta() {
 		return sPorta;
 	}
@@ -103,6 +112,7 @@ public class MicroControlador {
 		this.sPorta = sPorta;
 	}
 
+	@Transient
 	public SensorPresenca getsPresenca() {
 		return sPresenca;
 	}
@@ -111,6 +121,7 @@ public class MicroControlador {
 		this.sPresenca = sPresenca;
 	}
 
+	@Transient
 	public SensorAr getsAr() {
 		return sAr;
 	}
@@ -119,21 +130,54 @@ public class MicroControlador {
 		this.sAr = sAr;
 	}
 
+	@Transient
 	public SensorLampada getsLampada() {
 		return sLampada;
 	}
 
 	public void setsLampada(SensorLampada sLampada) {
 		this.sLampada = sLampada;
-	}
+	}*/
 
-	public ArrayList<HistoricoMicroControlador> getListaHistorico() {
+	public List<HistoricoMicroControlador> getListaHistorico() {
 		return listaHistorico;
 	}
 
 	public void setListaHistorico(
-			ArrayList<HistoricoMicroControlador> listaHistorico) {
+			List<HistoricoMicroControlador> listaHistorico) {
 		this.listaHistorico = listaHistorico;
+	}
+
+	public int getSensorPorta() {
+		return sensorPorta;
+	}
+
+	public void setSensorPorta(int sensorPorta) {
+		this.sensorPorta = sensorPorta;
+	}
+
+	public int getSensorPresenca() {
+		return sensorPresenca;
+	}
+
+	public void setSensorPresenca(int sensorPresenca) {
+		this.sensorPresenca = sensorPresenca;
+	}
+
+	public int getSensorAr() {
+		return sensorAr;
+	}
+
+	public void setSensorAr(int sensorAr) {
+		this.sensorAr = sensorAr;
+	}
+
+	public int getSensorLampada() {
+		return sensorLampada;
+	}
+
+	public void setSensorLampada(int sensorLampada) {
+		this.sensorLampada = sensorLampada;
 	}
 
 	@Override

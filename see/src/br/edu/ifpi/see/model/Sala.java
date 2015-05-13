@@ -1,6 +1,6 @@
 package br.edu.ifpi.see.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,18 +25,17 @@ public class Sala {
 	private Usuario usuario;
 	
 	@OneToMany(mappedBy="sala")
-	private ArrayList<MicroControlador> listaMicroControlador;
+	private List<MicroControlador> listaMicroControlador;
 	@OneToMany(mappedBy="sala")
-	private ArrayList<HistoricoSala> listaHistorico;
+	private List<HistoricoSala> listaHistorico;
 	
 	public Sala() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Sala(String numero, String descricao, int pavimento,
-			Usuario usuario, ArrayList<MicroControlador> listaMicroControlador,
-			ArrayList<HistoricoSala> listaHistorico) {
+			Usuario usuario, List<MicroControlador> listaMicroControlador,
+			List<HistoricoSala> listaHistorico) {
 		super();
 		this.numero = numero;
 		this.descricao = descricao;
@@ -86,20 +85,20 @@ public class Sala {
 		this.usuario = usuario;
 	}
 
-	public ArrayList<MicroControlador> getListaMicroControlador() {
+	public List<MicroControlador> getListaMicroControlador() {
 		return listaMicroControlador;
 	}
 
 	public void setListaMicroControlador(
-			ArrayList<MicroControlador> listaMicroControlador) {
+			List<MicroControlador> listaMicroControlador) {
 		this.listaMicroControlador = listaMicroControlador;
 	}
 
-	public ArrayList<HistoricoSala> getListaHistorico() {
+	public List<HistoricoSala> getListaHistorico() {
 		return listaHistorico;
 	}
 
-	public void setListaHistorico(ArrayList<HistoricoSala> listaHistorico) {
+	public void setListaHistorico(List<HistoricoSala> listaHistorico) {
 		this.listaHistorico = listaHistorico;
 	}
 

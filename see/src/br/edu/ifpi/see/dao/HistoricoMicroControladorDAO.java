@@ -13,34 +13,29 @@ public class HistoricoMicroControladorDAO implements GenericDAO<HistoricoMicroCo
 	
 	@Override
 	public void salvar(HistoricoMicroControlador e) {
-		// TODO Auto-generated method stub
 		manager.persist(e);
 		
 	}
 
 	@Override
 	public void atualizar(HistoricoMicroControlador e) {
-		// TODO Auto-generated method stub
 		manager.merge(e);
 		
 	}
 
 	@Override
 	public void apagar(HistoricoMicroControlador e) {
-		// TODO Auto-generated method stub
 		manager.remove(pesquisar(e.getId()));
 		
 	}
 
 	@Override
 	public HistoricoMicroControlador pesquisar(long id) {
-		// TODO Auto-generated method stub
 		return manager.find(HistoricoMicroControlador.class, id);
 	}
 
 	@Override
 	public List<HistoricoMicroControlador> pesquisar(String jql) {
-		// TODO Auto-generated method stub
 		return manager.createQuery(jql, HistoricoMicroControlador.class).getResultList();
 	}
 

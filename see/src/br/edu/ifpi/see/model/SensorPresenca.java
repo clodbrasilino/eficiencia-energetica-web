@@ -7,7 +7,6 @@ public class SensorPresenca {
 	
 	public SensorPresenca() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public SensorPresenca(boolean ativo, String valor) {

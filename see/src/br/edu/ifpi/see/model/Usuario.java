@@ -1,6 +1,6 @@
 package br.edu.ifpi.see.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,15 +20,14 @@ public class Usuario {
 	private int tipo;
 	
 	@OneToMany(mappedBy="usuario")
-	private ArrayList<Sala> listaSala;
+	private List<Sala> listaSala;
 	
 	public Usuario() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Usuario(long id, String nome, String endereco, String email,
-			String telefone, String senha, int tipo, ArrayList<Sala> listaSala) {
+			String telefone, String senha, int tipo, List<Sala> listaSala) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -41,7 +40,7 @@ public class Usuario {
 	}
 
 	public Usuario(String nome, String endereco, String email, String telefone,
-			String senha, int tipo, ArrayList<Sala> listaSala) {
+			String senha, int tipo, List<Sala> listaSala) {
 		super();
 		this.nome = nome;
 		this.endereco = endereco;
@@ -108,11 +107,11 @@ public class Usuario {
 		this.tipo = tipo;
 	}
 
-	public ArrayList<Sala> getListaSala() {
+	public List<Sala> getListaSala() {
 		return listaSala;
 	}
 
-	public void setListaSala(ArrayList<Sala> listaSala) {
+	public void setListaSala(List<Sala> listaSala) {
 		this.listaSala = listaSala;
 	}
 

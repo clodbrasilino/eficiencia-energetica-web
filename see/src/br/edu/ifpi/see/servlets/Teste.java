@@ -5,7 +5,6 @@ import java.util.HashMap;
 public class Teste {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String url = "porta=1&presenca=0&lampada=1&ar=-1";
 		url = url.replace("=", "&");
 		String[] sensores = url.split("&");

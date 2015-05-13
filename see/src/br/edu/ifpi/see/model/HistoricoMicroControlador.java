@@ -24,7 +24,6 @@ public class HistoricoMicroControlador {
 	
 	public HistoricoMicroControlador() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public HistoricoMicroControlador(long id, Date data, String hora,

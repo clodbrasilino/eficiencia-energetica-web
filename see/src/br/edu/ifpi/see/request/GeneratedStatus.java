@@ -12,24 +12,25 @@ public class GeneratedStatus {
 		for(MicroControlador mc : microControladores){
 			try {
 				Response response = request.sendGet(mc.getIp());
-				mc.getsPorta().setValor(response.getPorta());
-				mc.getsPresenca().setValor(response.getPresenca());
-				mc.getsLampada().setValor(response.getLampadas());
-				mc.getsAr().setValor(response.getAr());
+				mc.setSensorPorta(Integer.parseInt(response.getPorta()));
+				mc.setSensorPresenca(Integer.parseInt(response.getPresenca()));
+				mc.setSensorLampada(Integer.parseInt(response.getLampadas()));
+				mc.setSensorAr(Integer.parseInt(response.getAr()));
 				
-				return geraStatus(mc.getsPorta().getValor(), mc.getsPresenca().getValor(), mc.getsLampada().getValor(), mc.getsAr().getValor());
+				return geraStatus(mc.getSensorPorta(), mc.getSensorPresenca(), mc.getSensorLampada(), mc.getSensorAr());
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return null;
 	}
 	
-	private Status geraStatus(String porta, String presenca, String lampadas, String ar){
+	// FIXME Alterar método para a estrutura de dados nova de sensores
+	
+	private Status geraStatus(int porta, int presenca, int lampadas, int ar){
 		Status s = new Status();
 		
-		if(porta.equals("porta=1") & presenca.equals("presenca=1") & lampadas.equals("lampada=1") & ar.equals("ar=1")){
+		/*if(porta.equals("porta=1") & presenca.equals("presenca=1") & lampadas.equals("lampada=1") & ar.equals("ar=1")){
 			s.setTexto("Sala em utilização");
 			s.setCor("#ffd700");
 		}else if(porta.equals("porta=1") & presenca.equals("presenca=1") & lampadas.equals("lampada=1") & ar.equals("ar=0")){
@@ -80,8 +81,9 @@ public class GeneratedStatus {
 		}else{
 			s.setTexto("Impossível fazer leitura...");
 			s.setCor("#a9a9a9");
-		}
-		
+		}*/
+		s.setTexto("Corrigir Implementacao.");
+		s.setCor("#a9a9a9");
 		return s;
 	}
 
