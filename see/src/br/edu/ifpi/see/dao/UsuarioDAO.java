@@ -40,5 +40,18 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 		// TODO Auto-generated method stub
 		return manager.createQuery(jql, Usuario.class).getResultList();
 	}
+	
+	public Usuario pesquisar(String email, String senha) {
+		
+		List<Usuario> usuarios = pesquisar("select u from Usuario u");
+		
+		for (Usuario usuario : usuarios) {
+			if (usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {
+				return usuario;
+			}
+		}
+		
+		return null;
+	}
 
 }
