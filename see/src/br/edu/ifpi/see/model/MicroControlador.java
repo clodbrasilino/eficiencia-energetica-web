@@ -21,10 +21,6 @@ public class MicroControlador {
 	private int sensorPresenca;
 	private int sensorAr;
 	private int sensorLampada;
-/*	private SensorPorta sPorta;
-	private SensorPresenca sPresenca;
-	private SensorAr sAr;
-	private SensorLampada sLampada;*/
 	
 	@ManyToOne
 	private Sala sala;
@@ -36,39 +32,29 @@ public class MicroControlador {
 		super();
 	}
 	
-	// FIXME Verificar construtores (nova estrutura dos dados dos sensores)
-
-	public MicroControlador(long id, Date dtInstalacao, String ip, Sala sala,
-			SensorPorta sPorta, SensorPresenca sPresenca, SensorAr sAr,
-			SensorLampada sLampada,
+	public MicroControlador(Date dtInstalacao, String ip, int sensorPorta,
+			int sensorPresenca, int sensorAr, int sensorLampada, Sala sala,
 			List<HistoricoMicroControlador> listaHistorico) {
 		super();
-		this.id = id;
 		this.dtInstalacao = dtInstalacao;
 		this.ip = ip;
+		this.sensorPorta = sensorPorta;
+		this.sensorPresenca = sensorPresenca;
+		this.sensorAr = sensorAr;
+		this.sensorLampada = sensorLampada;
 		this.sala = sala;
-/*		this.sPorta = sPorta;
-		this.sPresenca = sPresenca;
-		this.sAr = sAr;
-		this.sLampada = sLampada;*/
 		this.listaHistorico = listaHistorico;
 	}
 
-	// FIXME Verificar construtores (nova estrutura dos dados dos sensores)
-	
-	public MicroControlador(Date dtInstalacao, String ip, Sala sala,
-			SensorPorta sPorta, SensorPresenca sPresenca, SensorAr sAr,
-			SensorLampada sLampada,
-			List<HistoricoMicroControlador> listaHistorico) {
+	public MicroControlador(Date dtInstalacao, String ip, int sensorPorta,
+			int sensorPresenca, int sensorAr, int sensorLampada) {
 		super();
 		this.dtInstalacao = dtInstalacao;
 		this.ip = ip;
-		this.sala = sala;
-/*		this.sPorta = sPorta;
-		this.sPresenca = sPresenca;
-		this.sAr = sAr;
-		this.sLampada = sLampada;*/
-		this.listaHistorico = listaHistorico;
+		this.sensorPorta = sensorPorta;
+		this.sensorPresenca = sensorPresenca;
+		this.sensorAr = sensorAr;
+		this.sensorLampada = sensorLampada;
 	}
 
 	public long getId() {
@@ -102,42 +88,6 @@ public class MicroControlador {
 	public void setSala(Sala sala) {
 		this.sala = sala;
 	}
-
-/*	@Transient
-	public SensorPorta getsPorta() {
-		return sPorta;
-	}
-
-	public void setsPorta(SensorPorta sPorta) {
-		this.sPorta = sPorta;
-	}
-
-	@Transient
-	public SensorPresenca getsPresenca() {
-		return sPresenca;
-	}
-
-	public void setsPresenca(SensorPresenca sPresenca) {
-		this.sPresenca = sPresenca;
-	}
-
-	@Transient
-	public SensorAr getsAr() {
-		return sAr;
-	}
-
-	public void setsAr(SensorAr sAr) {
-		this.sAr = sAr;
-	}
-
-	@Transient
-	public SensorLampada getsLampada() {
-		return sLampada;
-	}
-
-	public void setsLampada(SensorLampada sLampada) {
-		this.sLampada = sLampada;
-	}*/
 
 	public List<HistoricoMicroControlador> getListaHistorico() {
 		return listaHistorico;
