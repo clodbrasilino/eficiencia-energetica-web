@@ -1,5 +1,7 @@
 package br.edu.ifpi.see.dao;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -51,6 +53,11 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 			}
 		}
 		
+		return null;
+	}
+	
+	// TODO Implementar a listagem de gerentes!
+	public ArrayList<Usuario> listaGerentes() throws SQLException{
 		return null;
 	}
 
