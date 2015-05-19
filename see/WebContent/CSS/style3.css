@@ -1,0 +1,107 @@
+body{
+    margin:0px auto;
+    background:url(../IMG/fundo_site_projeto.png);
+}
+
+img{
+	margin-top: 50px;
+	width: 100%	
+}
+
+.principal{
+	background:#fff;
+	margin: 0 auto;
+	width:1000px;
+	height: 540px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border-left: 1px solid grey;
+	border-bottom:1px solid grey;
+	border-right: 1px solid grey;
+}
+
+.topo{
+	width:1000px;
+	height: 200px;
+}
+
+.corpo{
+	width:1000px;
+	margin-top: 5px;
+}
+
+.corpo h4{
+	font-family: arial;
+	font-size: 14;
+	color: #CCC;
+	margin-left: 6px;
+}
+
+.corpo p{
+	font-family: arial;
+	font-size: 12;
+	color: #191970;
+	float: right;
+	margin-top: -40px;
+	margin-right: 20px;
+}
+
+.corpo h1{
+	font-family: arial;
+	font-size: 30px;
+	margin-left: 180px;
+	color: #CC9;
+}
+
+.form{
+	margin-left: 200px;
+	font-family: arial;
+	width: 500px;
+	font-size: 16px;
+	border: 1px solid #CCC;
+	padding: 5px;
+	margin-bottom: 30px;
+}
+
+form input[type=numero]{
+            width: 100px;
+			margin-bottom: 5px;
+			margin-top: 2px;
+}
+
+form input[type=submit]{
+		background: #191970;
+		padding: 5px 12px;
+		margin-top: 2px;
+		margin-left: 10px;
+		color: #FFF;
+        font-size: 16px;
+}
+
+.form a{
+	color: #fff;
+	background: #191980;
+	text-decoration: none;
+	padding: 5px 12px;
+	margin-top: 2px;
+	margin-left: 145px;
+}	
+
+.sair{
+color: #fff;
+	background: #191980;
+	text-decoration: none;
+	padding: 5px 12px;
+	margin-top: 2px;
+	margin-left: 10px;
+}
+
+
+a{
+	color: #fff;
+	background: #191980;
+	text-decoration: none;
+	padding: 5px 12px;
+	margin-top: 2px;
+	margin-left: 65px;
+}	

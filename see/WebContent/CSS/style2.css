@@ -1,0 +1,95 @@
+body{
+    margin:0px auto;
+    background:url(../IMG/fundo_site_projeto.png);
+}
+
+
+
+img{
+	margin-top: 50px;
+	width: 100%	
+}
+
+.topo{
+	width:1000px;
+	height: 200px;
+}
+
+#confirmacao p{
+	color: green;
+	font-size: 12px;
+	font-family: Verdana;
+}
+
+td{
+	width: 90px;
+}
+
+td .input{
+	width: 300px;	
+}
+
+
+.corpo{
+	width:100%;
+	margin :auto;
+	
+}
+
+.corpo h4{
+	font-family: arial;
+	font-size: 14;
+	color: #CCC;
+	margin-left: 6px;
+}
+
+.corpo p{
+	font-family: arial;
+	font-size: 12;
+	color: #191970;
+	float: right;
+	margin-top: -40px;
+	margin-right: 20px;
+}
+
+.corpo h1{
+	font-family: arial;
+	font-size: 30px;
+	margin: 10px auto;
+	color: #CC9;
+}
+
+.form{
+	margin:0 auto;
+	font-family: arial;
+	width: 500px;
+	height:200px;
+	font-size: 16px;
+	border: 1px solid #CCC;
+	padding: 10px;
+	margin-bottom: 30px;
+	
+}
+
+
+
+/*
+	Consertar essa gambiarra aki
+*/
+
+a{
+	color: #000;	
+	text-decoration: none;
+	padding: 10px;
+	
+	
+}
+
+.botao{
+	float:right;
+	margin-top: 25px;
+	margin-right: 5px;	
+}
+
+
+/* FIM da gambiarra */
