@@ -11,17 +11,22 @@
 		<class>br.edu.ifpi.see.model.Usuario</class>	    
 	    
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.16.175.161:3306/see" />
-			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.16.175.161/see" />
+			
+			<!--<property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.16.175.161:3306/see" />
 			<property name="javax.persistence.jdbc.user" value="see"/>
-			<property name="javax.persistence.jdbc.password" value="ifpi@2015"/> -->
+			<property name="javax.persistence.jdbc.password" value="ifpi@2015"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />-->
+			
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/see" />
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="lvc_informatica"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-			<property name="javax.persistence.jdbc.user" value="see"/>
-			<property name="javax.persistence.jdbc.password" value="ifpi@2015"/>
+			
 		</properties>
 	</persistence-unit>
 </persistence>
