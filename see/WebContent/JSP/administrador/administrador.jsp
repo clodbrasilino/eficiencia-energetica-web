@@ -31,7 +31,7 @@
 	 <div id="header">
 	
 		<h4>	Parnaiba - PI								</h4>
-		<p>		Bem vindo <% out.print(u.getNome()); %>		</p>
+		<p>		Bem vindo, <% out.print(u.getNome()); %>		</p>
 		<h1>	Informações dos gerentes cadastrados		</h1>
 	</div>
 
@@ -57,7 +57,7 @@
 						out.print("		<td width=\"100\">"     +  usuario.getNome()  + "	</td>");
 						out.print("		<td width=\"100\">"     +  usuario.getEmail() + "	</td>");
 						out.print("		<td width=\"210\" height=\"40\">");
-						out.print("			<a href=\""+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+usuario.getId()+"\">			Alterar		</a> |");
+						out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+usuario.getId()+"\">			Alterar		</a> |");
 						out.print("			<a href=\""+getServletContext().getInitParameter("app-name")+"/ServletExcluirGerente\" " + u.getId() +"\" \">								Excluir		</a> |");
 						out.print("			<a href=\""+getServletContext().getInitParameter("app-name")+"/jsp/administrador/detalhesGerente.jsp\">		Detalhes	</a>");
 						out.print("		</td>");
