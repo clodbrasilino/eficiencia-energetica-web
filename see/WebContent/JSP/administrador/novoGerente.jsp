@@ -53,6 +53,10 @@
 	                	<td>	<label>Senha:</label>										</td>
 	                    <td>	<input type="password" name="senha" class="input"/>			</td>
 	                 </tr>
+	                 <tr>
+	                	<td>	<label>Confirmação da senha:</label>						</td>
+	                    <td>	<input type="password" name="ConfirmacaoSenha" class="input"/>			</td>
+	                 </tr>
 	               </table>
 	               
 					<input type="submit" value=" Salvar "/>

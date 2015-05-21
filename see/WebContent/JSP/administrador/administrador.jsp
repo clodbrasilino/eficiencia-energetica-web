@@ -4,6 +4,7 @@
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
 <%@ page import="br.edu.ifpi.see.dao.UsuarioDAO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="javax.persistence.EntityManager" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -19,7 +20,8 @@
 		<div id="corpo">
 	
 	<%	
-		Usuario u = (Usuario) request.getSession().getAttribute("usuario");	
+		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+		EntityManager em = (EntityManager) getServletContext().getAttribute("em");
 		UsuarioDAO dao = new UsuarioDAO();	
 	%>
 		
@@ -45,15 +47,17 @@
 				
 				<!--  Preencher a tabela de gerentes dinâmicamente:  -->
 				<%
+					em.getTransaction().begin();
 					ArrayList<Usuario> lista = dao.listaGerentes();
+					em.getTransaction().commit();
 					
 					for(Usuario usuario : lista){
 						out.print("<tr>");
-						out.print("		<td width=\"100\"> G 0" +  usuario.getId()    + "	</td>");
+						out.print("		<td width=\"100\"> G00" +  usuario.getId()    + "	</td>");
 						out.print("		<td width=\"100\">"     +  usuario.getNome()  + "	</td>");
 						out.print("		<td width=\"100\">"     +  usuario.getEmail() + "	</td>");
 						out.print("		<td width=\"210\" height=\"40\">");
-						out.print("			<a href=\""+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente\">			Alterar		</a> |");
+						out.print("			<a href=\""+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+usuario.getId()+"\">			Alterar		</a> |");
 						out.print("			<a href=\""+getServletContext().getInitParameter("app-name")+"/ServletExcluirGerente\" " + u.getId() +"\" \">								Excluir		</a> |");
 						out.print("			<a href=\""+getServletContext().getInitParameter("app-name")+"/jsp/administrador/detalhesGerente.jsp\">		Detalhes	</a>");
 						out.print("		</td>");
@@ -74,7 +78,7 @@
 						<form action="/<%= application.getInitParameter("app-name") %>/"><input type="submit" value="Sair"/></form>
 					</td>
 					<td>
-						<form action="/<%= application.getInitParameter("app-name") %>/jsp/administrador/novoGerente.jsp"> 
+						<form action="/<%= application.getInitParameter("app-name") %>/JSP/administrador/novoGerente.jsp"> 
 							<input type="submit" value=" Novo Gerente ">
 						</form>
 					</td>
