@@ -58,7 +58,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 	
 	// TODO Implementar a listagem de gerentes!
 	public ArrayList<Usuario> listaGerentes() throws SQLException{
-		return null;
+		return (ArrayList<Usuario>) manager.createQuery("select u from Usuario u where tipo = 2").getResultList();
 	}
 
 }

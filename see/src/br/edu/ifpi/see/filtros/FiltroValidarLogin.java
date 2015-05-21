@@ -2,6 +2,7 @@ package br.edu.ifpi.see.filtros;
 
 import java.io.IOException;
 
+import javax.persistence.EntityManager;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import br.edu.ifpi.see.dao.UsuarioDAO;
 import br.edu.ifpi.see.model.Usuario;
+import br.edu.ifpi.see.util.JPAUtil;
 
 /**
  * Servlet Filter implementation class FiltroValidarLogin
@@ -112,7 +114,13 @@ public class FiltroValidarLogin implements Filter {
 			((HttpServletResponse) response).sendRedirect("/"+request.getServletContext().getInitParameter("app-name")+"/");
 			return;
 		}
-		u = dao.pesquisar(email, senha);	
+		
+		EntityManager em = JPAUtil.getEntityManager();
+		
+		em.getTransaction().begin();
+		u = dao.pesquisar(email, senha);
+		em.getTransaction().commit();
+		
 		/* Se o usuário preencher 'e-mail' e 'senha' válidos, mas não for cadastrado no sistema: */
 		if(u == null){
 			s.setAttribute("mensagem", "Usuário não cadastrado.");
