@@ -90,7 +90,7 @@
 					<table>
 					<tr>
 						<td>
-							<form action="/<%= application.getInitParameter("app-name") %>/"><input type="submit" value="Sair"/></form>
+							<form action="/<%= application.getInitParameter("app-name") %>/ServletLogout"><input type="submit" value="Sair"/></form>
 						</td>
 						<td>
 							<form action="/<%= application.getInitParameter("app-name") %>/jsp/gerente/novoSala.jsp"> 
