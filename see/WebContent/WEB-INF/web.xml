@@ -107,4 +107,16 @@
     <servlet-name>ServletAlterarSala</servlet-name>
     <url-pattern>/ServletAlterarSala</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>ServletLogout</display-name>
+    <servlet-name>ServletLogout</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletLogout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLogout</servlet-name>
+    <url-pattern>/ServletLogout</url-pattern>
+  </servlet-mapping>
 </web-app>
