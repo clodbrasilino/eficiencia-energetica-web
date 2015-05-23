@@ -32,54 +32,49 @@
 	</div>
 
 	<%
-		Usuario u = (Usuario) request.getAttribute("usuario");
+		Usuario gerente = (Usuario) request.getAttribute("usuario");
 	%>
 	<div class="form">
 		<form method="POST"
 			action="/<%=application.getInitParameter("app-name")%>/ServletAlterarGerente">
 			<table>
 				<tr>
-					<td><label>Nº Gerente:</label></td>
+					<td><label>Número:</label></td>
 					<td><input type="text" name="numero"
-						value="G00<%=u.getId()%>" disabled /></td>
+						value="G00<%=gerente.getId()%>" disabled /></td>
 				</tr>
 				<tr>
 					<td><label>Nome:</label></td>
-					<td><input type="text" name="nome" value="<%=u.getNome()%>"
+					<td><input type="text" name="nome" value="<%=gerente.getNome()%>"
 						class="input" /></td>
 				</tr>
 				<tr>
 					<td><label>Endereço:</label></td>
 					<td><input type="text" name="endereco"
-						value="<%=u.getEndereco()%>" class="input" /></td>
+						value="<%=gerente.getEndereco()%>" class="input" /></td>
 				</tr>
 				<tr>
 					<td><label>E-mail:</label></td>
 					<td><input type="text" name="email"
-						value="<%=u.getEmail()%>" class="input" /></td>
+						value="<%=gerente.getEmail()%>" class="input" /></td>
 				</tr>
 				<tr>
 					<td><label>Telefone:</label></td>
 					<td><input type="text" name="telefone"
-						value="<%=u.getTelefone()%>" class="input" /></td>
+						value="<%=gerente.getTelefone()%>" class="input" /></td>
 				</tr>
 				<tr>
 					<td><label>Ativo:</label></td>
-					<td><input type="checkbox" name="ativo" <%= u.isChecked() %> class="input" /></td>
+					<td><input type="checkbox" name="ativo" checked class="input" /></td>
 				</tr>
 				<tr>
 					<td><label>Senha:</label></td>
 					<td><input type="password" name="senha"
-						value="<%=u.getSenha()%>" class="input" /></td>
+						value="<%=gerente.getSenha()%>" class="input" /></td>
 				</tr>
 			</table>
-			<input type="hidden" name="id" value="<%=u.getId()%>"> <input
+			<input type="hidden" name="id" value="<%=gerente.getId()%>"> <input
 				class="botao" type="submit" value="Salvar" />
-		</form>
-		<!-- FIXME Gambiarra nesse form. Ajeitar depois -->
-		<form class="botao"
-			action="/<%=application.getInitParameter("app-name")%>/JSP/administrador/administrador.jsp">
-			<input type="submit" value="Voltar">
 		</form>
 
 		<%
@@ -89,6 +84,8 @@
 				out.print("</div>");
 			}
 		%>
+		
+		<a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
 
 	</div>
 

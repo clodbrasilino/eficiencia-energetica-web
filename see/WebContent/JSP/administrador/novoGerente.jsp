@@ -64,7 +64,7 @@
 			
 			
 			<!-- Gambiarra nesse form. Ajeitar depois -->
-	        <form action="/<%= application.getInitParameter("app-name") %>/jsp/administrador/administrador.jsp"><input type="submit" value="Voltar"></form>
+	        <a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
 			
 			<%
 	               		if(request.getAttribute("confirmacao") != null){
