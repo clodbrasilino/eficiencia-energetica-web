@@ -14,6 +14,7 @@
 		<meta name="author" content="Rita Aquino" />
 		<meta name="description" content="Site Web Efeitos" />
 		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style.css" />
+		<script type="text/javascript" src="/see/JS/ConfirmacaoExcluir.js"></script>
 	</head>
 <body>
 	<div id="fundo">
@@ -39,9 +40,10 @@
 			<table border=1>
 
 				<tr>
-					<td width="130" height="30"><b>	Nº do Gerente	</b></td>
+					<td width="130" height="30"><b>	Número			</b></td>
 					<td width="130" height="30"><b>	Nome			</b></td>
 					<td width="130" height="30"><b>	E-mail			</b></td>
+					<td width="130" height="30"><b>	Ativo			</b></td>
 					<td width="180" height="30"><b>	Opções			</b></td>
 				</tr>
 				
@@ -56,9 +58,10 @@
 						out.print("		<td width=\"100\"> G00" +  usuario.getId()    + "	</td>");
 						out.print("		<td width=\"100\">"     +  usuario.getNome()  + "	</td>");
 						out.print("		<td width=\"100\">"     +  usuario.getEmail() + "	</td>");
+						out.print("		<td width=\"100\">"     +  usuario.getAtivo() + "	</td>");
 						out.print("		<td width=\"210\" height=\"40\">");
 						out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+usuario.getId()+"\">			Alterar		</a> |");
-						out.print("			<a href=\""+getServletContext().getInitParameter("app-name")+"/ServletExcluirGerente\" " + u.getId() +"\" \">								Excluir		</a> |");
+						out.print("<a onclick='confirmaExclusaoGerente("+usuario.getId()+")' href='#'> Excluir |</a>");
 						out.print("			<a href=\""+getServletContext().getInitParameter("app-name")+"/jsp/administrador/detalhesGerente.jsp\">		Detalhes	</a>");
 						out.print("		</td>");
 						out.print("</tr>");

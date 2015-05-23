@@ -47,6 +47,7 @@ public class ServletCadastroGerente extends HttpServlet {
 		u.setTelefone(telefone);
 		u.setSenha(senha);
 		u.setTipo(2);
+		u.setAtivo(true);
 		
 		EntityManager em = JPAUtil.getEntityManager();
 		

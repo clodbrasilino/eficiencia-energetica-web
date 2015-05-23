@@ -18,6 +18,7 @@ public class Usuario {
 	private String telefone;
 	private String senha;
 	private int tipo;
+	private boolean ativo;
 	
 	@OneToMany(mappedBy="usuario")
 	private List<Sala> listaSala;
@@ -105,6 +106,30 @@ public class Usuario {
 
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+	
+	public String getAtivo(){
+		if(this.ativo){
+			return "Sim";
+		}else{
+			return "Não";
+		}
+	}
+	
+	public String isChecked(){
+		if(this.ativo){
+			return "hecked";
+		}else{
+			return "";
+		}
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	public List<Sala> getListaSala() {

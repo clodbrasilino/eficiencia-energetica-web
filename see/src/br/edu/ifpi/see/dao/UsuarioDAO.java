@@ -27,8 +27,9 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 
 	@Override
 	public void apagar(Usuario e) {
-
-		manager.remove(pesquisar(e.getId()));
+		
+		e.setAtivo(false);
+		manager.merge(e);
 	}
 
 	@Override
