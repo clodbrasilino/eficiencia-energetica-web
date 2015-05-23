@@ -49,8 +49,8 @@ public class ServletCadastroGerente extends HttpServlet {
 		u.setTipo(2);
 		u.setAtivo(true);
 		
-//		EntityManager em = JPAUtil.getEntityManager();
-		EntityManager em = (EntityManager) getServletContext().getAttribute("em");
+		EntityManager em = JPAUtil.getEntityManager();
+		//EntityManager em = (EntityManager) getServletContext().getAttribute("em");
 		
 		if(senha.equals(confirmacaoSenha)){
 			em.getTransaction().begin();
