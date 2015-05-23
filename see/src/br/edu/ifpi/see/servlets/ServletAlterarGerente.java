@@ -3,6 +3,7 @@ package br.edu.ifpi.see.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +36,9 @@ public class ServletAlterarGerente extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		EntityTransaction et = JPAUtil.getTransaction();
+//		EntityTransaction et = JPAUtil.getTransaction();
+		EntityTransaction et = ((EntityManager) getServletContext().getAttribute("em")).getTransaction();
+		
 		et.begin();
 		UsuarioDAO dao = new UsuarioDAO();
 		Usuario u = dao.pesquisar(id);
@@ -58,7 +61,8 @@ public class ServletAlterarGerente extends HttpServlet {
 		String telefone = request.getParameter("telefone");
 		String senha = request.getParameter("senha");
 		
-		EntityTransaction et = JPAUtil.getTransaction();
+//		EntityTransaction et = JPAUtil.getTransaction();
+		EntityTransaction et = ((EntityManager) getServletContext().getAttribute("em")).getTransaction();
 		
 		et.begin();
 		UsuarioDAO dao = new UsuarioDAO();

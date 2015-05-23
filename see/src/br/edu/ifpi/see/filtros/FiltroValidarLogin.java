@@ -115,7 +115,8 @@ public class FiltroValidarLogin implements Filter {
 			return;
 		}
 		
-		EntityManager em = JPAUtil.getEntityManager();
+//		EntityManager em = JPAUtil.getEntityManager();
+		EntityManager em = (EntityManager) request.getServletContext().getAttribute("em");
 		
 		em.getTransaction().begin();
 		u = dao.pesquisar(email, senha);
