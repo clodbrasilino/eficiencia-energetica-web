@@ -35,8 +35,13 @@ public class ServletExcluirGerente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		long id = Integer.parseInt(request.getParameter("id"));
-		EntityTransaction et = JPAUtil.getTransaction();
-		EntityManager em = JPAUtil.getEntityManager();
+		
+		/*EntityTransaction et = JPAUtil.getTransaction();
+		EntityManager em = JPAUtil.getEntityManager();*/
+		
+		EntityManager em = (EntityManager) getServletContext().getAttribute("em");
+		EntityTransaction et = em.getTransaction();
+		
 		UsuarioDAO dao = new UsuarioDAO();
 		
 		Usuario u = dao.pesquisar(id);
