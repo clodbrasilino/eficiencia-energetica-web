@@ -2,6 +2,10 @@
 
 
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
+<%@ page import="br.edu.ifpi.see.util.JPAUtil" %>
+<%@ page import="javax.persistence.EntityTransaction" %>
+<%@ page import="javax.persistence.EntityManager" %>
+<%@ page import="br.edu.ifpi.see.dao.UsuarioDAO" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,18 +14,19 @@
     	<title>Detalhes do Gerente</title>
         <meta name="author" content="Rita Aquino" />
         <meta name="description" content="Site Web Efeitos" />
-		<link rel="stylesheet" href="/projeto2/CSS/style.css" />
+		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style.css" />
 	</head>
  <body>
  	<%
  		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+ 		Usuario gerente = (Usuario) request.getAttribute("gerente");
  	%>
  
 	<div id="fundo">
 		<div id="corpo">  
 		
 		
-		 <img  src="/projeto2/IMG/topo-site.png"  id="topo_site" alt="Logo" title="Logo"> 
+		 <img  src="/<%= application.getInitParameter("app-name") %>/IMG/topo-site.png"  id="topo_site" alt="Logo" title="Logo"> 
 			
 		
 		<div id="header">
@@ -33,13 +38,15 @@
 		<fieldset>
 			<legend> Detalhes do Gerente </legend>
 			<div>
-				<p>Nome:		</p>
-				<p>Email:		</p>
-				<p>Telefone:	</p>
-				<p>Endereço:	</p>
-				<p>Categoria:	</p>
-	        <!-- Gambiarra nesse form. Ajeitar depois -->
-	        <form class="botao" action="/projeto2/jsp/administrador/administrador.jsp"><input type="submit" value="Voltar"></form>
+				<p>Número: <%= gerente.getId() %></p>
+				<p>Nome: <%= gerente.getNome() %></p>
+				<p>Endereço: <%= gerente.getEndereco() %></p>
+				<p>Email: <%= gerente.getEmail() %></p>
+				<p>Telefone: <%= gerente.getTelefone() %></p>
+				<p>Ativo: <%= gerente.getAtivo() %></p>
+	        
+	        <a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
+	        
 			</div>	
 		</fieldset>
 	</div>
