@@ -127,4 +127,14 @@
     <servlet-name>ServletDetalhesGerente</servlet-name>
     <url-pattern>/ServletDetalhesGerente</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAlterarAdministrador</display-name>
+    <servlet-name>ServletAlterarAdministrador</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletAlterarAdministrador</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAlterarAdministrador</servlet-name>
+    <url-pattern>/ServletAlterarAdministrador</url-pattern>
+  </servlet-mapping>
 </web-app>

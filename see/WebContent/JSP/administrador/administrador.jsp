@@ -34,17 +34,13 @@
 
 
 			<div id="header">
-
 				<h4>Parnaiba - PI</h4>
-				<p>
-					Bem vindo,
-					<%
-					out.print(u.getNome());
-				%>
-				</p>
+				<p>Bem vindo, <% out.print(u.getNome()); %></p>
 				<h1>Informações dos gerentes cadastrados</h1>
 			</div>
-
+			
+			<a href="/<%= application.getInitParameter("app-name") %>/ServletAlterarAdministrador?id="<%=u.getId() %>>Alterar dados cadastrais</a>
+			
 			<div class="infor">
 				<table border=1>
 					<tr>
