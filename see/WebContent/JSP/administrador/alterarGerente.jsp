@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <%@ page import="br.edu.ifpi.see.model.Usuario"%>
 <%@ page import="br.edu.ifpi.see.util.JPAUtil"%>
@@ -39,7 +39,7 @@
 			action="/<%=application.getInitParameter("app-name")%>/ServletAlterarGerente">
 			<table>
 				<tr>
-					<td><label>NÃºmero:</label></td>
+					<td><label>Número:</label></td>
 					<td><input type="text" name="numero"
 						value="G00<%=gerente.getId()%>" disabled /></td>
 				</tr>
@@ -49,7 +49,7 @@
 						class="input" /></td>
 				</tr>
 				<tr>
-					<td><label>EndereÃ§o:</label></td>
+					<td><label>Endereço:</label></td>
 					<td><input type="text" name="endereco"
 						value="<%=gerente.getEndereco()%>" class="input" /></td>
 				</tr>

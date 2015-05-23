@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
@@ -38,9 +39,9 @@
 		<fieldset>
 			<legend> Detalhes do Gerente </legend>
 			<div>
-				<p>NÃºmero: <%= gerente.getId() %></p>
+				<p>Número: <%= gerente.getId() %></p>
 				<p>Nome: <%= gerente.getNome() %></p>
-				<p>EndereÃ§o: <%= gerente.getEndereco() %></p>
+				<p>Endereço: <%= gerente.getEndereco() %></p>
 				<p>Email: <%= gerente.getEmail() %></p>
 				<p>Telefone: <%= gerente.getTelefone() %></p>
 				<p>Ativo: <%= gerente.getAtivo() %></p>

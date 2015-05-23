@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <!-- Imports JAVA -->
 <%@ page import="br.edu.ifpi.see.model.Usuario"%>
@@ -11,7 +11,7 @@
 
 <html lang="pt-br">
 <head>
-<title>PÃ¡gina Principal do Administrador</title>
+<title>Página Principal do Administrador</title>
 <meta name="author" content="Rita Aquino" />
 <meta name="description" content="Site Web Efeitos" />
 <link rel="stylesheet"
@@ -30,7 +30,7 @@
 
 			<img
 				src="/<%=application.getInitParameter("app-name")%>/IMG/topo-site.png"
-				id="img_topo" alt="Logo" title="Acompanhe a eficiÃªncia energÃ©tica !">
+				id="img_topo" alt="Logo" title="Acompanhe a eficiência energética !">
 
 
 			<div id="header">
@@ -42,17 +42,17 @@
 					out.print(u.getNome());
 				%>
 				</p>
-				<h1>InformaÃ§Ãµes dos gerentes cadastrados</h1>
+				<h1>Informações dos gerentes cadastrados</h1>
 			</div>
 
 			<div class="infor">
 				<table border=1>
 					<tr>
-						<td width="130" height="30"><b> NÃºmero </b></td>
+						<td width="130" height="30"><b> Número </b></td>
 						<td width="130" height="30"><b> Nome </b></td>
 						<td width="130" height="30"><b> E-mail </b></td>
 						<td width="130" height="30"><b> Ativo </b></td>
-						<td width="180" height="30"><b> OpÃ§Ãµes </b></td>
+						<td width="180" height="30"><b> Opções </b></td>
 					</tr>
 					<%
 						em.getTransaction().begin();

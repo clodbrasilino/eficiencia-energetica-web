@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
@@ -20,7 +21,7 @@
 		<div id="corpo">
 		
 		
-	<img src="/<%= application.getInitParameter("app-name") %>/IMG/topo-site.png" id="img_topo" alt="Logo" title="Acompanhe a eficiÃªncia energÃ©tica !">
+	<img src="/<%= application.getInitParameter("app-name") %>/IMG/topo-site.png" id="img_topo" alt="Logo" title="Acompanhe a eficiência energética !">
 		
 	
 	<div id="header">
@@ -38,7 +39,7 @@
 	                    <td>	<input type="text" name="nome" class="input"/>				</td>
 	                </tr>
 	                <tr>
-	                	<td>	<label>EndereÃ§o:</label>									</td>
+	                	<td>	<label>Endereço:</label>									</td>
 	                   <td>		<input type="text" name="endereco" class="input"/>		</td>
 	                </tr>
 					<tr>
@@ -54,7 +55,7 @@
 	                    <td>	<input type="password" name="senha" class="input"/>			</td>
 	                 </tr>
 	                 <tr>
-	                	<td>	<label>ConfirmaÃ§Ã£o da senha:</label>						</td>
+	                	<td>	<label>Confirmação da senha:</label>						</td>
 	                    <td>	<input type="password" name="ConfirmacaoSenha" class="input"/>			</td>
 	                 </tr>
 	               </table>

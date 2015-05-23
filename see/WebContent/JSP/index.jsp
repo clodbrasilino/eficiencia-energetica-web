@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
 <html lang="pt-br">
 
     <head>
-    	<title>Sistema de EficiÃªncia Energetica IFPI ParnaÃ­ba</title>
+    	<title>Sistema de Eficiência Energetica IFPI Parnaíba</title>
         <meta name="author" content="RitaAquino" />
         <meta name="description" content="Site Web Efeitos" />
 		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style.css"/>
@@ -48,7 +49,7 @@
 		        	}
 		        %>
 		        
-		        <h1>	Sistema de EficiÃªncia EnergÃ©tica </h1>
+		        <h1>	Sistema de Eficiência Energética </h1>
 		    </div>
 		    <!-- #header FIM -->
 	     
@@ -97,7 +98,7 @@
                         <td bgcolor=#FF0 width="20"> </td>
                         <td width="80"> <font color=#191970>Moderado </font> </td>
                         <td bgcolor=#F00 width="20"> </td>
-                        <td><font color=#191970>Precisando de ManutenÃ§Ã£o Imediata</font></td>	
+                        <td><font color=#191970>Precisando de Manutenção Imediata</font></td>	
                     </tr>
                  </table>
             </div>

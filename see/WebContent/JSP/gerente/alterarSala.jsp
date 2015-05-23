@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
 	<div id="fundo">
 		<div id="corpo">
 		
-		<img src="/<%= application.getInitParameter("app-name") %>/IMG/topo-site.png" id="img_topo" alt="Logo" title="Acompanhe a eficiÃªncia energÃ©tica !">
+		<img src="/<%= application.getInitParameter("app-name") %>/IMG/topo-site.png" id="img_topo" alt="Logo" title="Acompanhe a eficiência energética !">
 			
 	<%
 		HttpSession s = request.getSession();
@@ -29,12 +30,12 @@
 		
 	<div class="form">
 		<form method="POST" action="/<%= application.getInitParameter("app-name") %>/ServletAlterarSala">
-				<label>NÂº sala:</label>
+				<label>Nº sala:</label>
 				<input type="number" name="numero" />
 				
 				<br><br>
 				
-				<label>DescriÃ§Ã£o: </label>
+				<label>Descrição: </label>
 				<br>
 				<textarea rows=6 cols=50></textarea>
 				<br>
