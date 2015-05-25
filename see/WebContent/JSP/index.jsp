@@ -9,14 +9,26 @@
     	<title>Sistema de Eficiência Energetica IFPI Parnaíba</title>
         <meta name="author" content="RitaAquino" />
         <meta name="description" content="Site Web Efeitos" />
-		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style.css"/>
+		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style_index.css"/>
+		<script>
+			function transition(){
+				var img = document.getElementById('img_topo');
+				img.setAttribute('class', 'depois');
+			}
+			
+		</script>
 	</head>
 	
- <body>
+ <body onload="transition()">
+ 	<!-- 
+ 		Projeto Supervisionado 2015
+ 		Turma: Técnico de Informatica 2014.1
+ 		Professor Responsável: Clodoaldo Basilino
  	
+ 	 -->
  	<div id="fundo">
  		<div id="corpo">
-     	 	<img  src="/<%= application.getInitParameter("app-name") %>/IMG/topo-site.png"  id="img_topo" title="Logo">
+     	 	<img  src="/<%= application.getInitParameter("app-name") %>/IMG/topo-site.png"  id="img_topo" title="Logo" class="antes">
      
 		    <div id="header">
 		    	 
@@ -35,9 +47,6 @@
 		        </form>
 		       
 		        <h4> Parnaiba - PI </h4>
-		        
-		        
-		         
 		        <%
 		        	String msg = (String) session.getAttribute("mensagem");
 		        	
@@ -48,8 +57,8 @@
 		        		session.setAttribute("mensagem", "");
 		        	}
 		        %>
-		        
 		        <h1>	Sistema de Eficiência Energética </h1>
+		        
 		    </div>
 		    <!-- #header FIM -->
 	     
@@ -104,5 +113,6 @@
             </div>
         </div>
    </div>
+   <div id="rodape"></div>
  </body>
  </html>
