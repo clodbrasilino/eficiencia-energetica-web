@@ -94,7 +94,7 @@
 							<form action="/<%= application.getInitParameter("app-name") %>/ServletLogout"><input type="submit" value="Sair"/></form>
 						</td>
 						<td>
-							<form action="/<%= application.getInitParameter("app-name") %>/jsp/gerente/novoSala.jsp"> 
+							<form action="/<%= application.getInitParameter("app-name") %>/JSP/gerente/novoSala.jsp"> 
 								<input type="submit" value=" Nova Sala ">
 							</form>
 						</td>

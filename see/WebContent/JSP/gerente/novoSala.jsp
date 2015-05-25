@@ -23,21 +23,28 @@
 	<div id="header">
 		<h4>			Parnaiba - PI					</h4>
 		<p>				Bem vindo <%= u.getNome() %>	</p>
-		<h1> 	Cadastro de Sala 						</h1>
+		<h1> 			Cadastro de Sala 				</h1>
 	</div>	
 		
 	<div class="form">
 		<form method="POST" action="">
-				<label>		Nº sala:</label>
-				<input type="number" name="numero" />
-				
+				<label>Número:</label>
+				<input type="text" name="numero" />
 				<br><br>
 				
-				<label>		Descrição: </label>
-				<br>
-				<textarea rows=6 cols=50></textarea>
-				<br>
+				<label>Descrição:</label>
+				<input type="text" name="descricao" />
+				<br><br>
 				
+				<label>Pavimento:</label>
+				<select>
+					<option>Selecione...</option>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
 				<input class="botao"type="submit" value=" Salvar "/>
 			</form>
 		
