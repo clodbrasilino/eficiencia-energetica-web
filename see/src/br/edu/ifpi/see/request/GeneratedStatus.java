@@ -29,61 +29,17 @@ public class GeneratedStatus {
 	
 	private Status geraStatus(int porta, int presenca, int lampadas, int ar){
 		Status s = new Status();
-		
-		/*if(porta.equals("porta=1") & presenca.equals("presenca=1") & lampadas.equals("lampada=1") & ar.equals("ar=1")){
-			s.setTexto("Sala em utilização");
-			s.setCor("#ffd700");
-		}else if(porta.equals("porta=1") & presenca.equals("presenca=1") & lampadas.equals("lampada=1") & ar.equals("ar=0")){
-			s.setTexto("Sala em utilização");
-			s.setCor("#ffd700");
-		}else if(porta.equals("porta=1") & presenca.equals("presenca=1") & lampadas.equals("lampada=0") & ar.equals("ar=1")){
-			s.setTexto("Sala em utilização");
-			s.setCor("#ffd700");
-		}else if(porta.equals("porta=1") & presenca.equals("presenca=1") & lampadas.equals("lampada=0") & ar.equals("ar=0")){
-			s.setTexto("Sala em utilização");
-			s.setCor("#ffd700");
-		}else if(porta.equals("porta=1") & presenca.equals("presenca=0") & lampadas.equals("lampada=1") & ar.equals("ar=1")){
-			s.setTexto("Sala com desperdício de energia");
-			s.setCor("#ff4500");
-		}else if(porta.equals("porta=1") & presenca.equals("presenca=0") & lampadas.equals("lampada=1") & ar.equals("ar=0")){
-			s.setTexto("Sala com desperdício de energia");
-			s.setCor("#ff4500");
-		}else if(porta.equals("porta=1") & presenca.equals("presenca=0") & lampadas.equals("lampada=0") & ar.equals("ar=1")){
-			s.setTexto("Sala com desperdício de energia");
-			s.setCor("#ff4500");
-		}else if(porta.equals("porta=1") & presenca.equals("presenca=0") & lampadas.equals("lampada=0") & ar.equals("ar=0")){
-			s.setTexto("Sala livre");
-			s.setCor("#006400");
-		}else if(porta.equals("porta=0") & presenca.equals("presenca=1") & lampadas.equals("lampada=1") & ar.equals("ar=1")){
-			s.setTexto("Sala com desperdício excessivo de energia");
-			s.setCor("#ff0000");
-		}else if(porta.equals("porta=0") & presenca.equals("presenca=1") & lampadas.equals("lampada=1") & ar.equals("ar=0")){
-			s.setTexto("Sala com desperdício de energia");
-			s.setCor("#ff4500");
-		}else if(porta.equals("porta=0") & presenca.equals("presenca=1") & lampadas.equals("lampada=0") & ar.equals("ar=1")){
-			s.setTexto("Sala com desperdício de energia");
-			s.setCor("#ff4500");
-		}else if(porta.equals("porta=0") & presenca.equals("presenca=1") & lampadas.equals("lampada=0") & ar.equals("ar=0")){
-			s.setTexto("Sala em utilização");
-			s.setCor("#ffd700");
-		}else if(porta.equals("porta=0") & presenca.equals("presenca=0") & lampadas.equals("lampada=1") & ar.equals("ar=1")){
-			s.setTexto("Sala com desperdício excessivo de energia");
-			s.setCor("#ff0000");
-		}else if(porta.equals("porta=0") & presenca.equals("presenca=0") & lampadas.equals("lampada=1") & ar.equals("ar=0")){
-			s.setTexto("Sala com desperdício de energia");
-			s.setCor("#ff4500");
-		}else if(porta.equals("porta=0") & presenca.equals("presenca=0") & lampadas.equals("lampada=0") & ar.equals("ar=1")){
-			s.setTexto("Sala com desperdício de energia");
-			s.setCor("#ff4500");
-		}else if(porta.equals("porta=0") & presenca.equals("presenca=0") & lampadas.equals("lampada=0") & ar.equals("ar=0")){
-			s.setTexto("Sala livre");
-			s.setCor("#006400");
+		if((lampadas == 1 || ar == 1) && (presenca == 0)){
+			s.setTexto("Desperdício");
+		}else if((lampadas == 1 || ar == 1) && (presenca == 0) && (porta == 0)){
+			s.setTexto("Desperdício");
+		}else if((lampadas == 1 || ar == 1) && (presenca == 1) && porta == 1){
+			s.setTexto("Consumo normal");
+		}else if(lampadas == 0 && ar == 0){
+			s.setTexto("Consumo normal");
 		}else{
-			s.setTexto("Impossível fazer leitura...");
-			s.setCor("#a9a9a9");
-		}*/
-		s.setTexto("Corrigir Implementacao.");
-		s.setCor("#a9a9a9");
+			s.setTexto("Verifique!");
+		}
 		return s;
 	}
 
