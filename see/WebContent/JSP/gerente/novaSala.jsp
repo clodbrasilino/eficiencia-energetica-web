@@ -45,10 +45,25 @@
 					<option>4</option>
 					<option>5</option>
 				</select>
+				<br><br>
+				
+				<a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/novoMicroControlador.jsp">Adicionar</a>
+				
+				<table border="1">
+					<tr>
+						<td width="100">IP</td>
+						<td width="100">Sensor de Porta</td>
+						<td width="100">Sensor de Presença</td>
+						<td width="100">Sensor de Lâmpadas</td>
+						<td width="100">Sensor de Ar</td>
+						<td width="200">Opções</td>
+					</tr>
+				</table>
+				
+				<a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/gerente.jsp">Voltar</a>
+				
 				<input class="botao"type="submit" value=" Salvar "/>
-			</form>
-		
-		<form action="/<%= application.getInitParameter("app-name") %>/jsp/gerente/gerente.jsp"><input type="submit" value=" Voltar "></form>	
+			</form>	
 		
 	</div>
 	</div>
