@@ -2,6 +2,12 @@
     pageEncoding="ISO-8859-1"%>
 
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
+<%@ page import="br.edu.ifpi.see.model.Sala" %>
+<%@ page import="br.edu.ifpi.see.model.MicroControlador" %>
+<%@ page import="br.edu.ifpi.see.dao.SalaDAO" %>
+<%@ page import="javax.persistence.EntityTransaction" %>
+<%@ page import="javax.persistence.EntityManager" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -20,6 +26,10 @@
 	<%
 		HttpSession s = request.getSession();
 		Usuario u = (Usuario) s.getAttribute("usuario");
+		Sala sala = (Sala) request.getAttribute("sala");
+		
+		EntityManager em = (EntityManager) getServletContext().getAttribute("em");
+		SalaDAO dao = new SalaDAO();
 		
 	%>	
 	<div class="corpo">
@@ -30,19 +40,56 @@
 		
 	<div class="form">
 		<form method="POST" action="/<%= application.getInitParameter("app-name") %>/ServletAlterarSala">
-				<label>Nº sala:</label>
-				<input type="number" name="numero" />
+					<label>Número:</label><input type="text" name="numero" value="<%=sala.getNumero()%>"/><br></br>
+					<label>Descrição:</label><input type="text" name="descricao" value="<%=sala.getDescricao()%>"/><br></br>
+					<label>Pavimento:</label>
+					<select name="pavimento">
+						<option value="0"><%=sala.getPavimento()%></option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select><br></br>
 				
-				<br><br>
-				
-				<label>Descrição: </label>
-				<br>
-				<textarea rows=6 cols=50></textarea>
-				<br>
-				
+				<form action="/<%= application.getInitParameter("app-name") %>/jsp/gerente/gerente.jsp"><input type="submit" value=" Voltar "></form>
 				<input type="submit" value="Salvar"/>
 			</form>
-			<form action="/<%= application.getInitParameter("app-name") %>/jsp/gerente/gerente.jsp"><input type="submit" value=" Voltar "></form>
+			
+			<table border=1>
+	
+						<tr>
+							<td width="130" height="30"><b>	Número				</b></td>
+							<td width="130" height="30"><b>	Data			</b></td>
+							<td width="130" height="30"><b>	IP	</b></td>
+							<td width="130" height="30"><b>	Sensor de Porta	</b></td>
+							<td width="130" height="30"><b>	Sensor de Presença	</b></td>
+							<td width="130" height="30"><b>	Sensor de Lâmpadas	</b></td>
+							<td width="130" height="30"><b>	Sensor de Ar	</b></td>
+							<td width="180" height="30"><b>	Opções				</b></td>
+						</tr>
+						
+						<%
+
+						for(MicroControlador mc : sala.getListaMicroControlador()){
+							out.print("<tr>");
+							out.print("	   <td width=\"100\">" +  mc.getId()    + "	</td>");
+							out.print("		<td width=\"100\">"     +  mc.getDtInstalacao()  + "	</td>");
+							out.print("		<td width=\"100\">"     +  mc.getIp() + "	</td>");
+							out.print("		<td width=\"100\">"     +  mc.getSensorPorta() + "	</td>");
+							out.print("		<td width=\"100\">"     +  mc.getSensorPresenca() + "	</td>");
+							out.print("		<td width=\"100\">"     +  mc.getSensorLampada() + "	</td>");
+							out.print("		<td width=\"100\">"     +  mc.getSensorAr() + "	</td>");
+							out.print("		<td width=\"210\" height=\"40\">");
+							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+mc.getId()+"\">			Alterar		</a> |");
+							out.print("<a onclick='confirmaExclusaoGerente("+mc.getId()+")' href='#'> Excluir |</a>");
+							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+mc.getId()+"\">		Detalhes	</a>");
+							out.print("		</td>");
+							out.print("</tr>");
+						}
+					%>
+					</table>
+					
 	</div>
 	</div>
 	</div>	
