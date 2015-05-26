@@ -10,6 +10,8 @@
         <meta name="author" content="RitaAquino" />
         <meta name="description" content="Site Web Efeitos" />
 		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style_index.css"/>
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 		<script>
 			function transition(){
 				var img = document.getElementById('img_topo');
@@ -58,13 +60,11 @@
 		        	}
 		        %>
 		        <h1>	Sistema de Eficiência Energética </h1>
+		         <h3> Monitoramento do Sistema </h3>
 		        
 		    </div>
 		    <!-- #header FIM -->
 	     
-    
-		    <div class="monit">
-		        <h3> Monitoramento do Sistema </h3>
 		            <div class="btn">
 		                <table>
 		                    <tr>
@@ -97,7 +97,6 @@
 		                    </tr>
 		                </table>
 		            </div>
-			</div>
              
             <div id="legenda">
                 <table>
