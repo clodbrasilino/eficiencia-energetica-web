@@ -27,21 +27,17 @@
 	</div>	
 		
 	<div class="form">
-		<form method="POST" action="">
+		<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletMicroControlador">
 				<label>IP:</label>
-				<input type="text" name="numero" />
-				<br><br>
-				
-				<label>Descrição:</label>
-				<input type="text" name="descricao" />
+				<input type="text" name="ip" />
 				<br><br>
 				
 				<fieldset>
 					<legend>Sensores:</legend>
-					<input type="checkbox" value="1" name="porta">Porta</br>
-					<input type="checkbox" value="1" name="presenca">Presença</br>
-					<input type="checkbox" value="1" name="lampadas">Lâmpadas</br>
-					<input type="checkbox" value="1" name="ar">Ar</br>
+					<input type="checkbox" value="true" name="porta">Porta</br>
+					<input type="checkbox" value="true" name="presenca">Presença</br>
+					<input type="checkbox" value="true" name="lampadas">Lâmpadas</br>
+					<input type="checkbox" value="true" name="ar">Ar</br>
 				</fieldset>
 				<br><br>
 				

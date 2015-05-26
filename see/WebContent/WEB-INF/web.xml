@@ -137,4 +137,34 @@
     <servlet-name>ServletAlterarAdministrador</servlet-name>
     <url-pattern>/ServletAlterarAdministrador</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletMicroControlador</display-name>
+    <servlet-name>ServletMicroControlador</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletMicroControlador</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletMicroControlador</servlet-name>
+    <url-pattern>/ServletMicroControlador</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletSala</display-name>
+    <servlet-name>ServletSala</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletSala</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSala</servlet-name>
+    <url-pattern>/ServletSala</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletCadastroSala</display-name>
+    <servlet-name>ServletCadastroSala</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletCadastroSala</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCadastroSala</servlet-name>
+    <url-pattern>/ServletCadastroSala</url-pattern>
+  </servlet-mapping>
 </web-app>

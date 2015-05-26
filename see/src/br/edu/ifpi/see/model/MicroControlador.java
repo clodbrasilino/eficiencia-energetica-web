@@ -17,10 +17,10 @@ public class MicroControlador {
 	private long id;
 	private Date dtInstalacao;
 	private String ip;
-	private int sensorPorta;
-	private int sensorPresenca;
-	private int sensorAr;
-	private int sensorLampada;
+	private boolean sensorPorta;
+	private boolean sensorPresenca;
+	private boolean sensorAr;
+	private boolean sensorLampada;
 	
 	@ManyToOne
 	private Sala sala;
@@ -32,29 +32,29 @@ public class MicroControlador {
 		super();
 	}
 	
-	public MicroControlador(Date dtInstalacao, String ip, int sensorPorta,
-			int sensorPresenca, int sensorAr, int sensorLampada, Sala sala,
+	public MicroControlador(Date dtInstalacao, String ip, boolean sensorPorta,
+			boolean sensorPresenca, boolean sensorLampada, boolean sensorAr, Sala sala,
 			List<HistoricoMicroControlador> listaHistorico) {
 		super();
 		this.dtInstalacao = dtInstalacao;
 		this.ip = ip;
 		this.sensorPorta = sensorPorta;
 		this.sensorPresenca = sensorPresenca;
-		this.sensorAr = sensorAr;
 		this.sensorLampada = sensorLampada;
+		this.sensorAr = sensorAr;
 		this.sala = sala;
 		this.listaHistorico = listaHistorico;
 	}
 
-	public MicroControlador(Date dtInstalacao, String ip, int sensorPorta,
-			int sensorPresenca, int sensorAr, int sensorLampada) {
+	public MicroControlador(Date dtInstalacao, String ip, boolean sensorPorta,
+			boolean sensorPresenca, boolean sensorLampada, boolean sensorAr) {
 		super();
 		this.dtInstalacao = dtInstalacao;
 		this.ip = ip;
 		this.sensorPorta = sensorPorta;
 		this.sensorPresenca = sensorPresenca;
-		this.sensorAr = sensorAr;
 		this.sensorLampada = sensorLampada;
+		this.sensorAr = sensorAr;
 	}
 
 	public long getId() {
@@ -98,38 +98,70 @@ public class MicroControlador {
 		this.listaHistorico = listaHistorico;
 	}
 
-	public int getSensorPorta() {
+	public boolean isSensorPorta() {
 		return sensorPorta;
 	}
 
-	public void setSensorPorta(int sensorPorta) {
+	public void setSensorPorta(boolean sensorPorta) {
 		this.sensorPorta = sensorPorta;
 	}
+	
+	public String getSensorPorta(){
+		if(this.sensorPorta){
+			return "Sim";
+		}else{
+			return "Não";
+		}
+	}
 
-	public int getSensorPresenca() {
+	public boolean isSensorPresenca() {
 		return sensorPresenca;
 	}
 
-	public void setSensorPresenca(int sensorPresenca) {
+	public void setSensorPresenca(boolean sensorPresenca) {
 		this.sensorPresenca = sensorPresenca;
 	}
-
-	public int getSensorAr() {
-		return sensorAr;
+	
+	public String getSensorPresenca(){
+		if(this.sensorPresenca){
+			return "Sim";
+		}else{
+			return "Não";
+		}
 	}
-
-	public void setSensorAr(int sensorAr) {
-		this.sensorAr = sensorAr;
-	}
-
-	public int getSensorLampada() {
+	
+	public boolean isSensorLampada() {
 		return sensorLampada;
 	}
 
-	public void setSensorLampada(int sensorLampada) {
+	public void setSensorLampada(boolean sensorLampada) {
 		this.sensorLampada = sensorLampada;
 	}
+	
+	public String getSensorLampada(){
+		if(this.sensorLampada){
+			return "Sim";
+		}else{
+			return "Não";
+		}
+	}
+	
+	public boolean isSensorAr() {
+		return sensorAr;
+	}
 
+	public void setSensorAr(boolean sensorAr) {
+		this.sensorAr = sensorAr;
+	}
+	
+	public String getSensorAr(){
+		if(this.sensorAr){
+			return "Sim";
+		}else{
+			return "Não";
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
