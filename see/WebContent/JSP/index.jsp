@@ -96,7 +96,7 @@
 		                        <td width="100" height="50" bgcolor=#0F0>Sala 20</td>
 		                    </tr>
 		                </table>
-		            </div>
+		            </div> 
              
             <div id="legenda">
                 <table>

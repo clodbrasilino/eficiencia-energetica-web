@@ -14,11 +14,19 @@
 <title>Página Principal do Administrador</title>
 <meta name="author" content="Rita Aquino" />
 <meta name="description" content="Site Web Efeitos" />
-<link rel="stylesheet"
-	href="/<%=application.getInitParameter("app-name")%>/CSS/style.css" />
+<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style_administrador.css" />
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="/see/JS/ConfirmacaoExcluir.js"></script>
+<script>
+			function transition(){
+				var img = document.getElementById('img_topo');
+				img.setAttribute('class', 'depois');
+			}
+			
+		</script>
 </head>
-<body>
+<body onload="transition()">
 	<div id="fundo">
 		<div id="corpo">
 
@@ -30,19 +38,30 @@
 
 			<img
 				src="/<%=application.getInitParameter("app-name")%>/IMG/topo-site.png"
-				id="img_topo" alt="Logo" title="Acompanhe a eficiência energética !">
+				id="img_topo" alt="Logo" title="Acompanhe a eficiência energética !" class="antes">
 
 
 			<div id="header">
 				<h4>Parnaiba - PI</h4>
-				<p>Bem vindo, <% out.print(u.getNome()); %></p>
+				<p>Bem vindo, <% out.print(u.getNome()); %> | <a class="meus-dados" href="/<%= application.getInitParameter("app-name") %>/ServletAlterarAdministrador?id="<%=u.getId() %>> Meus Dados </a></p>
 				<h1>Informações dos gerentes cadastrados</h1>
 			</div>
 			
-			<a href="/<%= application.getInitParameter("app-name") %>/ServletAlterarAdministrador?id="<%=u.getId() %>>Alterar dados cadastrais</a>
+			
+			<div id="tabela">
+			<table class="theader">
+				<tr>
+						<td  width="100" height="30"><b> Número </b></td>
+						<td  width="100" height="30"><b> Nome </b></td>
+						<td  width="129" height="30"><b> E-mail </b></td>
+						<td  width="100" height="30"><b> Ativo </b></td>
+						<td  width="210" height="30"><b> Opções </b></td>
+					</tr>
+			</table>
 			
 			<div class="infor">
-				<table border=1>
+				<table>
+				<!--  
 					<tr>
 						<td width="130" height="30"><b> Número </b></td>
 						<td width="130" height="30"><b> Nome </b></td>
@@ -50,6 +69,7 @@
 						<td width="130" height="30"><b> Ativo </b></td>
 						<td width="180" height="30"><b> Opções </b></td>
 					</tr>
+				-->
 					<%
 						em.getTransaction().begin();
 						ArrayList<Usuario> lista = dao.listaGerentes();
@@ -63,7 +83,7 @@
 							out.print("		<td width=\"100\">"     +  usuario.getAtivo() + "	</td>");
 							out.print("		<td width=\"210\" height=\"40\">");
 							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+usuario.getId()+"\">			Alterar		</a> |");
-							out.print("<a onclick='confirmaExclusaoGerente("+usuario.getId()+")' href='#'> Excluir |</a>");
+							out.print("<a onclick='confirmaExclusaoGerente("+usuario.getId()+")' href='#'> Excluir </a> |");
 							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+usuario.getId()+"\">		Detalhes	</a>");
 							out.print("		</td>");
 							out.print("</tr>");
@@ -71,28 +91,26 @@
 					%>
 				</table>
 			</div>
-
-			<div class="botao">
-				<table>
-					<tr>
-						<td>
-							<form
-								action="/<%=application.getInitParameter("app-name")%>/ServletLogout">
-								<input type="submit" value="Sair" />
-							</form>
-						</td>
-						<td>
-							<form
-								action="/<%=application.getInitParameter("app-name")%>/JSP/administrador/novoGerente.jsp">
-								<input type="submit" value=" Novo Gerente ">
-							</form>
-						</td>
-				</table>
 			</div>
+
+			<table class="btns">
+				<tr>
+					<td>
+						<form
+							action="/<%=application.getInitParameter("app-name")%>/ServletLogout">
+							<input type="submit" value="Sair" />
+						</form>
+					</td>
+					<td>
+						<form
+							action="/<%=application.getInitParameter("app-name")%>/JSP/administrador/novoGerente.jsp">
+							<input type="submit" value=" Novo Gerente " class="novo-gerente">
+						</form>
+					</td>
+			</table>
 		</div>
-
-
-
 	</div>
+	
+	<div id="rodape"></div>
 </body>
 </html>
