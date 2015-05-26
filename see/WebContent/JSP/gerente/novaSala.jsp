@@ -145,6 +145,8 @@
 					
 					<input type="submit" name="add" value="Adicionar" class="btn_show_popup">
 					
+					<!--<input type="button" value="Adicionar" onclick="showPopup();" class="btn_show_popup">-->
+					
 					<table border="1">
 						<tr>
 							<td width="100">IP</td>

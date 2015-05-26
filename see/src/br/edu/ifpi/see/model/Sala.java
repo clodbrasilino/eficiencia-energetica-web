@@ -29,6 +29,8 @@ public class Sala {
 	@OneToMany(mappedBy="sala")
 	private List<HistoricoSala> listaHistorico;
 	
+	private boolean ativa;
+	
 	public Sala() {
 		super();
 	}
@@ -101,7 +103,23 @@ public class Sala {
 	public void setListaHistorico(List<HistoricoSala> listaHistorico) {
 		this.listaHistorico = listaHistorico;
 	}
-
+	
+	public boolean isAtiva(){
+		return ativa;
+	}
+	
+	public void setAtiva(boolean ativa){
+		this.ativa = ativa;
+	}
+	
+	public String getAtiva(){
+		if(this.ativa){
+			return "Sim";
+		}else{
+			return "Não";
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

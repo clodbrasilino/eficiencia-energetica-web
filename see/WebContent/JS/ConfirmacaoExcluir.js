@@ -9,5 +9,13 @@ function confirmaExclusaoGerente(id){
 		window.location="/see/JSP/administrador/administrador.jsp";
 	}
 }
+
+function confirmaExclusaoSala(id){
+	if(confirm("Tem certeza de que deseja excluir esta Sala?")){
+		window.location="/see/ServletExcluirSala?id="+id;
+	}else{
+		window.location="/see/JSP/gerente/gerente.jsp";
+	}
+}
 	
 	

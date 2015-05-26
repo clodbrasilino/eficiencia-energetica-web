@@ -51,12 +51,12 @@
 						<option value="4">4</option>
 						<option value="5">5</option>
 					</select><br></br>
-				
-				<form action="/<%= application.getInitParameter("app-name") %>/jsp/gerente/gerente.jsp"><input type="submit" value=" Voltar "></form>
-				<input type="submit" value="Salvar"/>
-			</form>
-			
-			<table border=1>
+					
+					<input type="hidden" name="id" value="<%=sala.getId()%>"/>
+					
+					<input type="submit" name="add" value="Adicionar" class="btn_show_popup">
+					
+					<table border=1>
 	
 						<tr>
 							<td width="130" height="30"><b>	Número				</b></td>
@@ -71,24 +71,30 @@
 						
 						<%
 
-						for(MicroControlador mc : sala.getListaMicroControlador()){
-							out.print("<tr>");
-							out.print("	   <td width=\"100\">" +  mc.getId()    + "	</td>");
-							out.print("		<td width=\"100\">"     +  mc.getDtInstalacao()  + "	</td>");
-							out.print("		<td width=\"100\">"     +  mc.getIp() + "	</td>");
-							out.print("		<td width=\"100\">"     +  mc.getSensorPorta() + "	</td>");
-							out.print("		<td width=\"100\">"     +  mc.getSensorPresenca() + "	</td>");
-							out.print("		<td width=\"100\">"     +  mc.getSensorLampada() + "	</td>");
-							out.print("		<td width=\"100\">"     +  mc.getSensorAr() + "	</td>");
-							out.print("		<td width=\"210\" height=\"40\">");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+mc.getId()+"\">			Alterar		</a> |");
-							out.print("<a onclick='confirmaExclusaoGerente("+mc.getId()+")' href='#'> Excluir |</a>");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+mc.getId()+"\">		Detalhes	</a>");
-							out.print("		</td>");
-							out.print("</tr>");
+						if(sala.getListaMicroControlador() != null){
+							for(MicroControlador mc : sala.getListaMicroControlador()){
+								out.print("<tr>");
+								out.print("	   <td width=\"100\">" +  mc.getId()    + "	</td>");
+								out.print("		<td width=\"100\">"     +  mc.getDtInstalacao()  + "	</td>");
+								out.print("		<td width=\"100\">"     +  mc.getIp() + "	</td>");
+								out.print("		<td width=\"100\">"     +  mc.getSensorPorta() + "	</td>");
+								out.print("		<td width=\"100\">"     +  mc.getSensorPresenca() + "	</td>");
+								out.print("		<td width=\"100\">"     +  mc.getSensorLampada() + "	</td>");
+								out.print("		<td width=\"100\">"     +  mc.getSensorAr() + "	</td>");
+								out.print("		<td width=\"210\" height=\"40\">");
+								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+mc.getId()+"\">			Alterar		</a> |");
+								out.print("<a onclick='confirmaExclusaoGerente("+mc.getId()+")' href='#'> Excluir |</a>");
+								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+mc.getId()+"\">		Detalhes	</a>");
+								out.print("		</td>");
+								out.print("</tr>");
+							}
 						}
 					%>
 					</table>
+					
+				<a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/gerente.jsp">Voltar</a>
+				<input type="submit" name="salvar" value="Salvar"/>
+			</form>
 					
 	</div>
 	</div>
