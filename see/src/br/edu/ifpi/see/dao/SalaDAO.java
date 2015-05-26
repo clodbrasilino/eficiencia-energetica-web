@@ -26,7 +26,8 @@ public class SalaDAO implements GenericDAO<Sala>{
 	@Override
 	public void apagar(Sala e) {
 		
-		manager.remove(pesquisar(e.getId()));
+		e.setAtiva(false);
+		manager.merge(e);
 	}
 
 	@Override

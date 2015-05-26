@@ -16,6 +16,7 @@
 		<meta name="author" content="Rita Aquino" />
 		<meta name="description" content="Site Web Efeitos" />
 		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style.css" />
+		<script type="text/javascript" src="/see/JS/ConfirmacaoExcluir.js"></script>
 	</head>
 	<body>
 		<div id="fundo">
@@ -41,7 +42,8 @@
 						<tr>
 							<td width="130" height="30"><b>	Número				</b></td>
 							<td width="130" height="30"><b>	Descrição			</b></td>
-							<td width="130" height="30"><b>	Status	</b></td>
+							<td width="130" height="30"><b>	Status	            </b></td>
+							<td width="130" height="30"><b>	Ativa	            </b></td>
 							<td width="180" height="30"><b>	Opções				</b></td>
 						</tr>
 						
@@ -55,9 +57,10 @@
 							out.print("	   <td width=\"100\">" +  sala.getNumero()    + "	</td>");
 							out.print("		<td width=\"100\">"     +  sala.getDescricao()  + "	</td>");
 							out.print("		<td width=\"100\">"     +  sala.getPavimento() + "	</td>");
+							out.print("		<td width=\"100\">"     +  sala.getAtiva() + "	</td>");
 							out.print("		<td width=\"210\" height=\"40\">");
 							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+sala.getId()+"\">			Alterar		</a> |");
-							out.print("<a onclick='confirmaExclusaoGerente("+sala.getId()+")' href='#'> Excluir |</a>");
+							out.print("<a onclick='confirmaExclusaoSala("+sala.getId()+")' href='#'> Excluir |</a>");
 							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+sala.getId()+"\">		Detalhes	</a>");
 							out.print("		</td>");
 							out.print("</tr>");
