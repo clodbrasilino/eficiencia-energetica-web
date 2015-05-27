@@ -48,6 +48,7 @@ public class ServletAlterarSala extends HttpServlet {
 		Sala s = dao.pesquisar(id);
 		et.commit();
 		request.setAttribute("sala", s);
+		request.getSession().setAttribute("sala", s);
 		
 		request.getRequestDispatcher("JSP/gerente/alterarSala.jsp").forward(request, response);
 		
