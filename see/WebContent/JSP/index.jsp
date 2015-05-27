@@ -11,7 +11,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="br.edu.ifpi.see.request.GeneratedStatus" %>
 <%@ page import="br.edu.ifpi.see.request.Response" %>
-<%@ page import="br.edu.ifpi.see.request.TesteCor" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
