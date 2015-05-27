@@ -10,7 +10,7 @@ public class HttpRequest {
 	
 	public Response sendGet(String ip) throws Exception{
 		// Request
-		URL url = new URL("http://" + ip);
+		URL url = new URL("http://" + ip + "/emulador-see");
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("GET");
 		
@@ -39,7 +39,7 @@ public class HttpRequest {
 		r.setCode(responseCode);
 		r.setPorta(parametros.get("porta"));
 		r.setPresenca(parametros.get("presenca"));
-		r.setLampadas(parametros.get("lampada"));
+		r.setLampadas(parametros.get("luz"));
 		r.setAr(parametros.get("ar"));
 		
 		return r;

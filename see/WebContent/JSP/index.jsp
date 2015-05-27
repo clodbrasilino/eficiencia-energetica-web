@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ page import="javax.persistence.EntityManager" %>
+<%@ page import="javax.persistence.EntityTransaction" %>
+<%@ page import="br.edu.ifpi.see.dao.SalaDAO" %>
+<%@ page import="br.edu.ifpi.see.model.Sala" %>
+<%@ page import="br.edu.ifpi.see.model.Status" %>
+<%@ page import="br.edu.ifpi.see.model.MicroControlador" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="br.edu.ifpi.see.request.GeneratedStatus" %>
+<%@ page import="br.edu.ifpi.see.request.Response" %>
+<%@ page import="br.edu.ifpi.see.request.TesteCor" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -9,6 +22,7 @@
     	<title>Sistema de Eficiência Energetica IFPI Parnaíba</title>
         <meta name="author" content="RitaAquino" />
         <meta name="description" content="Site Web Efeitos" />
+        <meta http-equiv="refresh" content="5"/>
 		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style_index.css"/>
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
@@ -64,11 +78,22 @@
 		        
 		    </div>
 		    <!-- #header FIM -->
-	     
+	     			
+	     			<%
+	     				EntityManager em = (EntityManager) getServletContext().getAttribute("em");
+	     				EntityTransaction et = em.getTransaction();
+						SalaDAO dao = new SalaDAO();
+						
+						et.begin();
+						List<Sala> salas = dao.pesquisar("select s from Sala s");
+						et.commit();
+						
+						GeneratedStatus status = new GeneratedStatus();
+	     			%>
 		            <div class="btn">
 		                <table>
 		                    <tr>
-		                        <td width="100" height="50" bgcolor=#0F0>Sala 1</td>
+		                        <td width="100" height="50" bgcolor="<%=status.getStatus(salas.get(2).getListaMicroControlador()).getCor()%>"><%=salas.get(2).getNumero()+"</br>"+status.getStatus(salas.get(2).getListaMicroControlador()).getTexto()%></td>
 		                        <td width="100" height="50" bgcolor=#F00>Sala 2</td>
 		                        <td width="100" height="50" bgcolor=#FF0>Sala 3</td>
 		                        <td width="100" height="50" bgcolor=#0F0>Sala 4</td>

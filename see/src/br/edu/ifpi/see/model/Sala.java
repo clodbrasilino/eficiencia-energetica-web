@@ -78,7 +78,15 @@ public class Sala {
 	public void setPavimento(int pavimento) {
 		this.pavimento = pavimento;
 	}
-
+	
+	public Status getStatus(){
+		return status;
+	}
+	
+	public void setStatus(Status status){
+		this.status = status;
+	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
