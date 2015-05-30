@@ -24,12 +24,19 @@ public class GeneratedStatus {
 	
 	private Status geraStatus(int porta, int presenca, int lampadas, int ar){
 		Status s = new Status();
-		if((lampadas == 1 || ar == 1) && (presenca == 0)){
+		/* Código anterior
+		 * if((lampadas == 1 || ar == 1) && (presenca == 0)){
 			s.setTexto("Desperdício");
 			s.setCor("#ff0000");
 		}else if((lampadas == 1 || ar == 1) && (presenca == 0) && (porta == 0)){
 			s.setTexto("Desperdício");
 			s.setCor("#ff0000");
+		}else if(presenca == 0 && lampadas == 0 && ar == 0){
+			s.setTexto("Sala livre");
+			s.setCor("#00ff00");
+		}else if(lampadas == 0 && ar == 0){
+			s.setTexto("Sem consumo");
+			s.setCor("#00ff00");
 		}else if((lampadas == 1 || ar == 1) && (presenca == 1) && porta == 1){
 			s.setTexto("Consumo normal");
 			s.setCor("#00ff00");
@@ -39,6 +46,51 @@ public class GeneratedStatus {
 		}else{
 			s.setTexto("Verifique!");
 			s.setCor("#ffa500");
+		}*/
+		
+		// Código atual
+		if(lampadas == 0 && ar == 0){
+			if(presenca == 0 && lampadas == 0 && ar == 0){
+				// Sala livre
+				s.setTexto("Sala livre");
+				s.setCor("#00ff00");
+			}else{
+				// Sem consumo
+				s.setTexto("Sem consumo");
+				s.setCor("#00ff00");
+			}
+		}else{
+			if((lampadas == -1 && ar == -1) || (lampadas == -1 && ar == 0) || (lampadas == 0 && ar == -1)){
+				// Verifique
+				s.setTexto("Verifique!");
+				s.setCor("#ffa500");
+			}else{
+				if(presenca == 0){
+					// Desperdício
+					s.setTexto("Desperdício");
+					s.setCor("#ff0000");
+				}else if((porta == 0 && presenca == -1 && ar == 1) && (lampadas == -1 || lampadas == 0 || lampadas == 1)){
+					// Desperdício
+					s.setTexto("Desperdício");
+					s.setCor("#ff0000");
+				}else if((porta == 0 && presenca == 1 && ar == 1) && (lampadas == -1 || lampadas == 0 || lampadas == 1)){
+					// Desperdício
+					s.setTexto("Desperdício");
+					s.setCor("#ff0000");
+				}else if(porta == 1 && presenca == 1){
+					// Normal
+					s.setTexto("Consumo normal");
+					s.setCor("#00ff00");
+				}else if((presenca == 1 && lampadas == 1 && ar == 0) && (porta == -1 || porta == 0)){
+					// Normal
+					s.setTexto("Consumo normal");
+					s.setCor("#00ff00");
+				}else{
+					// Verifique
+					s.setTexto("Verifique!");
+					s.setCor("#ffa500");
+				}
+			}
 		}
 		return s;
 	}

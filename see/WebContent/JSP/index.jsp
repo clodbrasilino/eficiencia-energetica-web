@@ -11,7 +11,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="br.edu.ifpi.see.request.GeneratedStatus" %>
 <%@ page import="br.edu.ifpi.see.request.Response" %>
-<%@ page import="br.edu.ifpi.see.request.TesteCor" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -22,7 +21,7 @@
     	<title>Sistema de Eficiência Energetica IFPI Parnaíba</title>
         <meta name="author" content="RitaAquino" />
         <meta name="description" content="Site Web Efeitos" />
-        <meta http-equiv="refresh" content="5"/>
+        <meta http-equiv="refresh" content="10"/>
 		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style_index.css"/>
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
