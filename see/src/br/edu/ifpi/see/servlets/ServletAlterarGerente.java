@@ -43,8 +43,8 @@ public class ServletAlterarGerente extends HttpServlet {
 		UsuarioDAO dao = new UsuarioDAO();
 		Usuario u = dao.pesquisar(id);
 		et.commit();
-		request.setAttribute("usuario", u);
 		
+		request.setAttribute("usuario", u);
 		request.getRequestDispatcher("JSP/administrador/alterarGerente.jsp").forward(request, response);
 		
 	}
@@ -60,9 +60,10 @@ public class ServletAlterarGerente extends HttpServlet {
 		String email = request.getParameter("email");
 		String telefone = request.getParameter("telefone");
 		String senha = request.getParameter("senha");
+		String ativo = request.getParameter("ativo");
 		
-//		EntityTransaction et = JPAUtil.getTransaction();
-		EntityTransaction et = ((EntityManager) getServletContext().getAttribute("em")).getTransaction();
+		EntityTransaction et = JPAUtil.getTransaction();
+		//EntityTransaction et = ((EntityManager) getServletContext().getAttribute("em")).getTransaction();
 		
 		et.begin();
 		UsuarioDAO dao = new UsuarioDAO();
@@ -73,16 +74,14 @@ public class ServletAlterarGerente extends HttpServlet {
 		u.setEmail(email);
 		u.setTelefone(telefone);
 		u.setSenha(senha);
+		u.setAtivo(Boolean.parseBoolean(ativo));
 		
 		dao.atualizar(u);
 		et.commit();
 		
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<script>");
-		out.println("alert('Gerente de salas atualizado com sucesso!')");
-		out.println("document.location.href='/"+getServletContext().getInitParameter("app-name")+"/JSP/administrador/administrador.jsp'");
-		out.println("</script>");
+		response.getWriter().println("<script>alert('Gerente de salas atualizado com sucesso!')</script>");
+		response.getWriter().println("<script>window.location.href='/"+getServletContext().getInitParameter("app-name")+"/JSP/administrador/administrador.jsp'</script>");
+		
 	}
 
 }

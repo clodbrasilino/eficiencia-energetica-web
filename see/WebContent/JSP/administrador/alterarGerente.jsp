@@ -12,69 +12,53 @@
 <title>Atualizando Cadastro de Gerente</title>
 <meta name="author" content="Rita Aquino" />
 <meta name="description" content="Site Web Efeitos" />
-<link rel="stylesheet"
-	href="/<%=application.getInitParameter("app-name")%>/CSS/style2.css" />
+<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style2.css" />
 </head>
 <body>
 
-
-	<img
-		src="/<%=application.getInitParameter("app-name")%>/IMG/topo-site.png"
-		id="img_topo" alt="Logo" title="Logo">
-
+	<img src="/<%=application.getInitParameter("app-name")%>/IMG/topo-site.png" id="img_topo" alt="Logo" title="Logo">
 
 	<div class="corpo">
 		<h4>Parnaiba - PI</h4>
 		<p>Bem vindo, Administrador</p>
-		<center>
-			<h1>Atualizando dados do Gerente</h1>
-		</center>
+		<center><h1>Atualizando dados do Gerente</h1></center>
 	</div>
 
-	<%
-		Usuario gerente = (Usuario) request.getAttribute("usuario");
-	%>
+	<% Usuario gerente = (Usuario) request.getAttribute("usuario"); %>
 	<div class="form">
-		<form method="POST"
-			action="/<%=application.getInitParameter("app-name")%>/ServletAlterarGerente">
+		<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarGerente">
 			<table>
 				<tr>
 					<td><label>Número:</label></td>
-					<td><input type="text" name="numero"
-						value="G00<%=gerente.getId()%>" disabled /></td>
+					<td><input type="text" name="numero" value="G00<%=gerente.getId()%>" disabled /></td>
 				</tr>
 				<tr>
 					<td><label>Nome:</label></td>
-					<td><input type="text" name="nome" value="<%=gerente.getNome()%>"
-						class="input" /></td>
+					<td><input type="text" name="nome" value="<%=gerente.getNome()%>" class="input" /></td>
 				</tr>
 				<tr>
 					<td><label>Endereço:</label></td>
-					<td><input type="text" name="endereco"
-						value="<%=gerente.getEndereco()%>" class="input" /></td>
+					<td><input type="text" name="endereco" value="<%=gerente.getEndereco()%>" class="input" /></td>
 				</tr>
 				<tr>
 					<td><label>E-mail:</label></td>
-					<td><input type="text" name="email"
-						value="<%=gerente.getEmail()%>" class="input" /></td>
+					<td><input type="text" name="email" value="<%=gerente.getEmail()%>" class="input" /></td>
 				</tr>
 				<tr>
 					<td><label>Telefone:</label></td>
-					<td><input type="text" name="telefone"
-						value="<%=gerente.getTelefone()%>" class="input" /></td>
+					<td><input type="text" name="telefone" value="<%=gerente.getTelefone()%>" class="input" /></td>
 				</tr>
 				<tr>
 					<td><label>Ativo:</label></td>
-					<td><input type="checkbox" name="ativo" checked class="input" /></td>
+					<td><input type="checkbox" name="ativo" value="true" <%= gerente.isAtivo() == true ? "checked" : "" %> class="input"/></td>
 				</tr>
 				<tr>
 					<td><label>Senha:</label></td>
-					<td><input type="password" name="senha"
-						value="<%=gerente.getSenha()%>" class="input" /></td>
+					<td><input type="password" name="senha" value="<%=gerente.getSenha()%>" class="input" /></td>
 				</tr>
 			</table>
-			<input type="hidden" name="id" value="<%=gerente.getId()%>"> <input
-				class="botao" type="submit" value="Salvar" />
+			<input type="hidden" name="id" value="<%=gerente.getId()%>">
+			<input class="botao" type="submit" value="Salvar" />
 		</form>
 
 		<%

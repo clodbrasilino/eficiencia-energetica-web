@@ -43,7 +43,7 @@
 
 			<div id="header">
 				<h4>Parnaiba - PI</h4>
-				<p>Bem vindo, <% out.print(u.getNome()); %> | <a class="meus-dados" href="/<%= application.getInitParameter("app-name") %>/ServletAlterarAdministrador?id="<%=u.getId() %>> Meus Dados </a></p>
+				<p>Bem vindo, <% out.print(u.getNome()); %> | <a class="meus-dados" href="/<%= application.getInitParameter("app-name") %>/ServletAlterarDadosAdministrador"> Meus Dados </a></p>
 				<h1>Informações dos gerentes cadastrados</h1>
 			</div>
 			
