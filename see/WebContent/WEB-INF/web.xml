@@ -192,4 +192,24 @@
     <servlet-name>ServletAlterarSenhaGerente</servlet-name>
     <url-pattern>/ServletAlterarSenhaGerente</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletSalvarSala</display-name>
+    <servlet-name>ServletSalvarSala</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletSalvarSala</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSalvarSala</servlet-name>
+    <url-pattern>/ServletSalvarSala</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletSalvarMicroControlador</display-name>
+    <servlet-name>ServletSalvarMicroControlador</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletSalvarMicroControlador</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSalvarMicroControlador</servlet-name>
+    <url-pattern>/ServletSalvarMicroControlador</url-pattern>
+  </servlet-mapping>
 </web-app>

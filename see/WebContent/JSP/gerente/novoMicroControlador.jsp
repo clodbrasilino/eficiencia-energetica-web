@@ -27,7 +27,7 @@
 	</div>	
 		
 	<div class="form">
-		<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletMicroControlador">
+		<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletSalvarMicroControlador">
 				<label>IP:</label>
 				<input type="text" name="ip" />
 				<br><br>

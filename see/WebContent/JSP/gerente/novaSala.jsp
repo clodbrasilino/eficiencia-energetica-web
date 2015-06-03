@@ -143,7 +143,7 @@
 					
 					<%} %>
 					
-					<input type="submit" name="add" value="Adicionar" class="btn_show_popup">
+					<input type="submit" name="botao" value="Adicionar" class="btn_show_popup">
 					
 					<!--<input type="button" value="Adicionar" onclick="showPopup();" class="btn_show_popup">-->
 					
@@ -179,7 +179,7 @@
 					</table>
 										
 					<a href="/<%=application.getInitParameter("app-name")%>/JSP/gerente/gerente.jsp">Voltar</a>
-					<input class="botao" type="submit" name="salvar" value="Salvar"/>
+					<input class="botao" type="submit" name="botao" value="Salvar"/>
 					
 				</form>
 				
