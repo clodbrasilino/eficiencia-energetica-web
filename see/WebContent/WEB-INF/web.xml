@@ -2,12 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>see</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>JSP/index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <listener>
     <listener-class>br.edu.ifpi.see.listeners.IniciaBDListener</listener-class>
@@ -129,13 +124,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ServletAlterarAdministrador</display-name>
-    <servlet-name>ServletAlterarAdministrador</servlet-name>
-    <servlet-class>br.edu.ifpi.see.servlets.ServletAlterarAdministrador</servlet-class>
+    <display-name>ServletAlterarDadosAdministrador</display-name>
+    <servlet-name>ServletAlterarDadosAdministrador</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletAlterarDadosAdministrador</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletAlterarAdministrador</servlet-name>
-    <url-pattern>/ServletAlterarAdministrador</url-pattern>
+    <servlet-name>ServletAlterarDadosAdministrador</servlet-name>
+    <url-pattern>/ServletAlterarDadosAdministrador</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -166,5 +161,35 @@
   <servlet-mapping>
     <servlet-name>ServletCadastroSala</servlet-name>
     <url-pattern>/ServletCadastroSala</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAlterarDadosGerente</display-name>
+    <servlet-name>ServletAlterarDadosGerente</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletAlterarDadosGerente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAlterarDadosGerente</servlet-name>
+    <url-pattern>/ServletAlterarDadosGerente</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAlterarSenhaAdministrador</display-name>
+    <servlet-name>ServletAlterarSenhaAdministrador</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletAlterarSenhaAdministrador</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAlterarSenhaAdministrador</servlet-name>
+    <url-pattern>/ServletAlterarSenhaAdministrador</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAlterarSenhaGerente</display-name>
+    <servlet-name>ServletAlterarSenhaGerente</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletAlterarSenhaGerente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAlterarSenhaGerente</servlet-name>
+    <url-pattern>/ServletAlterarSenhaGerente</url-pattern>
   </servlet-mapping>
 </web-app>
