@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
 <%@ page import="br.edu.ifpi.see.model.Sala" %>
@@ -31,9 +30,9 @@
 			%>
 			
 			<div id="header">
-				<h4>			Parnaiba - PI								</h4>
-				<p>				Bem vindo <%= u.getNome() %>		</p>
-				<h1>			Informações das Salas cadastradas			</h1>
+				<h4>Parnaiba - PI</h4>
+				<p>Bem vindo, <% out.print(u.getNome()); %> | <a class="meus-dados" href="/<%= application.getInitParameter("app-name") %>/ServletAlterarDadosGerente"> Meus Dados </a></p>
+				<h1>Informações das Salas cadastradas</h1>
 			</div>
 	
 				<div class="infor">
