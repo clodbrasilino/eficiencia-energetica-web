@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
     
 <%@ page import="javax.persistence.EntityManager" %>
 <%@ page import="javax.persistence.EntityTransaction" %>
@@ -21,7 +20,7 @@
     	<title>Sistema de Eficiência Energetica IFPI Parnaíba</title>
         <meta name="author" content="RitaAquino" />
         <meta name="description" content="Site Web Efeitos" />
-        <meta http-equiv="refresh" content="10"/>
+        <!--<meta http-equiv="refresh" content="10"/>-->
 		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style_index.css"/>
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
@@ -92,8 +91,8 @@
 		            <div class="btn">
 		                <table>
 		                    <tr>
-		                        <td width="100" height="50" bgcolor="<%=status.getStatus(salas.get(2).getListaMicroControlador()).getCor()%>"><%=salas.get(2).getNumero()+"</br>"+status.getStatus(salas.get(2).getListaMicroControlador()).getTexto()%></td>
-		                        <td width="100" height="50" bgcolor=#F00>Sala 2</td>
+		                        <td width="100" height="50" bgcolor=#fff><%= salas.get(9).getNumero()+"<br>"+status.getStatus(salas.get(9).getListaMicroControlador()).getTexto()%></td>
+		                        <td width="100" height="50" bgcolor=#FF0>Sala 2</td>
 		                        <td width="100" height="50" bgcolor=#FF0>Sala 3</td>
 		                        <td width="100" height="50" bgcolor=#0F0>Sala 4</td>
 		                        <td width="100" height="50" bgcolor=#F00>Sala 5</td>

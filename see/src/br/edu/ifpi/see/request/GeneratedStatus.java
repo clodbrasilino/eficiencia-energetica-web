@@ -1,5 +1,6 @@
 package br.edu.ifpi.see.request;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpi.see.model.MicroControlador;
@@ -9,15 +10,34 @@ public class GeneratedStatus {
 	
 	public Status getStatus(List<MicroControlador> microControladores){
 		HttpRequest request = new HttpRequest();
+		ArrayList<Response> respostas = new ArrayList<Response>();
+		
+		// Pega as respostas dos micro controladores
 		for(MicroControlador mc : microControladores){
 			try {
-				Response response = request.sendGet(mc.getIp());
-				return geraStatus(Integer.parseInt(response.getPorta()), Integer.parseInt(response.getPresenca()), Integer.parseInt(response.getLampadas()), Integer.parseInt(response.getAr()));
+				respostas.add(request.sendGet(mc));
+				//Response response = request.sendGet(mc.getIp());
+				//return geraStatus(Integer.parseInt(response.getPorta()), Integer.parseInt(response.getPresenca()), Integer.parseInt(response.getLampadas()), Integer.parseInt(response.getAr()));
 			} catch (Exception e) {
-				e.printStackTrace();
+				//e.printStackTrace();
+				System.out.println("Micro controlador(es) não encontrado(s)");
+				return new Status("Micro controlador(es) não encontrado(s)", "#d9d9d9");
 			}
 		}
-		return null;
+		
+		// Soma as respostas dos micro controladores
+		Response resposta = new Response("0", "0", "0", "0");
+		for(Response r : respostas){
+			resposta = this.soma(resposta, r);
+		}
+		
+		System.out.println("Resultado:");
+		System.out.println("Porta: "+resposta.getPorta());
+		System.out.println("Presença: "+resposta.getPresenca());
+		System.out.println("Lâmpadas: "+resposta.getLampadas());
+		System.out.println("Ar: "+resposta.getAr());
+		
+		return this.geraStatus(Integer.parseInt(resposta.getPorta()), Integer.parseInt(resposta.getPresenca()), Integer.parseInt(resposta.getLampadas()), Integer.parseInt(resposta.getAr()));
 	}
 	
 	// FIXME Alterar método para a estrutura de dados nova de sensores
@@ -93,6 +113,48 @@ public class GeneratedStatus {
 			}
 		}
 		return s;
+	}
+	
+	private Response soma(Response resp1, Response resp2){
+		String porta = this.geraValor(Integer.parseInt(resp1.getPorta()), Integer.parseInt(resp2.getPorta()));
+		String presenca = this.geraValor(Integer.parseInt(resp1.getPresenca()), Integer.parseInt(resp2.getPresenca()));
+		String lampadas = this.geraValor(Integer.parseInt(resp1.getLampadas()), Integer.parseInt(resp2.getLampadas()));
+		String ar = this.geraValor(Integer.parseInt(resp1.getAr()), Integer.parseInt(resp2.getAr()));
+		
+		return new Response(porta, presenca, lampadas, ar);
+	}
+	
+	private String geraValor(int valor1, int valor2){
+		String valor = null;
+		
+		if(valor1 == -1 & valor2 == -1){
+			valor = "-1";
+		}else if(valor1 == -1 & valor2 == 0){
+			valor = "-1";
+		}else if(valor1 == -1 & valor2 == 1){
+			valor = "1";
+		}else if(valor1 == 0 & valor2 == -1){
+			valor = "-1";
+		}else if(valor1 == 0 & valor2 == 0){
+			valor = "0";
+		}else if(valor1 == 0 & valor2 == 1){
+			valor = "1";
+		}else if(valor1 == 1 & valor2 == -1){
+			valor = "1";
+		}else if(valor1 == 1 & valor2 == 0){
+			valor = "1";
+		}else if(valor1 == 1 & valor2 == 1){
+			valor = "1";
+		}
+		
+		return valor;
+		/*if((valor1 == -1 & valor2 == -1) || ((valor1 == 0 & valor2 == -1) || (valor1 == -1 & valor2 == -0))){
+			return "-1";
+		}else if(valor1 == 0 & valor2 == 0){
+			return "0";
+		}else{
+			return "1";
+		}*/
 	}
 
 }

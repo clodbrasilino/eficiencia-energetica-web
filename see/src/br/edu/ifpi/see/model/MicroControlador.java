@@ -19,8 +19,8 @@ public class MicroControlador {
 	private String ip;
 	private boolean sensorPorta;
 	private boolean sensorPresenca;
-	private boolean sensorAr;
 	private boolean sensorLampada;
+	private boolean sensorAr;
 	
 	@ManyToOne
 	private Sala sala;
@@ -187,6 +187,22 @@ public class MicroControlador {
 	@Override
 	public String toString() {
 		return "M" + this.id;
+	}
+	
+	public boolean temSensor(String sensor){
+		boolean valor = false;
+		
+		if(sensor.equals("porta")){
+			valor = this.isSensorPorta();
+		}else if(sensor.equals("presenca")){
+			valor = this.isSensorPresenca();
+		}else if(sensor.equals("luz")){
+			valor = this.isSensorLampada();
+		}else if(sensor.equals("ar")){
+			valor = this.isSensorAr();
+		}
+		
+		return valor;
 	}
 	
 }

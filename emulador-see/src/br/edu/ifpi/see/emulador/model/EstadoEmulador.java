@@ -45,10 +45,10 @@ public class EstadoEmulador {
 	
 	public String getPorta(){
 		if(porta==Estado.LIGADO){
-			return "Aberta";
+			return "Fechada";
 		}
 		if(porta==Estado.DESLIGADO){
-			return "Fechada";
+			return "Aberta";
 		}
 		return "Desativado";
 	}

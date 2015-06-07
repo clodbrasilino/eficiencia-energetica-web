@@ -33,11 +33,18 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>Ar-condicionado</td>
-					<td><%= ((br.edu.ifpi.see.emulador.model.EstadoEmulador)application.getAttribute("estadoAtual")).getAr() %></td>
-					<td><form action="ligaAr" method="get"><input type="submit" value="Ligar"></form></td>
-					<td><form action="desligaAr" method="get"><input type="submit" value="Desligar"></form></td>
-					<td><form action="desativaAr" method="get"><input type="submit" value="Desativar"></form></td>
+					<td>Porta</td>
+					<td><%= ((br.edu.ifpi.see.emulador.model.EstadoEmulador)application.getAttribute("estadoAtual")).getPorta() %></td>
+					<td><form action="desligaPorta" method="get"><input type="submit" value="Abrir"></form></td>
+					<td><form action="ligaPorta" method="get"><input type="submit" value="Fechar"></form></td>
+					<td><form action="desativaPorta" method="get"><input type="submit" value="Desativar"></form></td>
+				</tr>
+				<tr>
+					<td>Sensor de Presenca</td>
+					<td><%= ((br.edu.ifpi.see.emulador.model.EstadoEmulador)application.getAttribute("estadoAtual")).getPresenca() %></td>
+					<td><form action="ligaPresenca" method="get"><input type="submit" value="Ligar"></form></td>
+					<td><form action="desligaPresenca" method="get"><input type="submit" value="Desligar"></form></td>
+					<td><form action="desativaPresenca" method="get"><input type="submit" value="Desativar"></form></td>
 				</tr>
 				<tr>
 					<td>Lampada</td>
@@ -47,18 +54,11 @@
 					<td><form action="desativaLuz" method="get"><input type="submit" value="Desativar"></form></td>
 				</tr>
 				<tr>
-					<td>Porta</td>
-					<td><%= ((br.edu.ifpi.see.emulador.model.EstadoEmulador)application.getAttribute("estadoAtual")).getPorta() %></td>
-					<td><form action="ligaPorta" method="get"><input type="submit" value="Ligar"></form></td>
-					<td><form action="desligaPorta" method="get"><input type="submit" value="Desligar"></form></td>
-					<td><form action="desativaPorta" method="get"><input type="submit" value="Desativar"></form></td>
-				</tr>
-				<tr>
-					<td>Sensor de Presenca</td>
-					<td><%= ((br.edu.ifpi.see.emulador.model.EstadoEmulador)application.getAttribute("estadoAtual")).getPresenca() %></td>
-					<td><form action="ligaPresenca" method="get"><input type="submit" value="Ligar"></form></td>
-					<td><form action="desligaPresenca" method="get"><input type="submit" value="Desligar"></form></td>
-					<td><form action="desativaPresenca" method="get"><input type="submit" value="Desativar"></form></td>
+					<td>Ar-condicionado</td>
+					<td><%= ((br.edu.ifpi.see.emulador.model.EstadoEmulador)application.getAttribute("estadoAtual")).getAr() %></td>
+					<td><form action="ligaAr" method="get"><input type="submit" value="Ligar"></form></td>
+					<td><form action="desligaAr" method="get"><input type="submit" value="Desligar"></form></td>
+					<td><form action="desativaAr" method="get"><input type="submit" value="Desativar"></form></td>
 				</tr>
 			</tbody>
 		</table>
