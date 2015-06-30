@@ -6,7 +6,7 @@
 <%@ page import="javax.persistence.EntityManager" %>
 <%@ page import="javax.persistence.EntityTransaction" %>
 <%@ page import="java.util.List" %>
-
+<%@ page import="br.edu.ifpi.see.request.GeneratedStatus" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
@@ -50,17 +50,19 @@
 						em.getTransaction().begin();
 						List<Sala> lista = dao.pesquisar("select s from Sala s");
 						em.getTransaction().commit();
+						
+						GeneratedStatus status = new GeneratedStatus();
 
 						for(Sala sala : lista){
 							out.print("<tr>");
 							out.print("	   <td width=\"100\">" +  sala.getNumero()    + "	</td>");
 							out.print("		<td width=\"100\">"     +  sala.getDescricao()  + "	</td>");
-							out.print("		<td width=\"100\">"     +  sala.getPavimento() + "	</td>");
+							out.print("		<td width=\"100\">"     +  status.getStatus(sala.getListaMicroControlador()).getTexto() + "	</td>");
 							out.print("		<td width=\"100\">"     +  sala.getAtiva() + "	</td>");
 							out.print("		<td width=\"210\" height=\"40\">");
 							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+sala.getId()+"\">			Alterar		</a> |");
 							out.print("<a onclick='confirmaExclusaoSala("+sala.getId()+")' href='#'> Excluir |</a>");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+sala.getId()+"\">		Detalhes	</a>");
+							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesSala?id="+sala.getId()+"\">		Detalhes	</a>");
 							out.print("		</td>");
 							out.print("</tr>");
 						}

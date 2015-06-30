@@ -212,4 +212,14 @@
     <servlet-name>ServletSalvarMicroControlador</servlet-name>
     <url-pattern>/ServletSalvarMicroControlador</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletDetalhesSala</display-name>
+    <servlet-name>ServletDetalhesSala</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletDetalhesSala</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDetalhesSala</servlet-name>
+    <url-pattern>/ServletDetalhesSala</url-pattern>
+  </servlet-mapping>
 </web-app>

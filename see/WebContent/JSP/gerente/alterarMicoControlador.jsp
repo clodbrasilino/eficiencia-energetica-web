@@ -32,10 +32,10 @@
 				
 				<fieldset>
 					<legend>Sensores:</legend>
-					<input type="checkbox" value="true" name="porta">Porta</br>
-					<input type="checkbox" value="true" name="presenca">Presença</br>
-					<input type="checkbox" value="true" name="lampadas">Lâmpadas</br>
-					<input type="checkbox" value="true" name="ar">Ar</br>
+					<input type="checkbox" value="true" name="porta">Porta<br/>
+					<input type="checkbox" value="true" name="presenca">Presença<br/>
+					<input type="checkbox" value="true" name="lampadas">Lâmpadas<br/>
+					<input type="checkbox" value="true" name="ar">Ar<br/>
 				</fieldset>
 				<br><br>
 				

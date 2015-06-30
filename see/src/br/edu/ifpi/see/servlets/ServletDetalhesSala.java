@@ -2,26 +2,26 @@ package br.edu.ifpi.see.servlets;
 
 import java.io.IOException;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.edu.ifpi.see.dao.UsuarioDAO;
-import br.edu.ifpi.see.model.Usuario;
-import br.edu.ifpi.see.util.JPAUtil;
+import br.edu.ifpi.see.dao.SalaDAO;
+import br.edu.ifpi.see.model.Sala;
 
 /**
- * Servlet implementation class ServletDetalhesGerente
+ * Servlet implementation class ServletDetalhesSala
  */
-public class ServletDetalhesGerente extends HttpServlet {
+public class ServletDetalhesSala extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletDetalhesGerente() {
+    public ServletDetalhesSala() {
         super();
     }
 
@@ -32,15 +32,15 @@ public class ServletDetalhesGerente extends HttpServlet {
 		
 		long id = Integer.parseInt(request.getParameter("id"));
 		
-		EntityTransaction et = JPAUtil.getTransaction();
-		UsuarioDAO dao = new UsuarioDAO();
+		EntityTransaction et = ((EntityManager) getServletContext().getAttribute("em")).getTransaction();
+		SalaDAO dao = new SalaDAO();
 		
 		et.begin();
-		Usuario u = dao.pesquisar(id);
+		Sala s = dao.pesquisar(id);
 		et.commit();
 		
-		request.setAttribute("gerente", u);
-		request.getRequestDispatcher("JSP/administrador/detalhesGerente.jsp").forward(request, response);
+		request.setAttribute("sala", s);
+		request.getRequestDispatcher("JSP/gerente/detalhesSala.jsp").forward(request, response);
 		
 	}
 
