@@ -1,6 +1,8 @@
 package br.edu.ifpi.see.servlets;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,19 +17,21 @@ import br.edu.ifpi.see.model.Sala;
  */
 public class ServletSalvarMicroControlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletSalvarMicroControlador() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public ServletSalvarMicroControlador() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		String ip = request.getParameter("ip");
 		String porta = request.getParameter("porta");
 		String presenca = request.getParameter("presenca");
@@ -36,8 +40,16 @@ public class ServletSalvarMicroControlador extends HttpServlet {
 		
 		Sala s = (Sala) request.getSession().getAttribute("sala");
 		
-		s.getListaMicroControlador().add(new MicroControlador(null, ip, Boolean.parseBoolean(porta), Boolean.parseBoolean(presenca), Boolean.parseBoolean(lampadas), Boolean.parseBoolean(ar)));
-		response.sendRedirect("/"+getServletContext().getInitParameter("app-name")+"/JSP/gerente/novaSala.jsp");
+		Calendar data = Calendar.getInstance();
+		data.setTime(new Date(System.currentTimeMillis()));
+		
+		s.getListaMicroControlador().add(
+				new MicroControlador(data, ip, Boolean.parseBoolean(porta),
+						Boolean.parseBoolean(presenca), Boolean
+								.parseBoolean(lampadas), Boolean
+								.parseBoolean(ar)));
+		
+		response.sendRedirect("/"+ getServletContext().getInitParameter("app-name")+ "/JSP/gerente/novaSala.jsp");
 	}
 
 }

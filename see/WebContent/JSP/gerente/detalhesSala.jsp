@@ -3,6 +3,8 @@
 <%@ page import="br.edu.ifpi.see.model.Usuario"%>
 <%@ page import="br.edu.ifpi.see.model.Sala"%>
 <%@ page import="br.edu.ifpi.see.model.MicroControlador"%>
+<%@ page import="java.text.DateFormat"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
@@ -56,7 +58,7 @@
 							for(MicroControlador mc : s.getListaMicroControlador()){
 								out.print("<tr>");
 								out.print("	   <td width=\"100\">" +  mc.getId()    + "	</td>");
-								out.print("		<td width=\"100\">"     +  mc.getDtInstalacao()  + "	</td>");
+								out.print("		<td width=\"100\">"     +  new SimpleDateFormat().getDateInstance(DateFormat.MEDIUM).format(mc.getDtInstalacao().getTimeInMillis())  + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getIp() + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getSensorPorta() + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getSensorPresenca() + "	</td>");

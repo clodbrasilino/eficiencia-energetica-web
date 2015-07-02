@@ -1,3 +1,4 @@
+<%@page import="java.text.DateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -8,6 +9,7 @@
 <%@ page import="javax.persistence.EntityTransaction" %>
 <%@ page import="javax.persistence.EntityManager" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -75,7 +77,7 @@
 							for(MicroControlador mc : sala.getListaMicroControlador()){
 								out.print("<tr>");
 								out.print("	   <td width=\"100\">" +  mc.getId()    + "	</td>");
-								out.print("		<td width=\"100\">"     +  mc.getDtInstalacao()  + "	</td>");
+								out.print("		<td width=\"100\">"     + new SimpleDateFormat().getDateInstance(DateFormat.MEDIUM).format(mc.getDtInstalacao().getTimeInMillis()) + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getIp() + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getSensorPorta() + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getSensorPresenca() + "	</td>");

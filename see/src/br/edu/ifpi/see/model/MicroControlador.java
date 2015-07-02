@@ -1,6 +1,6 @@
 package br.edu.ifpi.see.model;
 
-import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 //import javax.persistence.Transient;
 
 @Entity
@@ -15,7 +17,10 @@ public class MicroControlador {
 	
 	@Id @GeneratedValue
 	private long id;
-	private Date dtInstalacao;
+	
+	@Temporal(TemporalType.DATE)
+	private Calendar dtInstalacao;
+	
 	private String ip;
 	private boolean sensorPorta;
 	private boolean sensorPresenca;
@@ -32,7 +37,7 @@ public class MicroControlador {
 		super();
 	}
 	
-	public MicroControlador(Date dtInstalacao, String ip, boolean sensorPorta,
+	public MicroControlador(Calendar dtInstalacao, String ip, boolean sensorPorta,
 			boolean sensorPresenca, boolean sensorLampada, boolean sensorAr, Sala sala,
 			List<HistoricoMicroControlador> listaHistorico) {
 		super();
@@ -46,7 +51,7 @@ public class MicroControlador {
 		this.listaHistorico = listaHistorico;
 	}
 
-	public MicroControlador(Date dtInstalacao, String ip, boolean sensorPorta,
+	public MicroControlador(Calendar dtInstalacao, String ip, boolean sensorPorta,
 			boolean sensorPresenca, boolean sensorLampada, boolean sensorAr) {
 		super();
 		this.dtInstalacao = dtInstalacao;
@@ -65,11 +70,11 @@ public class MicroControlador {
 		this.id = id;
 	}
 
-	public Date getDtInstalacao() {
+	public Calendar getDtInstalacao() {
 		return dtInstalacao;
 	}
 
-	public void setDtInstalacao(Date dtInstalacao) {
+	public void setDtInstalacao(Calendar dtInstalacao) {
 		this.dtInstalacao = dtInstalacao;
 	}
 
