@@ -19,6 +19,9 @@ public class Sala {
 	private int pavimento;
 	
 	@Transient
+	private Status statusAnterior;
+	
+	@Transient
 	private Status status;
 	
 	@ManyToOne
@@ -84,6 +87,7 @@ public class Sala {
 	}
 	
 	public void setStatus(Status status){
+		this.statusAnterior = this.status;
 		this.status = status;
 	}
 	
@@ -159,6 +163,14 @@ public class Sala {
 				+ ", pavimento=" + pavimento + ", usuario=" + usuario
 				+ ", listaMicroControlador=" + listaMicroControlador
 				+ ", listaHistorico=" + listaHistorico + "]";
+	}
+	
+	public boolean hasStatusAtual(){
+		if(this.status != null && this.statusAnterior != null){
+			return !status.equals(this.statusAnterior);
+		}else{
+			return false;
+		}
 	}
 	
 }

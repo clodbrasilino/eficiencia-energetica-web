@@ -1,19 +1,24 @@
 package br.edu.ifpi.see.model;
 
-import java.sql.Date;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class HistoricoSala {
 	
 	@Id @GeneratedValue
 	private long id;
-	private Date data;
-	private String hora;
+	
+	@Temporal(TemporalType.DATE)
+	private Calendar data;
+	
+	private Calendar hora;
 	private String status;
 	
 	@ManyToOne
@@ -23,7 +28,7 @@ public class HistoricoSala {
 		super();
 	}
 
-	public HistoricoSala(long id, Date data, String hora, String status,
+	public HistoricoSala(long id, Calendar data, Calendar hora, String status,
 			Sala sala) {
 		super();
 		this.id = id;
@@ -33,11 +38,11 @@ public class HistoricoSala {
 		this.sala = sala;
 	}
 
-	public HistoricoSala(Date data, String hora, String status, Sala sala) {
+	public HistoricoSala(Calendar data, Sala sala) {
 		super();
 		this.data = data;
-		this.hora = hora;
-		this.status = status;
+		this.hora = sala.getStatus().getTime();
+		this.status = sala.getStatus().getDescricao();
 		this.sala = sala;
 	}
 
@@ -49,19 +54,19 @@ public class HistoricoSala {
 		this.id = id;
 	}
 
-	public Date getData() {
+	public Calendar getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(Calendar data) {
 		this.data = data;
 	}
 
-	public String getHora() {
+	public Calendar getHora() {
 		return hora;
 	}
 
-	public void setHora(String hora) {
+	public void setHora(Calendar hora) {
 		this.hora = hora;
 	}
 
@@ -80,12 +85,16 @@ public class HistoricoSala {
 	public void setSala(Sala sala) {
 		this.sala = sala;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
+		result = prime * result + ((hora == null) ? 0 : hora.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((sala == null) ? 0 : sala.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -98,7 +107,27 @@ public class HistoricoSala {
 		if (getClass() != obj.getClass())
 			return false;
 		HistoricoSala other = (HistoricoSala) obj;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
+			return false;
+		if (hora == null) {
+			if (other.hora != null)
+				return false;
+		} else if (!hora.equals(other.hora))
+			return false;
 		if (id != other.id)
+			return false;
+		if (sala == null) {
+			if (other.sala != null)
+				return false;
+		} else if (!sala.equals(other.sala))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
 		return true;
 	}
@@ -108,5 +137,5 @@ public class HistoricoSala {
 		return "HistoricoSala [id=" + id + ", data=" + data + ", hora=" + hora
 				+ ", status=" + status + ", sala=" + sala + "]";
 	}
-
+	
 }
