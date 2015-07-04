@@ -78,20 +78,13 @@
 		    <!-- #header FIM -->
 	     			
 	     			<%
-	     				EntityManager em = (EntityManager) getServletContext().getAttribute("em");
-	     				EntityTransaction et = em.getTransaction();
-						SalaDAO dao = new SalaDAO();
-						
-						et.begin();
-						List<Sala> salas = dao.pesquisar("select s from Sala s");
-						et.commit();
-						
 						GeneratedStatus status = new GeneratedStatus();
+	     				
 	     			%>
 		            <div class="btn">
 		                <table>
 		                    <tr>
-		                        <td width="100" height="50" bgcolor=#fff><%= salas.get(9).getNumero()+"<br>"+status.getStatus(salas.get(9).getListaMicroControlador()).getTexto()%></td>
+		                        <td width="100" height="50" bgcolor=#FF0>Sala 1</td>
 		                        <td width="100" height="50" bgcolor=#FF0>Sala 2</td>
 		                        <td width="100" height="50" bgcolor=#FF0>Sala 3</td>
 		                        <td width="100" height="50" bgcolor=#0F0>Sala 4</td>

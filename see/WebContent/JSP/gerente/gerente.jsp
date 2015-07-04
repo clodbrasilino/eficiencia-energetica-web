@@ -57,7 +57,7 @@
 							out.print("<tr>");
 							out.print("	   <td width=\"100\">" +  sala.getNumero()    + "	</td>");
 							out.print("		<td width=\"100\">"     +  sala.getDescricao()  + "	</td>");
-							out.print("		<td width=\"100\">"     +  status.getStatus(sala.getListaMicroControlador()).getTexto() + "	</td>");
+							out.print("		<td width=\"100\">"     +  sala.getDescricao() + "	</td>");
 							out.print("		<td width=\"100\">"     +  sala.getAtiva() + "	</td>");
 							out.print("		<td width=\"210\" height=\"40\">");
 							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+sala.getId()+"\">			Alterar		</a> |");
