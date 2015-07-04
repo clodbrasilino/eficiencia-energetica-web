@@ -82,7 +82,7 @@
 								out.print("		<td width=\"100\">"     +  mc.getSensorLampada() + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getSensorAr() + "	</td>");
 								out.print("		<td width=\"210\" height=\"40\">");
-								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+mc.getId()+"\">			Alterar		</a> |");
+								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarMicroControlador?id="+mc.getId()+"\">			Alterar		</a> |");
 								out.print("<a onclick='confirmaExclusaoGerente("+mc.getId()+")' href='#'> Excluir |</a>");
 								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+mc.getId()+"\">		Detalhes	</a>");
 								out.print("		</td>");
