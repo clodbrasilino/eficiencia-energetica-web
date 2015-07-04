@@ -1,6 +1,8 @@
 package br.edu.ifpi.see.request;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import br.edu.ifpi.see.model.MicroControlador;
@@ -31,11 +33,11 @@ public class GeneratedStatus {
 			resposta = this.soma(resposta, r);
 		}
 		
-		System.out.println("Resultado:");
+		/*System.out.println("Resultado:");
 		System.out.println("Porta: "+resposta.getPorta());
 		System.out.println("Presença: "+resposta.getPresenca());
 		System.out.println("Lâmpadas: "+resposta.getLampadas());
-		System.out.println("Ar: "+resposta.getAr());
+		System.out.println("Ar: "+resposta.getAr());*/
 		
 		return this.geraStatus(Integer.parseInt(resposta.getPorta()), Integer.parseInt(resposta.getPresenca()), Integer.parseInt(resposta.getLampadas()), Integer.parseInt(resposta.getAr()));
 	}
@@ -72,43 +74,70 @@ public class GeneratedStatus {
 		if(lampadas == 0 && ar == 0){
 			if(presenca == 0 && lampadas == 0 && ar == 0){
 				// Sala livre
-				s.setTexto("Sala livre");
+				s.setDescricao("Sala livre");
 				s.setCor("#00ff00");
+				Calendar time = Calendar.getInstance();
+				time.setTime(new Date());
+				s.setTime(time);
 			}else{
 				// Sem consumo
-				s.setTexto("Sem consumo");
+				s.setDescricao("Sem consumo");
 				s.setCor("#00ff00");
+				Calendar time = Calendar.getInstance();
+				time.setTime(new Date());
+				s.setTime(time);
 			}
 		}else{
 			if((lampadas == -1 && ar == -1) || (lampadas == -1 && ar == 0) || (lampadas == 0 && ar == -1)){
 				// Verifique
-				s.setTexto("Verifique!");
+				s.setDescricao("Verifique!");
 				s.setCor("#ffa500");
+				Calendar time = Calendar.getInstance();
+				time.setTime(new Date());
+				s.setTime(time);
 			}else{
 				if(presenca == 0){
 					// Desperdício
-					s.setTexto("Desperdício");
+					s.setDescricao("Desperdício");
 					s.setCor("#ff0000");
+					Calendar time = Calendar.getInstance();
+					time.setTime(new Date());
+					s.setTime(time);
 				}else if((porta == 0 && presenca == -1 && ar == 1) && (lampadas == -1 || lampadas == 0 || lampadas == 1)){
 					// Desperdício
-					s.setTexto("Desperdício");
+					s.setDescricao("Desperdício");
 					s.setCor("#ff0000");
+					Calendar time = Calendar.getInstance();
+					time.setTime(new Date());
+					s.setTime(time);
 				}else if((porta == 0 && presenca == 1 && ar == 1) && (lampadas == -1 || lampadas == 0 || lampadas == 1)){
 					// Desperdício
-					s.setTexto("Desperdício");
+					s.setDescricao("Desperdício");
 					s.setCor("#ff0000");
+					Calendar time = Calendar.getInstance();
+					time.setTime(new Date());
+					s.setTime(time);
 				}else if(porta == 1 && presenca == 1){
 					// Normal
-					s.setTexto("Consumo normal");
+					s.setDescricao("Consumo normal");
 					s.setCor("#00ff00");
+					Calendar time = Calendar.getInstance();
+					time.setTime(new Date());
+					s.setTime(time);
 				}else if((presenca == 1 && lampadas == 1 && ar == 0) && (porta == -1 || porta == 0)){
 					// Normal
-					s.setTexto("Consumo normal");
+					s.setDescricao("Consumo normal");
 					s.setCor("#00ff00");
+					Calendar time = Calendar.getInstance();
+					time.setTime(new Date());
+					s.setTime(time);
 				}else{
 					// Verifique
-					s.setTexto("Verifique!");
+					s.setDescricao("Verifique!");
 					s.setCor("#ffa500");
+					Calendar time = Calendar.getInstance();
+					time.setTime(new Date());
+					s.setTime(time);
 				}
 			}
 		}

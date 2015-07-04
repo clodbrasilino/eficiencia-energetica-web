@@ -45,11 +45,11 @@ public class HttpRequest {
 		r.setLampadas(parametros.get("luz"));
 		r.setAr(parametros.get("ar"));
 		
-		System.out.println("Micro controlador: "+mc.getIp());
+		/*System.out.println("Micro controlador: "+mc.getIp());
 		System.out.println("Porta: "+r.getPorta());
 		System.out.println("Presença: "+r.getPresenca());
 		System.out.println("Lâmpadas: "+r.getLampadas());
-		System.out.println("Ar: "+r.getAr()+"\n");
+		System.out.println("Ar: "+r.getAr()+"\n");*/
 		return r;
 	}
 	
