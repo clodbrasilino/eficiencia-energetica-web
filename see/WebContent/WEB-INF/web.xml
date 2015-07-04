@@ -222,4 +222,13 @@
     <servlet-name>ServletDetalhesSala</servlet-name>
     <url-pattern>/ServletDetalhesSala</url-pattern>
   </servlet-mapping>
+  <listener>
+    <listener-class>br.edu.ifpi.see.listeners.IniciaListaDeSalasListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>br.edu.ifpi.see.listeners.IniciaRequestListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>br.edu.ifpi.see.listeners.CarregaListaDeSalasListener</listener-class>
+  </listener>
 </web-app>
