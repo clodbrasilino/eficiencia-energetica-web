@@ -1,3 +1,5 @@
+<%@page import="br.edu.ifpi.see.model.Sala"%>
+<%@page import="br.edu.ifpi.see.model.MicroControlador"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
@@ -17,6 +19,11 @@
 			
 	<%
 		Usuario u = (Usuario) session.getAttribute("usuario");
+	
+		MicroControlador mc = (MicroControlador) session.getAttribute("micro");
+		Sala s = (Sala) session.getAttribute("sala");
+		
+		
 	%>	
 	<div id="header">
 		<h4>			Parnaiba - PI					</h4>
@@ -25,21 +32,21 @@
 	</div>	
 		
 	<div class="form">
-		<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletSalvarMicroControlador">
+		<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarMicroControlador">
 				<label>IP:</label>
-				<input type="text" name="ip" />
+				<input type="text" name="ip" value="<%= mc.getIp() %>"/>
 				<br><br>
 				
 				<fieldset>
 					<legend>Sensores:</legend>
-					<input type="checkbox" value="true" name="porta">Porta<br/>
-					<input type="checkbox" value="true" name="presenca">Presença<br/>
-					<input type="checkbox" value="true" name="lampadas">Lâmpadas<br/>
-					<input type="checkbox" value="true" name="ar">Ar<br/>
+					<input type="checkbox" value="true" <%= mc.isSensorPorta() ? "checked" : "" %> name="porta">Porta</br>
+					<input type="checkbox" value="true" <%= mc.isSensorPresenca() ? "checked" : "" %> name="presenca">Presença</br>
+					<input type="checkbox" value="true" <%= mc.isSensorLampada() ? "checked" : "" %> name="lampadas">Lâmpadas</br>
+					<input type="checkbox" value="true" <%= mc.isSensorAr() ? "checked" : "" %> name="ar">Ar</br>
 				</fieldset>
 				<br><br>
 				
-				<a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/novaSala.jsp">Voltar</a>	
+				<a href="/<%= application.getInitParameter("app-name") %>/ServletAlterarSala?id=<%= s.getId() %>">Voltar</a>	
 				
 				<input class="botao"type="submit" value=" Salvar "/>
 			</form>
