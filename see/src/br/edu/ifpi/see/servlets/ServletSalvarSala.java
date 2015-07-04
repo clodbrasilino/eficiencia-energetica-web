@@ -1,6 +1,7 @@
 package br.edu.ifpi.see.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityTransaction;
 import javax.servlet.ServletException;
@@ -55,6 +56,7 @@ public class ServletSalvarSala extends HttpServlet {
 		}
 		
 		et.begin();
+		
 		salaDao.salvar(s);
 		if(s.getListaMicroControlador() != null){
 			for(MicroControlador mc : s.getListaMicroControlador()){
@@ -62,6 +64,7 @@ public class ServletSalvarSala extends HttpServlet {
 				mcDao.salvar(mc);
 			}
 		}
+		
 		et.commit();
 		
 		request.getSession().removeAttribute("sala");

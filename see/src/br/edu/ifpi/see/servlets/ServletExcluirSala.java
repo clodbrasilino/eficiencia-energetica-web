@@ -33,10 +33,7 @@ public class ServletExcluirSala extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-long id = Integer.parseInt(request.getParameter("id"));
-		
-		/*EntityTransaction et = JPAUtil.getTransaction();
-		EntityManager em = JPAUtil.getEntityManager();*/
+		long id = Integer.parseInt(request.getParameter("id"));
 		
 		EntityManager em = (EntityManager) getServletContext().getAttribute("em");
 		EntityTransaction et = em.getTransaction();

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifpi.see.dao.MicroControladorDAO;
 import br.edu.ifpi.see.dao.SalaDAO;
-import br.edu.ifpi.see.dao.UsuarioDAO;
 import br.edu.ifpi.see.model.MicroControlador;
 import br.edu.ifpi.see.model.Sala;
 import br.edu.ifpi.see.model.Usuario;
@@ -44,8 +43,10 @@ public class ServletAlterarSala extends HttpServlet {
 		EntityTransaction et = ((EntityManager) getServletContext().getAttribute("em")).getTransaction();
 		
 		et.begin();
+		
 		SalaDAO dao = new SalaDAO();
 		Sala s = dao.pesquisar(id);
+		
 		et.commit();
 		request.setAttribute("sala", s);
 		request.getSession().setAttribute("sala", s);
@@ -154,8 +155,6 @@ public class ServletAlterarSala extends HttpServlet {
 			
 			request.getRequestDispatcher("/JSP/gerente/novoMicroControlador.jsp").forward(request, response);
 		}
-		
-		
 		
 	}
 
