@@ -25,14 +25,14 @@
 			
 			<%
 				Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-				EntityManager em = (EntityManager) getServletContext().getAttribute("em");
-				SalaDAO dao = new SalaDAO();
 			%>
 			
 			<div id="header">
 				<h4>Parnaiba - PI</h4>
 				<p>Bem vindo, <% out.print(u.getNome()); %> | <a class="meus-dados" href="/<%= application.getInitParameter("app-name") %>/ServletAlterarDadosGerente"> Meus Dados </a></p>
 				<h1>Informações das Salas cadastradas</h1>
+				<a href="/<%= application.getInitParameter("app-name") %>/ServletConsultaHistoricoAtualSala">Histórico de consumo</a>
+				<a href="/<%= application.getInitParameter("app-name") %>/ServletConsultaTempoConsumoAtualSala">Tempo de consumo</a>
 			</div>
 	
 				<div class="infor">
@@ -47,22 +47,18 @@
 						</tr>
 						
 						<%
-						em.getTransaction().begin();
-						List<Sala> lista = dao.pesquisar("select s from Sala s");
-						em.getTransaction().commit();
+						List<Sala> salas = (List<Sala>) request.getServletContext().getAttribute("salas");
 						
-						GeneratedStatus status = new GeneratedStatus();
-
-						for(Sala sala : lista){
+						for(Sala s : salas){
 							out.print("<tr>");
-							out.print("	   <td width=\"100\">" +  sala.getNumero()    + "	</td>");
-							out.print("		<td width=\"100\">"     +  sala.getDescricao()  + "	</td>");
-							out.print("		<td width=\"100\">"     +  sala.getDescricao() + "	</td>");
-							out.print("		<td width=\"100\">"     +  sala.getAtiva() + "	</td>");
+							out.print("	   <td width=\"100\">" +  s.getNumero()    + "	</td>");
+							out.print("		<td width=\"100\">"     +  s.getDescricao()  + "	</td>");
+							out.print("		<td width=\"100\">"     +  s.getStatus().getDescricao() != null ? s.getStatus().getDescricao() : "" + "	</td>");
+							out.print("		<td width=\"100\">"     +  s.getAtiva() + "	</td>");
 							out.print("		<td width=\"210\" height=\"40\">");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+sala.getId()+"\">			Alterar		</a> |");
-							out.print("<a onclick='confirmaExclusaoSala("+sala.getId()+")' href='#'> Excluir |</a>");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesSala?id="+sala.getId()+"\">		Detalhes	</a>");
+							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+s.getId()+"\">			Alterar		</a> |");
+							out.print("<a onclick='confirmaExclusaoSala("+s.getId()+")' href='#'> Excluir |</a>");
+							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesSala?id="+s.getId()+"\">		Detalhes	</a>");
 							out.print("		</td>");
 							out.print("</tr>");
 						}

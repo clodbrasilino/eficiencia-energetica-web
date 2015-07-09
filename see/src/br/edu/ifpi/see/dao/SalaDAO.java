@@ -35,7 +35,7 @@ public class SalaDAO implements GenericDAO<Sala>{
 		
 		return manager.find(Sala.class, id);
 	}
-
+	
 	@Override
 	public List<Sala> pesquisar(String jql) {
 		

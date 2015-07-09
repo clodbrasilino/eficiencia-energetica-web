@@ -1,6 +1,13 @@
 package br.edu.ifpi.see.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +40,12 @@ public class Sala {
 	private List<HistoricoSala> listaHistorico;
 	
 	private boolean ativa;
+	
+	@Transient
+	private List<TempoStatus> temposStatus;
+	
+	@Transient
+	private HashMap<String, TempoStatus> tempoStatus;
 	
 	public Sala() {
 		super();
@@ -171,6 +184,68 @@ public class Sala {
 		}else{
 			return false;
 		}
+	}
+	
+	public void carregaStatusTempo(){
+		
+		/*this.tempoStatus = new HashMap<>();
+		
+		for(HistoricoSala hs : this.listaHistorico){
+			if(this.tempoStatus.containsKey(hs.getStatus())){
+				TempoStatus ts = this.tempoStatus.get(hs.getStatus());
+				ts.setHora(hs.getHora().getTimeInMillis());
+				this.tempoStatus.put(hs.getStatus(), ts);
+			}else{
+				this.tempoStatus.put(hs.getStatus(), new TempoStatus(hs.getHora().getTimeInMillis()));
+			}
+		}*/
+		
+		temposStatus = new ArrayList<TempoStatus>();
+		
+		Calendar data = Calendar.getInstance();
+		data.setTime(new Date());
+		
+		//this.listaHistorico.add(new HistoricoSala(data, this));
+		
+		long tempo = 0;
+		for (int i = 0; i < this.listaHistorico.size()-1; i++) {
+			tempo = listaHistorico.get(i+1).getHora().getTimeInMillis() - listaHistorico.get(i).getHora().getTimeInMillis();
+			this.temposStatus.add(new TempoStatus(this.listaHistorico.get(i).getStatus(), tempo));
+		}
+		tempo = System.currentTimeMillis() - listaHistorico.get(this.listaHistorico.size()-1).getHora().getTimeInMillis();
+		DateFormat df = new SimpleDateFormat("HH:mm:ss");
+		System.out.println(df.format(System.currentTimeMillis()));
+		this.temposStatus.add(new TempoStatus(this.listaHistorico.get(this.listaHistorico.size()-1).getStatus(), tempo));
+		
+		this.tempoStatus = new HashMap<>();
+		for(TempoStatus ts : this.temposStatus){
+			System.out.println(ts.getDescicao() + " - " + ts.getTempoMilisegundos());
+			
+			if(this.tempoStatus.containsKey(ts.getDescicao())){
+				TempoStatus tempoStatus = this.tempoStatus.get(ts.getDescicao());
+				//tempoStatus.setHora(hs.getHora().getTimeInMillis());
+				tempoStatus.setTempo(tempoStatus.getTempoMilisegundos() + ts.getTempoMilisegundos());
+				this.tempoStatus.put(ts.getDescicao(), tempoStatus);
+			}else{
+				this.tempoStatus.put(ts.getDescicao(), new TempoStatus(ts.getDescicao(), (long) ts.getTempoMilisegundos()));
+			}
+			
+		}
+		
+		for(Map.Entry<String, TempoStatus> times : this.tempoStatus.entrySet()){
+			System.out.println(times.getKey() + " - " + times.getValue().getTempoMilisegundos());
+		}
+		
+		System.out.println(this.status.getDescricao());
+		
+	}
+	
+	public HashMap<String, TempoStatus> getTempoStatus() {
+		
+		/*for(Map.Entry<String, TempoStatus> times : this.tempoStatus.entrySet()){
+			times.getValue().analizaTempo();
+		}*/
+		return tempoStatus;
 	}
 	
 }

@@ -78,15 +78,17 @@
 		    <!-- #header FIM -->
 	     			
 	     			<%
-						GeneratedStatus status = new GeneratedStatus();
+	     				List<Sala> salas = (List<Sala>) request.getServletContext().getAttribute("salas");
 	     				
-	     			%>
+	     				if(salas.size() > 0){
+	     					Sala s = salas.get(0);%>
+	     			
 		            <div class="btn">
 		                <table>
 		                    <tr>
 
-		                        <td width="100" height="50" bgcolor=#FF0>Sala 1</td>
-		                        <%-- <td width="100" height="50" bgcolor=#fff><%= salas.get(9).getNumero()+"<br>"+status.getStatus(salas.get(9).getListaMicroControlador()).getTexto()%></td> --%>
+		                        <!--<td width="100" height="50" bgcolor=#FF0>Sala 1</td>-->
+		                        <td width="100" height="50" bgcolor=<%= s.getStatus().getCor() %>><%= s.getStatus().getDescricao()%></td>
 		                        <td width="100" height="50" bgcolor=#FF0>Sala 2</td>
 		                        <td width="100" height="50" bgcolor=#FF0>Sala 3</td>
 		                        <td width="100" height="50" bgcolor=#0F0>Sala 4</td>
@@ -116,6 +118,7 @@
 		                </table>
 		            </div> 
              
+             <%} %>
             <div id="legenda">
                 <table>
                     <tr>
