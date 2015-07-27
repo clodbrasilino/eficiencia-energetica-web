@@ -25,8 +25,9 @@ public class ServletLogout extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getSession().invalidate();
-		response.sendRedirect("/"+getServletContext().getInitParameter("app-name")+"/JSP/index.jsp");
+		//request.getSession().invalidate();
+		request.getSession().removeAttribute("usuario");
+		response.sendRedirect("/"+getServletContext().getInitParameter("app-name")+"/");
 		
 	}
 

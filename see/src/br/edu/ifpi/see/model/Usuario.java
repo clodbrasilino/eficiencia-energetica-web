@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import br.edu.ifpi.see.autentication.Autenticavel;
+
 @Entity
-public class Usuario {
+public class Usuario implements Autenticavel {
 	
 	@Id @GeneratedValue
 	private long id;
@@ -168,6 +170,17 @@ public class Usuario {
 				+ endereco + ", email=" + email + ", telefone=" + telefone
 				+ ", senha=" + senha + ", tipo=" + tipo + ", listaSala="
 				+ listaSala + "]";
+	}
+	
+	@Override
+	public String autentica() {
+		if(this.tipo == 1){
+			return "/see/JSP/administrador/administrador.jsp";
+		}else if(this.tipo == 2){
+			return "/see/JSP/gerente/gerente.jsp";
+		}else{
+			return "/see/";
+		}
 	}
 	
 }

@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.edu.ifpi.see.model.Usuario;
 
@@ -50,24 +52,30 @@ public class FiltroGerenteCadastrado implements Filter {
 	 * 
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
-		System.out.println("FiltroGerenteCadastrado");
-		
+				
 		/* Receber Usuário */
-		Usuario u = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario");
+		//Usuario u = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario");
 		
 		/* Fazer a verificação */
-		if(u.getTipo() != 2){
+		//if(u.getTipo() != 2){
 			/* Não é gerente. Precisa se logar */
-			request.setAttribute("mensagem", "Você não é um gerente. Se for, precisa se logar primeiro.");
+			//request.setAttribute("mensagem", "Você não é um gerente. Se for, precisa se logar primeiro.");
 			/* Redirecionando para a uma tela de login alternativo */
-			request.getRequestDispatcher("/"+request.getServletContext().getInitParameter("app-name")+"/JSP/login.jsp").forward(request, response);
+			//request.getRequestDispatcher("/"+request.getServletContext().getInitParameter("app-name")+"/JSP/login.jsp").forward(request, response);
 			/* Para a execução por aqui mesmo */
-			return;
-		}
-		else{
+			//return;
+		//}
+		//else{
 			/* É gerente. A vida continua */
+			//chain.doFilter(request, response);
+		//}
+		
+		HttpSession s = ((HttpServletRequest) request).getSession();
+		Usuario u = (Usuario) s.getAttribute("usuario");
+		if((u != null && u.getTipo() == 2)){
 			chain.doFilter(request, response);
+		}else{
+			((HttpServletResponse) response).sendRedirect("/"+request.getServletContext().getInitParameter("app-name")+"/");
 		}
 		
 	}
