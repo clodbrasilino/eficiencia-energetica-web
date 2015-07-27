@@ -4,6 +4,8 @@
  */
 
 @import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(http://fonts.googleapis.com/css?family=Raleway);
 
 /* -	Transição da img do topo 'descendo' 	*/
 .antes{
@@ -118,18 +120,10 @@ input:focus{
 input{margin-left: 2px; margin-top:2px;}
 label{margin-left: 5px; margin-right: 5px;}
 
-#header h3{
-	font-family: 'Raleway', sans-serif;
-	margin: auto;
-	padding: 10px;
-}
 
-/*	'Sistema de Eficiência Energética'	*/
-#header>h1{
-	clear: both;
-	margin: auto;
-	margin-top: 150px;
-}
+
+
+
 
 #corpo table{
 	margin: 10px auto;
@@ -146,6 +140,12 @@ label{margin-left: 5px; margin-right: 5px;}
 	text-align: center;
 }
 
+#header h3{
+	font-family: 'Raleway', sans-serif;
+	margin: auto;
+	padding: 10px;
+}
+
 /*	'Parnaíba-PI'	*/
 #header h4{
 	float: left;
@@ -160,6 +160,9 @@ label{margin-left: 5px; margin-right: 5px;}
 	font-family: 'Lato', sans-serif;
 	clear: both;
 	margin: auto;
+	clear: both;
+	margin: auto;
+	margin-top: 150px;
 	padding-top: 20px;
 }
 
@@ -211,12 +214,23 @@ td{border:3px solid #FFF;}
 #rodape{
 	width: 100%;
 	height: 100px;
-	background: rgba(0,0,0,0.3);
-	position: absolute;
+	background: rgba(0,0,0,0.7);
+	clear: both;
+	position: relative;
 	bottom: 0;
+	clear: both;
+	text-align: center;
 }
 
-#rodape a{margin:auto;}
+#rodape:hover{
+	background: rgba(0,0,0,0.8);	
+}
+
+#rodape > p{padding-top: 40px; color: #FFF; font-family: Arial; }
+
+#rodape > p > a{ text-decoration: none; color: #FFF; font-size: 13px;}
+
+#rodape > p > a:hover{text-decoration: underline;}
 
 a{
 	margin-bottom: 80px;

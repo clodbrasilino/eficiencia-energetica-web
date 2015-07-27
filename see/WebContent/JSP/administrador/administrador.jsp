@@ -42,13 +42,17 @@
 
 
 			<div id="header">
-				<h4>Parnaiba - PI</h4>
-				<p>Bem vindo, <% out.print(u.getNome()); %> | <a class="meus-dados" href="/<%= application.getInitParameter("app-name") %>/ServletAlterarDadosAdministrador"> Meus Dados </a></p>
-				<h1>Informações dos gerentes cadastrados</h1>
+				<h4>	Parnaiba - PI								</h4>
+				<p>		
+						Bem vindo, <% out.print(u.getNome()); %> | 
+						<a class="meus-dados" href="/<%= application.getInitParameter("app-name") %>/ServletAlterarDadosAdministrador"> Meus Dados </a>
+				</p>
+				<h1>	Informações dos gerentes cadastrados		</h1>
 			</div>
 			
 			
 			<div id="tabela">
+			
 			<table class="theader">
 				<tr>
 						<td  width="100" height="30"><b> Número </b></td>
@@ -79,7 +83,7 @@
 							out.print("<tr>");
 							out.print("	   <td width=\"100\"> G00" +  usuario.getId()    + "	</td>");
 							out.print("		<td width=\"100\">"     +  usuario.getNome()  + "	</td>");
-							out.print("		<td width=\"100\">"     +  usuario.getEmail() + "	</td>");
+							out.print("		<td width=\"120\">"     +  usuario.getEmail() + "	</td>");
 							out.print("		<td width=\"100\">"     +  usuario.getAtivo() + "	</td>");
 							out.print("		<td width=\"210\" height=\"40\">");
 							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+usuario.getId()+"\">			Alterar		</a> |");

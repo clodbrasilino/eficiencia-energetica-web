@@ -22,8 +22,6 @@
         <meta name="description" content="Site Web Efeitos" />
         <!--<meta http-equiv="refresh" content="10"/>-->
 		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style_index.css"/>
-		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 		<script>
 			function transition(){
 				var img = document.getElementById('img_topo');
@@ -46,7 +44,7 @@
      
 		    <div id="header">
 		    	 
-		        <form action="/<%= application.getInitParameter("app-name") %>/ServletIndentificaUsuario" method="post" id="login">
+		        <form action="/<%= application.getInitParameter("app-name") %>/ServletAutenticacao" method="post" id="login">
 		            
 		            <label>
 		                Login: 
@@ -76,19 +74,23 @@
 		        
 		    </div>
 		    <!-- #header FIM -->
-	     			
+	     			<!--  
 	     			<%
-	     				List<Sala> salas = (List<Sala>) request.getServletContext().getAttribute("salas");
-	     				
-	     				if(salas.size() > 0){
-	     					Sala s = salas.get(0);%>
-	     			
+	     			/*
+	     				EntityManager em = (EntityManager) getServletContext().getAttribute("em");
+	     				EntityTransaction et = em.getTransaction();
+						SalaDAO dao = new SalaDAO();
+						
+						et.begin();
+						List<Sala> salas = dao.pesquisar("select s from Sala s");
+						et.commit();
+						
+						GeneratedStatus status = new GeneratedStatus()*/
+	     			%>
+	     			-->
 		            <div class="btn">
 		                <table>
 		                    <tr>
-
-		                        <!--<td width="100" height="50" bgcolor=#FF0>Sala 1</td>-->
-		                        <td width="100" height="50" bgcolor=<%= s.getStatus().getCor() %>><%= s.getStatus().getDescricao()%></td>
 		                        <td width="100" height="50" bgcolor=#FF0>Sala 2</td>
 		                        <td width="100" height="50" bgcolor=#FF0>Sala 3</td>
 		                        <td width="100" height="50" bgcolor=#0F0>Sala 4</td>
@@ -118,7 +120,6 @@
 		                </table>
 		            </div> 
              
-             <%} %>
             <div id="legenda">
                 <table>
                     <tr>
@@ -133,6 +134,6 @@
             </div>
         </div>
    </div>
-   <div id="rodape"></div>
+   <div id="rodape"><p><a href="#">DESENVOLVEDORES</a></p></div>
  </body>
  </html>

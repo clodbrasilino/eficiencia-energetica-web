@@ -36,20 +36,42 @@
 			<h1>			Detalhes do Gerente 		</h1>
 		</div>	
 		
-		<fieldset>
-			<legend> Detalhes do Gerente </legend>
-			<div>
-				<p>Número: <%= gerente.getId() %></p>
-				<p>Nome: <%= gerente.getNome() %></p>
-				<p>Endereço: <%= gerente.getEndereco() %></p>
-				<p>Email: <%= gerente.getEmail() %></p>
-				<p>Telefone: <%= gerente.getTelefone() %></p>
-				<p>Ativo: <%= gerente.getAtivo() %></p>
-	        
-	        <a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
-	        
-			</div>	
-		</fieldset>
+		<div id="formulario">
+			<br/>
+			<br/>
+			<label>Número:</label><br/>
+			<input type="text" name="numero" value="G00<%=gerente.getId()%>" disabled class="disabled"/>
+			<br/>
+			<br/>
+			<label>Nome:</label><br/>
+			<input type="text" name="nome" value="<%=gerente.getNome()%>" disabled class="disabled" />
+			<br/>
+			<br/>
+			<label>Endereço:</label><br/>
+			<input type="text" name="endereco" value="<%=gerente.getEndereco()%>" disabled class="disabled" />
+			<br/>
+			<br/>
+			<label>E-mail:</label><br/>
+			<input type="text" name="email" value="<%=gerente.getEmail()%>" disabled class="disabled" />
+			<br/>
+			<br/>
+			<label>Telefone:</label><br/>
+			<input type="text" name="telefone" value="<%=gerente.getTelefone()%>" disabled class="disabled" />
+			<br/>
+			<br/>
+			<label>Senha:</label><br/>
+			<input type="password" name="senha" value="<%=gerente.getSenha()%>" disabled class="disabled" />
+			<br/>
+			<br/>
+			<label>Ativo:</label>
+			<input type="checkbox" name="ativo" value="true" <%= gerente.isAtivo() == true ? "checked" : "" %> disabled class="disabled"/>
+			<br/>
+			<br/>
+			<br/>
+			
+			<a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
+		</div>
+		
 	</div>
 	</div>
  </body>

@@ -12,54 +12,64 @@
 <title>Atualizando Cadastro de Gerente</title>
 <meta name="author" content="Rita Aquino" />
 <meta name="description" content="Site Web Efeitos" />
-<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style2.css" />
+<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style_alterarGerente.css" />
+<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style.css" />
 </head>
 <body>
+	
+	<div id="fundo">
+ 		<div id="corpo">
+     	 	<img  src="/<%= application.getInitParameter("app-name") %>/IMG/topo-site.png"  id="img_topo" title="Logo" class="antes">
+     
+	
 
-	<img src="/<%=application.getInitParameter("app-name")%>/IMG/topo-site.png" id="img_topo" alt="Logo" title="Logo">
-
-	<div class="corpo">
-		<h4>Parnaiba - PI</h4>
-		<p>Bem vindo, Administrador</p>
-		<center><h1>Atualizando dados do Gerente</h1></center>
+	 <div id="header">
+		<h4>	Parnaiba - PI					</h4>
+		<p>		Bem vindo, Administrador		</p>
+		<h1>	Atualizando dados do Gerente	</h1>
 	</div>
 
 	<% Usuario gerente = (Usuario) request.getAttribute("usuario"); %>
-	<div class="form">
-		<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarGerente">
-			<table>
-				<tr>
-					<td><label>Número:</label></td>
-					<td><input type="text" name="numero" value="G00<%=gerente.getId()%>" disabled /></td>
-				</tr>
-				<tr>
-					<td><label>Nome:</label></td>
-					<td><input type="text" name="nome" value="<%=gerente.getNome()%>" class="input" /></td>
-				</tr>
-				<tr>
-					<td><label>Endereço:</label></td>
-					<td><input type="text" name="endereco" value="<%=gerente.getEndereco()%>" class="input" /></td>
-				</tr>
-				<tr>
-					<td><label>E-mail:</label></td>
-					<td><input type="text" name="email" value="<%=gerente.getEmail()%>" class="input" /></td>
-				</tr>
-				<tr>
-					<td><label>Telefone:</label></td>
-					<td><input type="text" name="telefone" value="<%=gerente.getTelefone()%>" class="input" /></td>
-				</tr>
-				<tr>
-					<td><label>Ativo:</label></td>
-					<td><input type="checkbox" name="ativo" value="true" <%= gerente.isAtivo() == true ? "checked" : "" %> class="input"/></td>
-				</tr>
-				<tr>
-					<td><label>Senha:</label></td>
-					<td><input type="password" name="senha" value="<%=gerente.getSenha()%>" class="input" /></td>
-				</tr>
-			</table>
-			<input type="hidden" name="id" value="<%=gerente.getId()%>">
-			<input class="botao" type="submit" value="Salvar" />
-		</form>
+	<div id="formulario">
+			<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarGerente">
+				<br/>
+				<br/>
+				<label>Número:</label><br/>
+				<input type="text" name="numero" value="G00<%=gerente.getId()%>" disabled class="disabled"/>
+				<br/>
+				<br/>
+				<label>Nome:</label><br/>
+				<input type="text" name="nome" value="<%=gerente.getNome()%>" class="input" />
+				<br/>
+				<br/>
+				<label>Endereço:</label><br/>
+				<input type="text" name="endereco" value="<%=gerente.getEndereco()%>" class="input" />
+				<br/>
+				<br/>
+				<label>E-mail:</label><br/>
+				<input type="text" name="email" value="<%=gerente.getEmail()%>" class="input" />
+				<br/>
+				<br/>
+				<label>Telefone:</label><br/>
+				<input type="text" name="telefone" value="<%=gerente.getTelefone()%>" class="input" />
+				<br/>
+				<br/>
+				<label>Senha:</label><br/>
+				<input type="password" name="senha" value="<%=gerente.getSenha()%>" class="input" />
+				<br/>
+				<br/>
+				<label>Ativo:</label>
+				<input type="checkbox" name="ativo" value="true" <%= gerente.isAtivo() == true ? "checked" : "" %> class="input"/>
+				<input type="hidden" name="id" value="<%=gerente.getId()%>">
+				<br/>
+				<br/>
+				<br/>
+				
+				<a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
+				<input type="submit" value="Salvar" />
+				
+			</form>
+		</div>
 
 		<%
 			if (request.getAttribute("confirmacao") != null) {
@@ -67,11 +77,12 @@
 				out.print("		<p> Salvo com sucesso </p>");
 				out.print("</div>");
 			}
-		%>
+		%>		
 		
-		<a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
 
 	</div>
+	</div>
+	
 
 </body>
 </html>
