@@ -281,4 +281,14 @@
     <servlet-name>ServletConsultaTempoConsumoSala</servlet-name>
     <url-pattern>/ServletConsultaTempoConsumoSala</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletAutenticacao</display-name>
+    <servlet-name>ServletAutenticacao</servlet-name>
+    <servlet-class>br.edu.ifpi.see.servlets.ServletAutenticacao</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAutenticacao</servlet-name>
+    <url-pattern>/ServletAutenticacao</url-pattern>
+  </servlet-mapping>
 </web-app>
