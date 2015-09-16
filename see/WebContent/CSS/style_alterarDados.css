@@ -12,36 +12,51 @@
 }
 
 #box {
-	background: #fff;
 	width: 400px;
 	height: 350px;
-	position: absolute;
-	left: 60%;
+	margin: 150px auto;
+	border-radius: 5px;
+	box-shadow: 0px 0px 20px #333;
+	background: #fff;
+	/*left: 60%;
 	top: 50%;
 	margin-left: -30%;
-	margin-top: -150px;
+	margin-top: -150px;*/
 }
 
 #fechar {
-	padding: 5px 10px;
+	float: right;
+	width: 30px;
+	height: 30px;
+	margin: 2px;
+	border-radius: 50%;
+	background: #666;
+	color: #fff;
+	cursor: pointer;
+	
+	/*padding: 5px 10px;
 	border: 1px solid #ccc;
 	position: absolute;
 	right: 3px;
 	top: 3px;
 	font-family: Abel;
-	/*border-radius: 7px;*/
 	color: #ccc;
-	cursor: pointer;
+	cursor: pointer;*/
+}
+
+#fechar p{
+	text-align: center;
+	margin-top: 6px;
 }
 
 #fechar:hover {
-	color: #666;
-	border-color: #666;
+	color: #aaa;
 }
 
 #frm_popup {
 	width: 305px;
-	margin: 50px auto;
+	margin: 200px auto;
+	padding: 50px;
 	text-align: center;
 }
 

@@ -49,17 +49,17 @@ public class ServletIndentificaUsuario extends HttpServlet {
 		Usuario u = (Usuario) s.getAttribute("usuario");
 		
 		
-		if(u.getTipo() == 1){
-			/*	Caso o usuário seja Administrador:  */
-			//request.getRequestDispatcher("JSP/ADMINISTRADOR/administrador.jsp").forward(request, response);
+		/*if(u.getTipo() == 1){
+			Caso o usuário seja Administrador:
+			request.getRequestDispatcher("JSP/ADMINISTRADOR/administrador.jsp").forward(request, response);
 			response.sendRedirect("/"+getServletContext().getInitParameter("app-name")+"/JSP/administrador/administrador.jsp");
 			return;
 		}
 		else if(u.getTipo() == 2){
-			/*	Caso o usuário seja Gerente:  */
-			//request.getRequestDispatcher("/projeto2/JSP/GERENTE/gerente.jsp").forward(request, response);
+			Caso o usuário seja Gerente:
+			request.getRequestDispatcher("/projeto2/JSP/GERENTE/gerente.jsp").forward(request, response);
 			response.sendRedirect("/"+getServletContext().getInitParameter("app-name")+"/JSP/gerente/gerente.jsp");
-		}
+		}*
 		
 		/* FIM ! */
 		

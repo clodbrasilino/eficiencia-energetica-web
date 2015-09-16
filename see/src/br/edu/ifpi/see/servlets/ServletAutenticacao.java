@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifpi.see.autentication.Autenticador;
+import br.edu.ifpi.see.autentication.Autenticavel;
 import br.edu.ifpi.see.dao.UsuarioDAO;
 import br.edu.ifpi.see.model.Usuario;
 
@@ -20,14 +21,17 @@ public class ServletAutenticacao extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// Pega os parâmetros
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		
+		// Consulta o usuário
 		UsuarioDAO dao = new UsuarioDAO();
-		Usuario u = dao.pesquisar(email, senha);
+		Usuario usuario = dao.pesquisar(email, senha);
 		
+		// Faz a autenticação do usuário
 		Autenticador a = new Autenticador();
-		a.autentica(u, request, response);
+		a.autentica((Autenticavel) usuario, request, response);		
 		
 	}
 

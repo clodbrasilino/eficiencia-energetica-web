@@ -2,7 +2,6 @@ package br.edu.ifpi.see.servlets;
 
 import java.io.IOException;
 
-import javax.persistence.EntityTransaction;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,36 +9,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifpi.see.dao.UsuarioDAO;
 import br.edu.ifpi.see.model.Usuario;
-import br.edu.ifpi.see.util.JPAUtil;
 
-/**
- * Servlet implementation class ServletDetalhesGerente
- */
 public class ServletDetalhesGerente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ServletDetalhesGerente() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// Pega o parâmetro
 		long id = Integer.parseInt(request.getParameter("id"));
 		
-		EntityTransaction et = JPAUtil.getTransaction();
+		// Consulta o gerente
 		UsuarioDAO dao = new UsuarioDAO();
+		Usuario gerente = dao.pesquisar(id);
 		
-		et.begin();
-		Usuario u = dao.pesquisar(id);
-		et.commit();
-		
-		request.setAttribute("gerente", u);
+		// Coloca o gerente na requisição
+		request.setAttribute("gerente", gerente);
 		request.getRequestDispatcher("JSP/administrador/detalhesGerente.jsp").forward(request, response);
 		
 	}

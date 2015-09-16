@@ -1,8 +1,12 @@
+<%@page import="br.edu.ifpi.see.util.GeneratedNumber"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
+<%@ page import="br.edu.ifpi.see.dao.UsuarioDAO" %>
+<%@ page import="br.edu.ifpi.see.util.GeneratedNumber" %>
+<%@ page import="java.util.HashMap" %>
 
 
 <html lang="pt-br">
@@ -16,6 +20,8 @@
  <body>
  	<%
  		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+ 		UsuarioDAO dao = new UsuarioDAO();
+ 		GeneratedNumber gn = new GeneratedNumber();
  	%>
  	<div id="fundo">
 		<div id="corpo">
@@ -37,34 +43,34 @@
 				<br/>
 				<br/>
 				<label>Número:</label><br/>
-				<input type="text" name="numero" disabled value="Campo gerado automaticamente" class="disabled"/>
+				<input type="text" name="numero" disabled value="<%= gn.geraNumeroGerente() %>" class="disabled"/>
 				<br/>
 				<br/>
+				
 				<label>Nome:</label><br/>
 				<input type="text" name="nome" class="input" />
-				<br/>
-				<br/>
+				<p><%= session.getAttribute("erros") != null ? ((HashMap<String,String>) session.getAttribute("erros")).get("nome") : "" %></p>
+				
 				<label>Endereço:</label><br/>
 				<input type="text" name="endereco"  class="input" />
 				<br/>
 				<br/>
+				
 				<label>E-mail:</label><br/>
 				<input type="text" name="email"  class="input" />
-				<br/>
-				<br/>
+				<p><%= session.getAttribute("erros") != null ? ((HashMap<String,String>) session.getAttribute("erros")).get("email") : "" %></p>
+				
 				<label>Telefone:</label><br/>
 				<input type="text" name="telefone"  class="input" />
-				<br/>
-				<br/>
+				<p><%= session.getAttribute("erros") != null ? ((HashMap<String,String>) session.getAttribute("erros")).get("telefone") : "" %></p>
+				
 				<label>Senha:</label><br/>
 				<input type="password" name="senha"  class="input" />
-				<br/>
-				<br/>
-				<label>Ativo:</label>
-				<input type="checkbox" name="ativo" value="true"  class="input"/>
-				<br/>
-				<br/>
-				<br/>
+				<p><%= session.getAttribute("erros") != null ? ((HashMap<String,String>) session.getAttribute("erros")).get("senha") : "" %></p>
+				
+				<label>Informe a senha novamente:</label><br/>
+				<input type="password" name="confirmacaoSenha"  class="input" />
+				<p><%= session.getAttribute("erros") != null ? ((HashMap<String,String>) session.getAttribute("erros")).get("confirmacaoSenha") : "" %></p>
 				
 				<a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
 				<input type="submit" value="Salvar" />

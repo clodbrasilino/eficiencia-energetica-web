@@ -1,11 +1,13 @@
+<%@page import="br.edu.ifpi.see.util.GeneratedNumber"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
 <!-- Imports JAVA -->
 <%@ page import="br.edu.ifpi.see.model.Usuario"%>
+<%@ page import="br.edu.ifpi.see.model.Gerente"%>
 <%@ page import="br.edu.ifpi.see.dao.UsuarioDAO"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="javax.persistence.EntityManager"%>
+<%@ page import="br.edu.ifpi.see.util.GeneratedNumber"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -18,13 +20,14 @@
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="/see/JS/ConfirmacaoExcluir.js"></script>
+
 <script>
-			function transition(){
-				var img = document.getElementById('img_topo');
-				img.setAttribute('class', 'depois');
-			}
-			
-		</script>
+	function transition(){
+		var img = document.getElementById('img_topo');
+		img.setAttribute('class', 'depois');
+	}		
+</script>
+
 </head>
 <body onload="transition()">
 	<div id="fundo">
@@ -32,8 +35,7 @@
 
 			<%
 				Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-				EntityManager em = (EntityManager) getServletContext().getAttribute("em");
-				UsuarioDAO dao = new UsuarioDAO();
+				GeneratedNumber gn = new GeneratedNumber();
 			%>
 
 			<img
@@ -75,20 +77,19 @@
 					</tr>
 				-->
 					<%
-						em.getTransaction().begin();
-						ArrayList<Usuario> lista = dao.listaGerentes();
-						em.getTransaction().commit();
+						UsuarioDAO dao = new UsuarioDAO();
+						ArrayList<Usuario> gerentes = (ArrayList<Usuario>) dao.listaGerentes();
 
-						for(Usuario usuario : lista){
+						for(Usuario gerente : gerentes){
 							out.print("<tr>");
-							out.print("	   <td width=\"100\"> G00" +  usuario.getId()    + "	</td>");
-							out.print("		<td width=\"100\">"     +  usuario.getNome()  + "	</td>");
-							out.print("		<td width=\"120\">"     +  usuario.getEmail() + "	</td>");
-							out.print("		<td width=\"100\">"     +  usuario.getAtivo() + "	</td>");
+							out.print("	   <td width=\"100\">" +   gn.converteNumeroGerente(gerente.getId())   + "	</td>");
+							out.print("		<td width=\"100\">"     +  gerente.getNome()  + "	</td>");
+							out.print("		<td width=\"120\">"     +  gerente.getEmail() + "	</td>");
+							out.print("		<td width=\"100\">"     +  ((Gerente) gerente).getAtivo() + "	</td>");
 							out.print("		<td width=\"210\" height=\"40\">");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+usuario.getId()+"\">			Alterar		</a> |");
-							out.print("<a onclick='confirmaExclusaoGerente("+usuario.getId()+")' href='#'> Excluir </a> |");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+usuario.getId()+"\">		Detalhes	</a>");
+							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+gerente.getId()+"\">			Alterar		</a> |");
+							out.print("<a onclick='confirmaExclusaoGerente("+gerente.getId()+")' href='#'> Excluir </a> |");
+							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+gerente.getId()+"\">		Detalhes	</a>");
 							out.print("		</td>");
 							out.print("</tr>");
 						}

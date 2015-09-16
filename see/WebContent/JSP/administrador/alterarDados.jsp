@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 
 <%@ page import="br.edu.ifpi.see.model.Usuario"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="br.edu.ifpi.see.util.GeneratedNumber"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
@@ -18,6 +20,7 @@
 
 	<%
 		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+		GeneratedNumber gn = new GeneratedNumber();
 	%>
 	<div id="fundo">
  		<div id="corpo">
@@ -34,18 +37,25 @@
 		<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarDadosAdministrador">
 		
 		<label>Número:</label>
-		<input type="text" name="numero" value="G00<%= u.getId() != 0 ? u.getId() : "" %>" disabled />
+		<input type="text" name="numero" value="<%= u.getId() != 0 ? gn.converteNumeroAdministrador() : "" %>" disabled />
 		<br/>
+		
 		<label>Nome:</label>
 		<input id="txtNome" type="text" name="nome" value="<%= u.getNome() != null ? u.getNome() : "" %>" class="input"/>
-		<br/>
+		<p><%= session.getAttribute("erros") != null ? ((HashMap<String,String>) session.getAttribute("erros")).get("nome") : "" %></p>
+		
 		<label>Endereço:</label>
 		<input id="txtEndereco" type="text" name="endereco" value="<%= u.getEndereco() != null ? u.getEndereco() : "" %>" class="input" />
-			<br/>	
+		<br/>
+		
+		<label>E-mail:</label>
+		<input id="txtEmail" type="text" name="email" value="<%= u.getEmail() != null ? u.getEmail() : "" %>" class="input" />
+		<p><%= session.getAttribute("erros") != null ? ((HashMap<String,String>) session.getAttribute("erros")).get("email") : "" %></p>
+			
 		<label>Telefone:</label>
 		<input id="txtTelefone" type="text" name="telefone" value="<%= u.getTelefone() != null ? u.getTelefone() : "" %>" class="input" />
-		<br/>
-		<br/>	
+		<p><%= session.getAttribute("erros") != null ? ((HashMap<String,String>) session.getAttribute("erros")).get("telefone") : "" %></p>
+			
 		<a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
 		<a href="#" onclick="showPopup()">Alterar senha</a>
 		<input type="hidden" name="id" value="<%=u.getId()%>"> <input class="botao" type="submit" value="Salvar" sltyle="float: right;"/>
@@ -70,7 +80,7 @@
 	<!-- Formulário de alteração da senha -->
 	<div id="popup">
 		<div id="box">
-			<div id="fechar" onclick="closePopup()">Fechar</div>
+			<div id="fechar" onclick="closePopup()"><p>X</p></div>
 			<form id="frm_popup" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarSenhaAdministrador" method="post">
 				<label class="lbl_senha">Senha atual: </label>
 				<input type="password" name="senhaAtual" class="txt_senha">

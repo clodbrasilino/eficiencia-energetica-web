@@ -3,10 +3,12 @@
 
 
 <%@ page import="br.edu.ifpi.see.model.Usuario" %>
+<%@ page import="br.edu.ifpi.see.model.Gerente" %>
 <%@ page import="br.edu.ifpi.see.util.JPAUtil" %>
 <%@ page import="javax.persistence.EntityTransaction" %>
 <%@ page import="javax.persistence.EntityManager" %>
 <%@ page import="br.edu.ifpi.see.dao.UsuarioDAO" %>
+<%@ page import="br.edu.ifpi.see.util.GeneratedNumber" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,7 +22,8 @@
  <body>
  	<%
  		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
- 		Usuario gerente = (Usuario) request.getAttribute("gerente");
+ 		Gerente gerente = (Gerente) request.getAttribute("gerente");
+ 		GeneratedNumber gn = new GeneratedNumber();
  	%>
  
 	<div id="fundo">
@@ -40,7 +43,7 @@
 			<br/>
 			<br/>
 			<label>Número:</label><br/>
-			<input type="text" name="numero" value="G00<%=gerente.getId()%>" disabled class="disabled"/>
+			<input type="text" name="numero" value="<%=gn.converteNumeroGerente(gerente.getId())%>" disabled class="disabled"/>
 			<br/>
 			<br/>
 			<label>Nome:</label><br/>

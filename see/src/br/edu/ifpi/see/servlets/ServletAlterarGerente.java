@@ -1,86 +1,79 @@
 package br.edu.ifpi.see.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifpi.see.dao.UsuarioDAO;
-import br.edu.ifpi.see.model.Usuario;
-import br.edu.ifpi.see.util.JPAUtil;
+import br.edu.ifpi.see.model.Gerente;
+import br.edu.ifpi.see.util.Message;
+import br.edu.ifpi.see.validation.Validador;
 
-/**
- * Servlet implementation class ServletAlterarGerente
- */
 public class ServletAlterarGerente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private Gerente gerente;
+	
     public ServletAlterarGerente() {
         super();
     }
     
-    // TODO Implementar Servlet de Alterar Gerente
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// Pega o parâmetro
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-//		EntityTransaction et = JPAUtil.getTransaction();
-		EntityTransaction et = ((EntityManager) getServletContext().getAttribute("em")).getTransaction();
-		
-		et.begin();
+		// Consulta o gerente
 		UsuarioDAO dao = new UsuarioDAO();
-		Usuario u = dao.pesquisar(id);
-		et.commit();
+		gerente = (Gerente) dao.pesquisar(id);
 		
-		request.setAttribute("usuario", u);
+		// Coloca o gerente na requisição
+		request.setAttribute("gerente", gerente);
 		request.getRequestDispatcher("JSP/administrador/alterarGerente.jsp").forward(request, response);
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		long id = Integer.parseInt(request.getParameter("id"));
+		// Pega os parâmetros
 		String nome = request.getParameter("nome");
 		String endereco = request.getParameter("endereco");
 		String email = request.getParameter("email");
 		String telefone = request.getParameter("telefone");
 		String senha = request.getParameter("senha");
+		String confirmacaoSenha = request.getParameter("confirmacaoSenha");
 		String ativo = request.getParameter("ativo");
 		
-		EntityTransaction et = JPAUtil.getTransaction();
-		//EntityTransaction et = ((EntityManager) getServletContext().getAttribute("em")).getTransaction();
+		// Altera os dados cadastrais do gerente
+		gerente.setNome(nome);
+		gerente.setEndereco(endereco);
+		gerente.setEmail(email);
+		gerente.setTelefone(telefone);
+		gerente.setSenha(senha);
+		gerente.setConfirmacaoSenha(confirmacaoSenha);
+		gerente.setAtivo(Boolean.parseBoolean(ativo));
 		
-		et.begin();
-		UsuarioDAO dao = new UsuarioDAO();
-		
-		Usuario u = dao.pesquisar(id);
-		u.setNome(nome);
-		u.setEndereco(endereco);
-		u.setEmail(email);
-		u.setTelefone(telefone);
-		u.setSenha(senha);
-		u.setAtivo(Boolean.parseBoolean(ativo));
-		
-		dao.atualizar(u);
-		et.commit();
-		
-		response.getWriter().println("<script>alert('Gerente de salas atualizado com sucesso!')</script>");
-		response.getWriter().println("<script>window.location.href='/"+getServletContext().getInitParameter("app-name")+"/JSP/administrador/administrador.jsp'</script>");
+		// Valida o gerente
+		Validador v = new Validador();
+		if(v.valida(request, gerente)){
+			
+			// Atualiza o gerente
+			UsuarioDAO dao = new UsuarioDAO();
+			dao.atualizar(gerente);
+			
+			// Exibe mensagem de sucesso e chama a próxima página
+			Message msg = new Message(request, response, "Gerente de salas atualizado com sucesso!", "/JSP/administrador/administrador.jsp");
+			msg.show();
+			
+		}else{
+			
+			// Volta para a página de cadastro, caso ocorra algum erro de validação
+			request.setAttribute("gerente", gerente);
+			request.getRequestDispatcher("JSP/administrador/alterarGerente.jsp").forward(request, response);
+			
+		}
 		
 	}
 

@@ -291,4 +291,34 @@
     <servlet-name>ServletAutenticacao</servlet-name>
     <url-pattern>/ServletAutenticacao</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>FiltroValidacao</display-name>
+    <filter-name>FiltroValidacao</filter-name>
+    <filter-class>br.edu.ifpi.see.filtros.FiltroValidacao</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FiltroValidacao</filter-name>
+    <url-pattern>/JSP/administrador/administrador.jsp</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>FiltroTransactionManager</display-name>
+    <filter-name>FiltroTransactionManager</filter-name>
+    <filter-class>br.edu.ifpi.see.filtros.FiltroTransactionManager</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FiltroTransactionManager</filter-name>
+    <servlet-name>ServletCadastroGerente</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>FiltroTransactionManager</filter-name>
+    <servlet-name>ServletAlterarGerente</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>FiltroTransactionManager</filter-name>
+    <servlet-name>ServletAlterarDadosAdministrador</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>FiltroTransactionManager</filter-name>
+    <servlet-name>ServletAlterarSenhaAdministrador</servlet-name>
+  </filter-mapping>
 </web-app>

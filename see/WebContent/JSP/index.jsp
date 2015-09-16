@@ -10,6 +10,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="br.edu.ifpi.see.request.GeneratedStatus" %>
 <%@ page import="br.edu.ifpi.see.request.Response" %>
+<%@ page import="java.util.HashMap" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -48,7 +49,7 @@
 		            
 		            <label>
 		                Login: 
-		                <input type="text" name="email" /> 
+		                <input type="text" name="email" />
 		            </label>
 		            
 		            <label>
@@ -56,6 +57,7 @@
 		                <input type="password" name="senha" />
 		                <input type="submit" value="    Logar    "/>
 		            </label>
+		            
 		        </form>
 		       
 		        <h4> Parnaiba - PI </h4>
