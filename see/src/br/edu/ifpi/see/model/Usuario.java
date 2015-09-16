@@ -2,15 +2,20 @@ package br.edu.ifpi.see.model;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
-
-import br.edu.ifpi.see.autentication.Autenticavel;
+import javax.persistence.Transient;
 
 @Entity
-public class Usuario implements Autenticavel {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="tipo", discriminatorType=DiscriminatorType.STRING)
+public class Usuario {
 	
 	@Id @GeneratedValue
 	private long id;
@@ -19,8 +24,8 @@ public class Usuario implements Autenticavel {
 	private String email;
 	private String telefone;
 	private String senha;
-	private int tipo;
-	private boolean ativo;
+	@Transient
+	private String confirmacaoSenha;
 	
 	@OneToMany(mappedBy="usuario")
 	private List<Sala> listaSala;
@@ -30,7 +35,7 @@ public class Usuario implements Autenticavel {
 	}
 
 	public Usuario(long id, String nome, String endereco, String email,
-			String telefone, String senha, int tipo, List<Sala> listaSala) {
+			String telefone, String senha, List<Sala> listaSala) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -38,22 +43,29 @@ public class Usuario implements Autenticavel {
 		this.email = email;
 		this.telefone = telefone;
 		this.senha = senha;
-		this.tipo = tipo;
 		this.listaSala = listaSala;
 	}
 
 	public Usuario(String nome, String endereco, String email, String telefone,
-			String senha, int tipo, List<Sala> listaSala) {
+			String senha, List<Sala> listaSala) {
 		super();
 		this.nome = nome;
 		this.endereco = endereco;
 		this.email = email;
 		this.telefone = telefone;
 		this.senha = senha;
-		this.tipo = tipo;
 		this.listaSala = listaSala;
 	}
-
+	
+	public Usuario(String nome, String endereco, String email, String telefone, String confirmacaoSenha, String senha){
+		this.nome = nome;
+		this.endereco = endereco;
+		this.email = email;
+		this.telefone = telefone;
+		this.confirmacaoSenha = confirmacaoSenha;
+		this.senha = senha;
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -98,40 +110,16 @@ public class Usuario implements Autenticavel {
 		return senha;
 	}
 
+	public void setConfirmacaoSenha(String confirmacaoSenha) {
+		this.confirmacaoSenha = confirmacaoSenha;
+	}
+	
+	public String getConfirmacaoSenha() {
+		return confirmacaoSenha;
+	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public int getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
-
-	public boolean isAtivo() {
-		return ativo;
-	}
-	
-	public String getAtivo(){
-		if(this.ativo){
-			return "Sim";
-		}else{
-			return "Não";
-		}
-	}
-	
-	public String isChecked(){
-		if(this.ativo){
-			return "hecked";
-		}else{
-			return "";
-		}
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
 	}
 
 	public List<Sala> getListaSala() {
@@ -168,19 +156,7 @@ public class Usuario implements Autenticavel {
 	public String toString() {
 		return "Usuario [id=" + id + ", nome=" + nome + ", endereco="
 				+ endereco + ", email=" + email + ", telefone=" + telefone
-				+ ", senha=" + senha + ", tipo=" + tipo + ", listaSala="
-				+ listaSala + "]";
-	}
-	
-	@Override
-	public String autentica() {
-		if(this.tipo == 1){
-			return "/see/JSP/administrador/administrador.jsp";
-		}else if(this.tipo == 2){
-			return "/see/JSP/gerente/gerente.jsp";
-		}else{
-			return "/see/";
-		}
+				+ ", senha=" + senha + ", listaSala=" + listaSala + "]";
 	}
 	
 }
