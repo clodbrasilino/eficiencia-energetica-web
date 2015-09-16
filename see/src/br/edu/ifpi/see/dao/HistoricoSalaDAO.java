@@ -39,12 +39,14 @@ public class HistoricoSalaDAO implements GenericDAO<HistoricoSala> {
 		return manager.createQuery(jql, HistoricoSala.class).getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<HistoricoSala> pesquisar(Calendar data) {
 		Query q = manager.createQuery("select hs from HistoricoSala hs where hs.data = :data", HistoricoSala.class);
 		q.setParameter("data", data);
 		return q.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<HistoricoSala> pesquisar(Calendar dataInicial, Calendar dataFinal) {
 		Query q = manager.createQuery("select hs from HistoricoSala hs where hs.data between :dataInicial and :dataFinal", HistoricoSala.class);
 		q.setParameter("dataInicial", dataInicial);
@@ -52,6 +54,7 @@ public class HistoricoSalaDAO implements GenericDAO<HistoricoSala> {
 		return q.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<HistoricoSala> pesquisar(Sala sala, Calendar data) {
 		Query q = manager.createQuery("select hs from HistoricoSala hs where hs.sala = :sala and hs.data = :data", HistoricoSala.class);
 		q.setParameter("sala", sala);
@@ -59,6 +62,7 @@ public class HistoricoSalaDAO implements GenericDAO<HistoricoSala> {
 		return q.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<HistoricoSala> pesquisar(Sala sala, Calendar dataInicial, Calendar dataFinal) {
 		Query q = manager.createQuery("select hs from HistoricoSala hs where hs.sala = :sala and hs.data between :dataInicial and :dataFinal", HistoricoSala.class);
 		q.setParameter("sala", sala);
