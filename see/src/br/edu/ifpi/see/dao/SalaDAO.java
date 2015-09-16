@@ -41,5 +41,10 @@ public class SalaDAO implements GenericDAO<Sala>{
 		
 		return manager.createQuery(jql, Sala.class).getResultList();
 	}
-
+	
+	public long getUltimoId(){
+		Sala s = manager.createQuery("select max(s) from Sala s", Sala.class).getSingleResult();
+		return s.getId() + 1;
+	}
+	
 }

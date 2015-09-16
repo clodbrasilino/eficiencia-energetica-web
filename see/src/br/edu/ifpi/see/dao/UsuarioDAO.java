@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import br.edu.ifpi.see.model.Gerente;
 import br.edu.ifpi.see.model.Usuario;
 import br.edu.ifpi.see.util.JPAUtil;
 
@@ -28,7 +29,7 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 	@Override
 	public void apagar(Usuario e) {
 		
-		e.setAtivo(false);
+		((Gerente) e).setAtivo(false);
 		manager.merge(e);
 	}
 
@@ -57,9 +58,14 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 		return null;
 	}
 	
-	// TODO Implementar a listagem de gerentes!
+	@SuppressWarnings("unchecked")
 	public ArrayList<Usuario> listaGerentes() throws SQLException{
-		return (ArrayList<Usuario>) manager.createQuery("select u from Usuario u where tipo = 2").getResultList();
+		return (ArrayList<Usuario>) manager.createQuery("select u from Usuario u where tipo = 'Gerente'").getResultList();
+	}
+	
+	public long getUltimoId(){
+		Usuario u = manager.createQuery("select max(u) from Usuario u", Usuario.class).getSingleResult();
+		return u.getId() + 1;
 	}
 
 }

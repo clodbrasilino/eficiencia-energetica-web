@@ -39,5 +39,10 @@ public class MicroControladorDAO implements GenericDAO<MicroControlador>{
 		
 		return manager.createQuery(jql, MicroControlador.class).getResultList();
 	}
-
+	
+	public long getUltimoId(){
+		MicroControlador mc = manager.createQuery("select max(mc) from MicroControlador mc", MicroControlador.class).getSingleResult();
+		return mc.getId() + 1;
+	}
+	
 }
