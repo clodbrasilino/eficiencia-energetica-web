@@ -12,35 +12,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.edu.ifpi.see.model.Administrador;
 import br.edu.ifpi.see.model.Usuario;
 
-/**
- * Servlet Filter implementation class FiltroAdministradorCadastrado
- */
 public class FiltroAdministradorCadastrado implements Filter {
 
-    /**
-     * Default constructor. 
-     */
     public FiltroAdministradorCadastrado() {
+    	
     }
 
-	/**
-	 * @see Filter#destroy()
-	 */
 	public void destroy() {
+		
 	}
-
-	// TODO Implementar Filtro Administrador Cadastrado
 	
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		HttpSession s = ((HttpServletRequest) request).getSession();
 		Usuario u = (Usuario) s.getAttribute("usuario");
-		if((u!= null && u.getTipo() == 1)){
+		if(u != null && u instanceof Administrador){
 			chain.doFilter(request, response);
 		}else{
 			((HttpServletResponse) response).sendRedirect("/"+request.getServletContext().getInitParameter("app-name")+"/");
@@ -48,10 +37,8 @@ public class FiltroAdministradorCadastrado implements Filter {
 		
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
+		
 	}
 
 }

@@ -12,23 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.edu.ifpi.see.model.Gerente;
 import br.edu.ifpi.see.model.Usuario;
 
-/**
- * Servlet Filter implementation class FiltroGerenteCadastrado
- */
 public class FiltroGerenteCadastrado implements Filter {
 
-    /**
-     * Default constructor. 
-     */
     public FiltroGerenteCadastrado() {
+    	
     }
 
-	/**
-	 * @see Filter#destroy()
-	 */
 	public void destroy() {
+		
 	}
 
 	/**
@@ -72,7 +66,7 @@ public class FiltroGerenteCadastrado implements Filter {
 		
 		HttpSession s = ((HttpServletRequest) request).getSession();
 		Usuario u = (Usuario) s.getAttribute("usuario");
-		if((u != null && u.getTipo() == 2)){
+		if(u != null && u instanceof Gerente){
 			chain.doFilter(request, response);
 		}else{
 			((HttpServletResponse) response).sendRedirect("/"+request.getServletContext().getInitParameter("app-name")+"/");
@@ -80,10 +74,8 @@ public class FiltroGerenteCadastrado implements Filter {
 		
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
+		
 	}
 
 }
