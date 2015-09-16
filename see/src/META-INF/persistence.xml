@@ -8,7 +8,10 @@
 	    <class>br.edu.ifpi.see.model.HistoricoSala</class>
 	    <class>br.edu.ifpi.see.model.MicroControlador</class>
 	    <class>br.edu.ifpi.see.model.Sala</class>
-		<class>br.edu.ifpi.see.model.Usuario</class>	    
+		<class>br.edu.ifpi.see.model.Usuario</class>
+		<class>br.edu.ifpi.see.model.Administrador</class>
+		<class>br.edu.ifpi.see.model.Gerente</class>
+
 	    
 		<properties>
 			
