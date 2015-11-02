@@ -16,22 +16,14 @@ import br.edu.ifpi.see.model.Sala;
 import br.edu.ifpi.see.model.Usuario;
 import br.edu.ifpi.see.util.JPAUtil;
 
-/**
- * Servlet implementation class ServletSalvarSala
- */
 public class ServletSalvarSala extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ServletSalvarSala() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		EntityTransaction et = (EntityTransaction) JPAUtil.getTransaction();
@@ -52,7 +44,6 @@ public class ServletSalvarSala extends HttpServlet {
 			s.setPavimento(pavimento);
 			s.setAtiva(true);
 			s.setUsuario((Usuario) request.getSession().getAttribute("usuario"));
-			
 		}
 		
 		et.begin();
@@ -66,6 +57,10 @@ public class ServletSalvarSala extends HttpServlet {
 		}
 		
 		et.commit();
+		
+		((List<Sala>) getServletContext().getAttribute("salas")).add(s);
+		//GeraTabela gt = (GeraTabela) request.getSession().getAttribute("tabela");
+		//gt.getSalas().add(s);
 		
 		request.getSession().removeAttribute("sala");
 		

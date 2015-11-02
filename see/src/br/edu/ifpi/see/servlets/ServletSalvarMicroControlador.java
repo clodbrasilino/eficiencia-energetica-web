@@ -11,24 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifpi.see.model.MicroControlador;
 import br.edu.ifpi.see.model.Sala;
+import br.edu.ifpi.see.request.HttpRequest;
+import br.edu.ifpi.see.request.Response;
+import br.edu.ifpi.see.util.Message;
 
-/**
- * Servlet implementation class ServletSalvarMicroControlador
- */
 public class ServletSalvarMicroControlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public ServletSalvarMicroControlador() {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,13 +36,27 @@ public class ServletSalvarMicroControlador extends HttpServlet {
 		Calendar data = Calendar.getInstance();
 		data.setTime(new Date(System.currentTimeMillis()));
 		
-		s.getListaMicroControlador().add(
-				new MicroControlador(data, ip, Boolean.parseBoolean(porta),
-						Boolean.parseBoolean(presenca), Boolean
-								.parseBoolean(lampadas), Boolean
-								.parseBoolean(ar)));
+		HttpRequest r = new HttpRequest();
+		MicroControlador mc = new MicroControlador();
+		mc.setDtInstalacao(data);
+		mc.setIp(ip);
+		mc.setSensorPorta(Boolean.parseBoolean(porta));
+		mc.setSensorPresenca(Boolean.parseBoolean(presenca));
+		mc.setSensorLampada(Boolean.parseBoolean(lampadas));
+		mc.setSensorAr(Boolean.parseBoolean(ar));
 		
-		response.sendRedirect("/"+ getServletContext().getInitParameter("app-name")+ "/JSP/gerente/novaSala.jsp");
+		try {
+			Response resp = r.sendGet(mc);
+			int code = resp.getCode();
+			if(code != 0){
+				s.getListaMicroControlador().add(mc);
+				response.sendRedirect("/"+ getServletContext().getInitParameter("app-name")+ "/JSP/gerente/novaSala.jsp");
+			}
+		} catch (Exception e) {
+			Message msg = new Message(request, response, "O Micro Controlador informado não foi encontrado!", "/JSP/gerente/novoMicroControlador.jsp");
+			msg.show();
+		}
+		
 	}
 
 }
