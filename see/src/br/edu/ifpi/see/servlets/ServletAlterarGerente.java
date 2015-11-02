@@ -11,10 +11,10 @@ import br.edu.ifpi.see.dao.UsuarioDAO;
 import br.edu.ifpi.see.model.Gerente;
 import br.edu.ifpi.see.util.Message;
 import br.edu.ifpi.see.validation.Validador;
+import br.edu.ifpi.see.validation.Validavel;
 
 public class ServletAlterarGerente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Gerente gerente;
 	
     public ServletAlterarGerente() {
         super();
@@ -27,7 +27,7 @@ public class ServletAlterarGerente extends HttpServlet {
 		
 		// Consulta o gerente
 		UsuarioDAO dao = new UsuarioDAO();
-		gerente = (Gerente) dao.pesquisar(id);
+		Gerente gerente = (Gerente) dao.pesquisar(id);
 		
 		// Coloca o gerente na requisição
 		request.setAttribute("gerente", gerente);
@@ -38,6 +38,7 @@ public class ServletAlterarGerente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Pega os parâmetros
+		long id = Long.parseLong(request.getParameter("id"));
 		String nome = request.getParameter("nome");
 		String endereco = request.getParameter("endereco");
 		String email = request.getParameter("email");
@@ -47,6 +48,9 @@ public class ServletAlterarGerente extends HttpServlet {
 		String ativo = request.getParameter("ativo");
 		
 		// Altera os dados cadastrais do gerente
+		UsuarioDAO dao = new UsuarioDAO();
+		Gerente gerente = (Gerente) dao.pesquisar(id);
+		
 		gerente.setNome(nome);
 		gerente.setEndereco(endereco);
 		gerente.setEmail(email);
@@ -57,10 +61,9 @@ public class ServletAlterarGerente extends HttpServlet {
 		
 		// Valida o gerente
 		Validador v = new Validador();
-		if(v.valida(request, gerente)){
+		if(v.valida(request, (Validavel) gerente)){
 			
 			// Atualiza o gerente
-			UsuarioDAO dao = new UsuarioDAO();
 			dao.atualizar(gerente);
 			
 			// Exibe mensagem de sucesso e chama a próxima página
