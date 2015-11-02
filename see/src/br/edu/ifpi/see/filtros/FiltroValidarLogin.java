@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import br.edu.ifpi.see.dao.UsuarioDAO;
 import br.edu.ifpi.see.model.Usuario;
-import br.edu.ifpi.see.util.JPAUtil;
 
 /**
  * Servlet Filter implementation class FiltroValidarLogin
