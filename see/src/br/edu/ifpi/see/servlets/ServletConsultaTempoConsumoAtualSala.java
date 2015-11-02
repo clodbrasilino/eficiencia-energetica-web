@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifpi.see.dao.HistoricoSalaDAO;
 import br.edu.ifpi.see.dao.SalaDAO;
+import br.edu.ifpi.see.historicos.HistoricoManager;
 import br.edu.ifpi.see.model.Sala;
 
 public class ServletConsultaTempoConsumoAtualSala extends HttpServlet {
@@ -27,17 +28,14 @@ public class ServletConsultaTempoConsumoAtualSala extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		SalaDAO salaDao = new SalaDAO();
-		HistoricoSalaDAO historicosDao = new HistoricoSalaDAO();
 		
 		Calendar data = Calendar.getInstance();
 		data.setTime(new Date(System.currentTimeMillis()));
 		
 		List<Sala> salas = (List<Sala>) salaDao.pesquisar("select s from Sala s");
 		
-		for(Sala s : salas){
-			s.setListaHistorico(historicosDao.pesquisar(s, data));
-			s.carregaStatusTempo();
-		}
+		HistoricoManager hm = new HistoricoManager(salas);
+		hm.createHistorico(data);
 		
 		DateFormat df = new SimpleDateFormat("EEEE',' dd 'de' MMMM 'de' yyyy',' HH:mm:ss");
 		

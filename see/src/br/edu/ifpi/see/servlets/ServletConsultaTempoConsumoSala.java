@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifpi.see.dao.HistoricoSalaDAO;
 import br.edu.ifpi.see.dao.SalaDAO;
+import br.edu.ifpi.see.historicos.HistoricoManager;
 import br.edu.ifpi.see.model.HistoricoSala;
 import br.edu.ifpi.see.model.Sala;
 
@@ -60,14 +61,17 @@ public class ServletConsultaTempoConsumoSala extends HttpServlet {
 			
 			DateFormat hf = new SimpleDateFormat("HH:mm:ss");
 			
-			for(Sala s : salas){
+			/*for(Sala s : salas){
 				s.setListaHistorico(historicosDao.pesquisar(s, dataInicial, dataFinal));
-				s.carregaStatusTempo();
+				s.carregaStatusTempo(dataInicial, dataFinal);
 				
 				for(HistoricoSala hs : s.getListaHistorico()){
 					System.out.println(hs.getSala().getNumero() + " - " + hf.format(hs.getHora().getTime()) + " - " + s.getStatus().getDescricao());
 				}
-			}
+			}*/
+			
+			HistoricoManager hm = new HistoricoManager(salas);
+			hm.createHistorico(dataInicial, dataFinal);
 			
 			request.setAttribute("dataInicial", df.format(dataInicial.getTime()));
 			request.setAttribute("dataFinal", df.format(dataFinal.getTime()));
