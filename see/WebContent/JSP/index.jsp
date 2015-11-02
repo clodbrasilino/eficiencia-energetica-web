@@ -10,6 +10,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="br.edu.ifpi.see.request.GeneratedStatus" %>
 <%@ page import="br.edu.ifpi.see.request.Response" %>
+<%@ page import="br.edu.ifpi.see.paginator.Paginator" %>
+<%@ page import="br.edu.ifpi.see.util.SalaUtil" %>
 <%@ page import="java.util.HashMap" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -76,50 +78,60 @@
 		        
 		    </div>
 		    <!-- #header FIM -->
-	     			<!--  
-	     			<%
-	     			/*
-	     				EntityManager em = (EntityManager) getServletContext().getAttribute("em");
-	     				EntityTransaction et = em.getTransaction();
-						SalaDAO dao = new SalaDAO();
-						
-						et.begin();
-						List<Sala> salas = dao.pesquisar("select s from Sala s");
-						et.commit();
-						
-						GeneratedStatus status = new GeneratedStatus()*/
-	     			%>
-	     			-->
 		            <div class="btn">
 		                <table>
-		                    <tr>
-		                        <td width="100" height="50" bgcolor=#FF0>Sala 2</td>
-		                        <td width="100" height="50" bgcolor=#FF0>Sala 3</td>
-		                        <td width="100" height="50" bgcolor=#0F0>Sala 4</td>
-		                        <td width="100" height="50" bgcolor=#F00>Sala 5</td>
-		                    </tr>
-		                    <tr>
-		                        <td width="100" height="50" bgcolor=#FF0>Sala 6</td>
-		                        <td width="100" height="50" bgcolor=#FF0>Sala 7</td>
-		                        <td width="100" height="50" bgcolor=#0F0>Sala 8</td>
-		                        <td width="100" height="50" bgcolor=#F00>Sala 9</td>
-		                        <td width="100" height="50" bgcolor=#0F0>Sala 10</td>
-		                    </tr>
-		                    <tr>
-		                        <td width="100" height="50" bgcolor=#F00>Sala 11</td>
-		                        <td width="100" height="50" bgcolor=#0F0>Sala 12</td>
-		                        <td width="100" height="50" bgcolor=#F00>Sala 13</td>
-		                        <td width="100" height="50" bgcolor=#0F0>Sala 14</td>
-		                        <td width="100" height="50" bgcolor=#FF0>Sala 15</td>
-		                    </tr>
-		                    <tr>
-		                        <td width="100" height="50"  bgcolor=#FF0>Sala 16</td>
-		                        <td width="100" height="50"  bgcolor=#FF0>Sala 17</td>
-		                        <td width="100" height="50" bgcolor=#0F0>Sala 18</td>
-		                        <td width="100" height="50" bgcolor=#F00>Sala 19</td>
-		                        <td width="100" height="50" bgcolor=#0F0>Sala 20</td>
-		                    </tr>
+		                	<%
+		                		SalaDAO dao = new SalaDAO();
+		                		/*GeraTabela gt = null;
+		                		if(request.getSession().getAttribute("tabela") == null){
+		                			gt = new GeraTabela(dao.pesquisar("select s from Sala s"));
+		                			request.getSession().setAttribute("tabela", gt);
+		                		}else{
+		                			gt = (GeraTabela) request.getSession().getAttribute("tabela"); 
+		                		}*/
+		                		
+		                		Paginator p = (Paginator) request.getSession().getAttribute("paginator");
+		                		p.setLista(dao.pesquisar("select s from Sala s"));
+		                		p.setLinhas(20);
+		                		
+		                		List<Sala> salas = (List<Sala>) p.getSublista();
+		                		
+		                		if(salas != null){
+		                			int k = 0;
+	                    			for(int i=0; i<4; i++){
+	                    				out.print("<tr>");
+	                    				for(int j=0; j<5; j++){
+	                    					Sala s = SalaUtil.getSala(k, salas);
+	                    					GeneratedStatus gs = new GeneratedStatus();
+	                    					Status status = gs.getStatus(s.getListaMicroControlador());
+	                    					/*if(!status.getDescricao().equals("Sem Micro Controlador")){
+	                    						out.print("<td width='100' height='50' bgcolor='"+status.getCor()+"'");
+		                    					out.print("<h1>"+s.getNumero()+"</h1>");
+		                    					out.print("<h4>"+status.getDescricao()+"</h4>");
+		                    					out.print("</td>");
+	                    					}*/
+	                    					if(!s.getStatus().getDescricao().equals("Sem Micro Controlador")){
+	                    						out.print("<td width='100' height='50' bgcolor='"+s.getStatus().getCor()+"'");
+		                    					out.print("<h1>"+s.getNumero()+"</h1>");
+		                    					out.print("<h4>"+s.getStatus().getDescricao()+"</h4>");
+		                    					out.print("</td>");
+	                    					}
+	                    					if(k < 20){
+	                    						k++;
+	                    					}
+	                    				}
+	                    				out.print("</tr>");
+			                    	}
+		                		}else{
+		                			out.print("<h1>Não há salas cadastradas!</h1>");
+		                		}
+		                		
+                    		%>
 		                </table>
+		                <%
+		                	out.print(p.temListaAnterior() ? "<a href='/"+application.getInitParameter("app-name")+"/ListaPaginaAnteriorServlet?resource=/see'>Anterior</a> " : "");
+		                	out.print(p.temProximaLista() ? " <a href='/"+application.getInitParameter("app-name")+"/ListaProximaPaginaServlet?resource=/see'>Próxima</a>" : "");
+		                %>
 		            </div> 
              
             <div id="legenda">
