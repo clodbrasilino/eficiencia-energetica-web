@@ -15,9 +15,10 @@ public class ListaPaginaAnteriorServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String resource = request.getParameter("resource");
 		Paginator p = (Paginator) request.getSession().getAttribute("paginator");
 		p.chamaListaAnterior();
-		response.sendRedirect("/see/listar-gerentes");
+		response.sendRedirect(resource);
 	}
 
 }
