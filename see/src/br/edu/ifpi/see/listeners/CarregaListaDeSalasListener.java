@@ -18,7 +18,8 @@ public class CarregaListaDeSalasListener implements ServletRequestListener {
     	
     	SalaDAO dao = new SalaDAO();
     	
-    	List<Sala> salas = (List<Sala>) arg0.getServletContext().getAttribute("salas");
+    	@SuppressWarnings("unchecked")
+		List<Sala> salas = (List<Sala>) arg0.getServletContext().getAttribute("salas");
     	
     	salas = dao.pesquisar("select s from Sala s");
     	
