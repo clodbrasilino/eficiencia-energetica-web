@@ -12,20 +12,31 @@ public class GeneratedStatus {
 	
 	public Status getStatus(List<MicroControlador> microControladores){
 		HttpRequest request = new HttpRequest();
-		ArrayList<Response> respostas = new ArrayList<Response>();
+		List<Response> respostas = new ArrayList<Response>();
 		
 		// Pega as respostas dos micro controladores
-		for(MicroControlador mc : microControladores){
-			try {
-				respostas.add(request.sendGet(mc));
-				//Response response = request.sendGet(mc.getIp());
-				//return geraStatus(Integer.parseInt(response.getPorta()), Integer.parseInt(response.getPresenca()), Integer.parseInt(response.getLampadas()), Integer.parseInt(response.getAr()));
-			} catch (Exception e) {
-				//e.printStackTrace();
-				System.out.println("Micro controlador(es) não encontrado(s)");
-				return new Status("Micro controlador(es) não encontrado(s)", "#d9d9d9");
+		if(microControladores != null){
+			for(MicroControlador mc : microControladores){
+				try {
+					// mc.setResponse(request.sendGet(mc));
+					// mc.createResponse(request);
+					respostas.add(request.sendGet(mc));
+					//Response response = request.sendGet(mc.getIp());
+					//return geraStatus(Integer.parseInt(response.getPorta()), Integer.parseInt(response.getPresenca()), Integer.parseInt(response.getLampadas()), Integer.parseInt(response.getAr()));
+				} catch (Exception e) {
+					Calendar hora = Calendar.getInstance();
+					hora.setTime(new Date(System.currentTimeMillis()));
+					return new Status("Micro controlador(es) não encontrado(s)", "#d9d9d9", hora);
+				}
 			}
+		}else{
+			Calendar hora = Calendar.getInstance();
+			hora.setTime(new Date(System.currentTimeMillis()));
+			return new Status("Sem Micro Controlador", "#eee", hora);
 		}
+		
+		
+		// Response resposta = sala.somaResponse();
 		
 		// Soma as respostas dos micro controladores
 		Response resposta = new Response("0", "0", "0", "0");
@@ -42,9 +53,7 @@ public class GeneratedStatus {
 		return this.geraStatus(Integer.parseInt(resposta.getPorta()), Integer.parseInt(resposta.getPresenca()), Integer.parseInt(resposta.getLampadas()), Integer.parseInt(resposta.getAr()));
 	}
 	
-	// FIXME Alterar método para a estrutura de dados nova de sensores
-	
-	private Status geraStatus(int porta, int presenca, int lampadas, int ar){
+	public Status geraStatus(int porta, int presenca, int lampadas, int ar){
 		Status s = new Status();
 		/* Código anterior
 		 * if((lampadas == 1 || ar == 1) && (presenca == 0)){
@@ -153,7 +162,7 @@ public class GeneratedStatus {
 		return new Response(porta, presenca, lampadas, ar);
 	}
 	
-	private String geraValor(int valor1, int valor2){
+	public String geraValor(int valor1, int valor2){
 		String valor = null;
 		
 		if(valor1 == -1 & valor2 == -1){

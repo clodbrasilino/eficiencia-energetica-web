@@ -30,10 +30,10 @@ public class HttpRequest {
 		//String sensores = response.toString().replace("=", "&");
 		String[] valores = response.toString().split("&");
 		HashMap<String, String> parametros = new HashMap<String, String>();
-		for (String par: valores){
-			String[] partesparametro = par.split("=");
+		for (String par : valores){
+			String[] partesParametro = par.split("=");
 			//parametros.put(partesparametro[0], partesparametro[1]);
-			parametros.put(partesparametro[0], this.verificaResposta(mc, partesparametro[0], partesparametro[1]));
+			parametros.put(partesParametro[0], this.verificaResposta(mc, partesParametro[0], partesParametro[1]));
 		}
 		
 		in.close();
