@@ -51,15 +51,15 @@
 						
 						for(Sala s : salas){
 							out.print("<tr>");
-							out.print("	   <td width=\"100\">" +  s.getNumero()    + "	</td>");
-							out.print("		<td width=\"100\">"     +  s.getDescricao()  + "	</td>");
-							out.print("		<td width=\"100\">"     +  s.getStatus().getDescricao() != null ? s.getStatus().getDescricao() : "" + "	</td>");
-							out.print("		<td width=\"100\">"     +  s.getAtiva() + "	</td>");
-							out.print("		<td width=\"210\" height=\"40\">");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+s.getId()+"\">			Alterar		</a> |");
+							out.print("<td width=\"100\">"+s.getNumero()+"</td>");
+							out.print("<td width=\"100\">"+s.getDescricao()+"</td>");
+							out.print("<td width=\"100\">"+s.getId()+"</td>");
+							out.print("<td width=\"100\">"+s.getAtiva()+"</td>");
+							out.print("<td width=\"210\" height=\"40\">");
+							out.print("<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarSala?id="+s.getId()+"\">Alterar</a> |");
 							out.print("<a onclick='confirmaExclusaoSala("+s.getId()+")' href='#'> Excluir |</a>");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesSala?id="+s.getId()+"\">		Detalhes	</a>");
-							out.print("		</td>");
+							out.print("<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesSala?id="+s.getId()+"\">Detalhes</a>");
+							out.print("</td>");
 							out.print("</tr>");
 						}
 					%>
