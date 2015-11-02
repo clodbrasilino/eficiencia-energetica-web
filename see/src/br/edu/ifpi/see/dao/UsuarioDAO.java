@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.edu.ifpi.see.model.Gerente;
 import br.edu.ifpi.see.model.Usuario;
@@ -47,7 +48,10 @@ public class UsuarioDAO implements GenericDAO<Usuario>{
 	
 	public Usuario pesquisar(String email, String senha) {
 		
-		List<Usuario> usuarios = pesquisar("select u from Usuario u");
+		Query q = manager.createQuery("select u from Usuario u where u.ativo = :ativo");
+		q.setParameter("ativo", true);
+		@SuppressWarnings("unchecked")
+		List<Usuario> usuarios = q.getResultList();
 		
 		for (Usuario usuario : usuarios) {
 			if (usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {
