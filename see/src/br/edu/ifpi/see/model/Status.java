@@ -12,10 +12,11 @@ public class Status {
 		super();
 	}
 
-	public Status(String descricao, String cor) {
+	public Status(String descricao, String cor, Calendar time) {
 		super();
 		this.descricao = descricao;
 		this.cor = cor;
+		this.time = time;
 	}
 
 	public String getDescricao() {

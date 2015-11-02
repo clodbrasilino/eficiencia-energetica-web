@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -93,6 +92,10 @@ public class Sala {
 
 	public void setPavimento(int pavimento) {
 		this.pavimento = pavimento;
+	}
+	
+	public Status getStatusAnterior() {
+		return statusAnterior;
 	}
 	
 	public Status getStatus(){
@@ -238,6 +241,70 @@ public class Sala {
 		
 		System.out.println(this.status.getDescricao());
 		
+	}
+	
+	public void carregaStatusTempo(Calendar dataInicial, Calendar dataFinal){
+		temposStatus = new ArrayList<TempoStatus>();
+		
+		Calendar data = Calendar.getInstance();
+		data.setTime(new Date());
+		
+		if(dataFinal.before(data)){
+			long tempo = 0;
+			
+			if(this.listaHistorico.size() > 1){
+				for (int i = 0; i < this.listaHistorico.size()-1; i++) {
+					tempo = listaHistorico.get(i+1).getHora().getTimeInMillis() - listaHistorico.get(i).getHora().getTimeInMillis();
+					this.temposStatus.add(new TempoStatus(this.listaHistorico.get(i).getStatus(), tempo));
+				}
+			}
+						
+			dataFinal.set(Calendar.HOUR_OF_DAY, 23);
+			dataFinal.set(Calendar.MINUTE, 59);
+			dataFinal.set(Calendar.SECOND, 59);
+			dataFinal.set(Calendar.MILLISECOND, 999);
+			
+			tempo = dataFinal.getTimeInMillis() - listaHistorico.get(this.listaHistorico.size()-1).getHora().getTimeInMillis();
+			this.temposStatus.add(new TempoStatus(this.listaHistorico.get(this.listaHistorico.size()-1).getStatus(), tempo));
+			
+			this.tempoStatus = new HashMap<>();
+			for(TempoStatus ts : this.temposStatus){			
+				if(this.tempoStatus.containsKey(ts.getDescicao())){
+					TempoStatus tempoStatus = this.tempoStatus.get(ts.getDescicao());
+					tempoStatus.setTempo(tempoStatus.getTempoMilisegundos() + ts.getTempoMilisegundos());
+					this.tempoStatus.put(ts.getDescicao(), tempoStatus);
+				}else{
+					this.tempoStatus.put(ts.getDescicao(), new TempoStatus(ts.getDescicao(), (long) ts.getTempoMilisegundos()));
+				}
+				
+			}
+		}
+		
+		long tempo = 0;
+		for (int i = 0; i < this.listaHistorico.size()-1; i++) {
+			tempo = listaHistorico.get(i+1).getHora().getTimeInMillis() - listaHistorico.get(i).getHora().getTimeInMillis();
+			this.temposStatus.add(new TempoStatus(this.listaHistorico.get(i).getStatus(), tempo));
+		}
+		
+		tempo = System.currentTimeMillis() - listaHistorico.get(this.listaHistorico.size()-1).getHora().getTimeInMillis();
+		this.temposStatus.add(new TempoStatus(this.listaHistorico.get(this.listaHistorico.size()-1).getStatus(), tempo));
+		
+		this.tempoStatus = new HashMap<>();
+		for(TempoStatus ts : this.temposStatus){			
+			if(this.tempoStatus.containsKey(ts.getDescicao())){
+				TempoStatus tempoStatus = this.tempoStatus.get(ts.getDescicao());
+				tempoStatus.setTempo(tempoStatus.getTempoMilisegundos() + ts.getTempoMilisegundos());
+				this.tempoStatus.put(ts.getDescicao(), tempoStatus);
+			}else{
+				this.tempoStatus.put(ts.getDescicao(), new TempoStatus(ts.getDescicao(), (long) ts.getTempoMilisegundos()));
+			}
+			
+		}
+		
+	}
+	
+	public void setTempoStatus(HashMap<String, TempoStatus> tempoStatus) {
+		this.tempoStatus = tempoStatus;
 	}
 	
 	public HashMap<String, TempoStatus> getTempoStatus() {

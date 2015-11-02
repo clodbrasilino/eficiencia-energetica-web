@@ -6,10 +6,10 @@ import java.util.Date;
 public class TempoStatus {
 	
 	private String descicao;
-	private long hora;
+	private double hora;
 	private double tempo;
 	
-	public TempoStatus(String descricao, long tempo){
+	public TempoStatus(String descricao, double tempo){
 		this.descicao = descricao;
 		this.tempo = tempo;
 	}
@@ -22,7 +22,7 @@ public class TempoStatus {
 		this.descicao = descicao;
 	}
 	
-	public long getHora() {
+	public double getHora() {
 		return hora;
 	}
 	
@@ -53,7 +53,7 @@ public class TempoStatus {
 	
 	public void analizaTempo(){
 		if(this.tempo == 0){
-			long horaAntiga = this.hora;
+			double horaAntiga = this.hora;
 			
 			Calendar hora = Calendar.getInstance();
 			hora.setTime(new Date(System.currentTimeMillis()));
