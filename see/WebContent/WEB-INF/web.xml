@@ -46,11 +46,11 @@
  </filter-mapping>
  <filter-mapping>
   <filter-name>FiltroAdministradorCadastrado</filter-name>
-  <url-pattern>/JSP/administrador/*</url-pattern>
+  <servlet-name>ListaGerentesServlet</servlet-name>
  </filter-mapping>
  <filter-mapping>
   <filter-name>FiltroValidacao</filter-name>
-  <url-pattern>/JSP/administrador/administrador.jsp</url-pattern>
+  <servlet-name>ListaGerentesServlet</servlet-name>
  </filter-mapping>
  <filter-mapping>
   <filter-name>FiltroTransactionManager</filter-name>
@@ -217,6 +217,11 @@
   <servlet-name>ListaProximaPaginaServlet</servlet-name>
   <servlet-class>br.edu.ifpi.see.paginator.ListaProximaPaginaServlet</servlet-class>
  </servlet>
+ <servlet>
+  <display-name>ListaGerentesServlet</display-name>
+  <servlet-name>ListaGerentesServlet</servlet-name>
+  <servlet-class>br.edu.ifpi.see.control.administrador.ListaGerentesServlet</servlet-class>
+ </servlet>
  <servlet-mapping>
   <servlet-name>ServletIndentificaUsuario</servlet-name>
   <url-pattern>/ServletIndentificaUsuario</url-pattern>
@@ -320,6 +325,10 @@
  <servlet-mapping>
   <servlet-name>ListaPaginaAnteriorServlet</servlet-name>
   <url-pattern>/ListaPaginaAnteriorServlet</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>ListaGerentesServlet</servlet-name>
+  <url-pattern>/listar-gerentes</url-pattern>
  </servlet-mapping>
  <welcome-file-list>
   <welcome-file>JSP/index.jsp</welcome-file>

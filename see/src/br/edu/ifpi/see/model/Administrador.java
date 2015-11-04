@@ -13,7 +13,7 @@ public class Administrador extends Usuario implements Autenticavel, Validavel {
 
 	@Override
 	public String autentica() {
-		return "/see/JSP/administrador/administrador.jsp";
+		return "/see/listar-gerentes";
 	}
 
 	@Override

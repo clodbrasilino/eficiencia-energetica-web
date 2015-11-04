@@ -43,7 +43,7 @@ public class ServletCadastroGerente extends HttpServlet {
 			dao.salvar(gerente);
 			
 			// Exibe mensagem de sucesso e chama a próxima página
-			Message msg = new Message(request, response, "Gerente de salas cadastro com sucesso!", "/JSP/administrador/administrador.jsp");
+			Message msg = new Message(request, response, "Gerente de salas cadastro com sucesso!", "/listar-gerentes");
 			msg.show();
 			
 		}else{

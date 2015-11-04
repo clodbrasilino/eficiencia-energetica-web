@@ -6,8 +6,9 @@
 <%@ page import="br.edu.ifpi.see.model.Usuario"%>
 <%@ page import="br.edu.ifpi.see.model.Gerente"%>
 <%@ page import="br.edu.ifpi.see.dao.UsuarioDAO"%>
-<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
 <%@ page import="br.edu.ifpi.see.util.GeneratedNumber"%>
+<%@ page import="br.edu.ifpi.see.paginator.Paginator"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -78,7 +79,8 @@
 				-->
 					<%
 						UsuarioDAO dao = new UsuarioDAO();
-						ArrayList<Usuario> gerentes = (ArrayList<Usuario>) dao.listaGerentes();
+						//ArrayList<Usuario> gerentes = (ArrayList<Usuario>) dao.listaGerentes();
+						List<Usuario> gerentes = (List<Usuario>) request.getSession().getAttribute("gerentes");
 
 						for(Usuario gerente : gerentes){
 							out.print("<tr>");
@@ -95,6 +97,11 @@
 						}
 					%>
 				</table>
+				<%
+					Paginator p = (Paginator) request.getSession().getAttribute("paginator");
+					out.print(p.temListaAnterior() ? "<a href='/"+application.getInitParameter("app-name")+"/ListaPaginaAnteriorServlet?resource=/see/listar-gerentes'>Anterior</a> " : "");
+            		out.print(p.temProximaLista() ? " <a href='/"+application.getInitParameter("app-name")+"/ListaProximaPaginaServlet?resource=/see/listar-gerentes'>Próxima</a>" : "");
+				%>
 			</div>
 			</div>
 
