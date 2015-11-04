@@ -29,7 +29,16 @@
 				var img = document.getElementById('img_topo');
 				img.setAttribute('class', 'depois');
 			}
+
+			function alteraPagina(){
+				setTimeout("chamaPagina()", 5000);
+			}
+
+			function chamaPagina(){
+				window.location="/see/AlternaPaginasServlet?resource=/see";
+			}
 			
+			alteraPagina();
 		</script>
 	</head>
 	
@@ -83,7 +92,7 @@
 		                		SalaDAO dao = new SalaDAO();
 		                		Paginator p = (Paginator) request.getSession().getAttribute("paginator");
 		                		p.setLista(dao.pesquisar("select s from Sala s"));
-		                		p.setLinhas(20);
+		                		p.setLinhas(5);
 		                		
 		                		List<Sala> salas = (List<Sala>) p.getSublista();
 		                		

@@ -86,6 +86,14 @@ public class Paginator {
 		}
 	}
 	
+	public void alternaListas() {
+		if (temProximaLista()) {
+			chamaProximaLista();
+		} else {
+			posicao = 0;
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	private void createSublistas() {
 		quantidadeSublistas = 0;
