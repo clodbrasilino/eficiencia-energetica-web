@@ -106,6 +106,13 @@ public class ServletAlterarSala extends HttpServlet {
 			if(s != null){
 				et.begin();
 				s.setUsuario((Usuario) request.getSession().getAttribute("usuario"));
+				s.setNumero(numero);
+				s.setDescricao(descricao);
+				//quando não se altera o pavimento, ele está vindo zero
+				//Gambiarra do Ro
+				if (pavimento > 0) {
+					s.setPavimento(pavimento);
+				}
 				salaDao.atualizar(s);
 				for(MicroControlador mc : s.getListaMicroControlador()){
 					mc.setSala(s);
@@ -115,7 +122,9 @@ public class ServletAlterarSala extends HttpServlet {
 			
 			// Este bloco de código é executado para salvar uma sala sem uma lista de micro controladores
 			}else{
-				s = new Sala();
+				//possivelmente teremos que apagar esse else
+				//ass: Rodrigo mas se for coisa boa foi o Joao
+				//s = new Sala();
 				s.setNumero(numero);
 				s.setDescricao(descricao);
 				s.setPavimento(pavimento);

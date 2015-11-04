@@ -81,19 +81,27 @@
 						UsuarioDAO dao = new UsuarioDAO();
 						//ArrayList<Usuario> gerentes = (ArrayList<Usuario>) dao.listaGerentes();
 						List<Usuario> gerentes = (List<Usuario>) request.getSession().getAttribute("gerentes");
-
-						for(Usuario gerente : gerentes){
+						
+						if (gerentes == null) {
 							out.print("<tr>");
-							out.print("	   <td width=\"100\">" +   gn.converteNumeroGerente(gerente.getId())   + "	</td>");
-							out.print("		<td width=\"100\">"     +  gerente.getNome()  + "	</td>");
-							out.print("		<td width=\"120\">"     +  gerente.getEmail() + "	</td>");
-							out.print("		<td width=\"100\">"     +  ((Gerente) gerente).getAtivo() + "	</td>");
-							out.print("		<td width=\"210\" height=\"40\">");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+gerente.getId()+"\">			Alterar		</a> |");
-							out.print("<a onclick='confirmaExclusaoGerente("+gerente.getId()+")' href='#'> Excluir </a> |");
-							out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+gerente.getId()+"\">		Detalhes	</a>");
-							out.print("		</td>");
+							out.print("	   <td width='100'>	Não há gerentes cadastrados! </td>");
 							out.print("</tr>");
+						} else {
+						
+							for(Usuario gerente : gerentes){
+								out.print("<tr>");
+								out.print("	   <td width=\"100\">" +   gn.converteNumeroGerente(gerente.getId())   + "	</td>");
+								out.print("		<td width=\"100\">"     +  gerente.getNome()  + "	</td>");
+								out.print("		<td width=\"120\">"     +  gerente.getEmail() + "	</td>");
+								out.print("		<td width=\"100\">"     +  ((Gerente) gerente).getAtivo() + "	</td>");
+								out.print("		<td width=\"210\" height=\"40\">");
+								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+gerente.getId()+"\">			Alterar		</a> |");
+								out.print("<a onclick='confirmaExclusaoGerente("+gerente.getId()+")' href='#'> Excluir </a> |");
+								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+gerente.getId()+"\">		Detalhes	</a>");
+								out.print("		</td>");
+								out.print("</tr>");
+							}
+						
 						}
 					%>
 				</table>
