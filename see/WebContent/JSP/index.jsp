@@ -16,7 +16,6 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-
 <html lang="pt-br">
 
     <head>
@@ -57,7 +56,7 @@
 		            <label>
 		                Senha:
 		                <input type="password" name="senha" />
-		                <input type="submit" value="    Logar    "/>
+		                <input type="submit" value="Logar"/>
 		            </label>
 		            
 		        </form>
@@ -73,8 +72,8 @@
 		        		session.setAttribute("mensagem", "");
 		        	}
 		        %>
-		        <h1>	Sistema de Eficiência Energética </h1>
-		         <h3> Monitoramento do Sistema </h3>
+		        <h1>Sistema de Eficiência Energética</h1>
+		        <h3>Monitoramento do Sistema</h3>
 		        
 		    </div>
 		    <!-- #header FIM -->
@@ -82,14 +81,6 @@
 		                <table>
 		                	<%
 		                		SalaDAO dao = new SalaDAO();
-		                		/*GeraTabela gt = null;
-		                		if(request.getSession().getAttribute("tabela") == null){
-		                			gt = new GeraTabela(dao.pesquisar("select s from Sala s"));
-		                			request.getSession().setAttribute("tabela", gt);
-		                		}else{
-		                			gt = (GeraTabela) request.getSession().getAttribute("tabela"); 
-		                		}*/
-		                		
 		                		Paginator p = (Paginator) request.getSession().getAttribute("paginator");
 		                		p.setLista(dao.pesquisar("select s from Sala s"));
 		                		p.setLinhas(20);
@@ -104,12 +95,6 @@
 	                    					Sala s = SalaUtil.getSala(k, salas);
 	                    					GeneratedStatus gs = new GeneratedStatus();
 	                    					Status status = gs.getStatus(s.getListaMicroControlador());
-	                    					/*if(!status.getDescricao().equals("Sem Micro Controlador")){
-	                    						out.print("<td width='100' height='50' bgcolor='"+status.getCor()+"'");
-		                    					out.print("<h1>"+s.getNumero()+"</h1>");
-		                    					out.print("<h4>"+status.getDescricao()+"</h4>");
-		                    					out.print("</td>");
-	                    					}*/
 	                    					if(!s.getStatus().getDescricao().equals("Sem Micro Controlador")){
 	                    						out.print("<td width='100' height='50' bgcolor='"+s.getStatus().getCor()+"'");
 		                    					out.print("<h1>"+s.getNumero()+"</h1>");
