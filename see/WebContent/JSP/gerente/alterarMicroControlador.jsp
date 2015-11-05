@@ -48,7 +48,7 @@
 				
 				<a href="/<%= application.getInitParameter("app-name") %>/ServletAlterarSala?id=<%= s.getId() %>">Voltar</a>	
 				
-				<input class="botao"type="submit" value=" Salvar "/>
+				<input class="botao"type="submit" value="Salvar"/>
 			</form>
 		
 	</div>
