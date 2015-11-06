@@ -220,7 +220,7 @@ public class Sala {
 		System.out.println(df.format(System.currentTimeMillis()));
 		this.temposStatus.add(new TempoStatus(this.listaHistorico.get(this.listaHistorico.size()-1).getStatus(), tempo));
 		
-		this.tempoStatus = new HashMap<>();
+		this.tempoStatus = new HashMap<String, TempoStatus>();
 		for(TempoStatus ts : this.temposStatus){
 			System.out.println(ts.getDescicao() + " - " + ts.getTempoMilisegundos());
 			
@@ -267,7 +267,7 @@ public class Sala {
 			tempo = dataFinal.getTimeInMillis() - listaHistorico.get(this.listaHistorico.size()-1).getHora().getTimeInMillis();
 			this.temposStatus.add(new TempoStatus(this.listaHistorico.get(this.listaHistorico.size()-1).getStatus(), tempo));
 			
-			this.tempoStatus = new HashMap<>();
+			this.tempoStatus = new HashMap<String, TempoStatus>();
 			for(TempoStatus ts : this.temposStatus){			
 				if(this.tempoStatus.containsKey(ts.getDescicao())){
 					TempoStatus tempoStatus = this.tempoStatus.get(ts.getDescicao());
@@ -289,7 +289,7 @@ public class Sala {
 		tempo = System.currentTimeMillis() - listaHistorico.get(this.listaHistorico.size()-1).getHora().getTimeInMillis();
 		this.temposStatus.add(new TempoStatus(this.listaHistorico.get(this.listaHistorico.size()-1).getStatus(), tempo));
 		
-		this.tempoStatus = new HashMap<>();
+		this.tempoStatus = new HashMap<String, TempoStatus>();
 		for(TempoStatus ts : this.temposStatus){			
 			if(this.tempoStatus.containsKey(ts.getDescicao())){
 				TempoStatus tempoStatus = this.tempoStatus.get(ts.getDescicao());
