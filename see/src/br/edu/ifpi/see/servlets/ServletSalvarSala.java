@@ -64,7 +64,7 @@ public class ServletSalvarSala extends HttpServlet {
 		
 		request.getSession().removeAttribute("sala");
 		
-		response.getWriter().println("<script>alert('Sala cadastradda com sucesso!');</script>");
+		response.getWriter().println("<script>alert('Sala cadastrada com sucesso!');</script>");
 		response.getWriter().println("<script>window.location.href='/"+getServletContext().getInitParameter("app-name")+"/JSP/gerente/gerente.jsp'</script>");
 		
 	}

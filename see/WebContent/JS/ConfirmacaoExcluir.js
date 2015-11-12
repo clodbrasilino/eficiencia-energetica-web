@@ -17,5 +17,13 @@ function confirmaExclusaoSala(id){
 		window.location="/see/JSP/gerente/gerente.jsp";
 	}
 }
+
+function confirmaExclusaoMicroControlador(id) {
+	if(confirm("Tem certeza de que deseja excluir este MicroControlador?")) {
+		window.location="/see/ServletExcluirMicroControlador?id=" + id;
+	} else {
+		window.location="/see/JSP/gerente/alterarSala.jsp";
+	}
+}
 	
 	

@@ -85,7 +85,8 @@
 								out.print("		<td width=\"100\">"     +  mc.getSensorAr() + "	</td>");
 								out.print("		<td width=\"210\" height=\"40\">");
 								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarMicroControlador?id="+mc.getId()+"\">Alterar</a> |");
-								out.print("<a onclick='confirmaExclusaoGerente("+mc.getId()+")' href='#'> Excluir </a>");
+								//out.print("<a onclick='confirmaExclusaoMicroControlador("+mc.getId()+")' href='#'> Excluir </a>");
+								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletExcluirMicroControlador?id="+mc.getId()+"\">Excluir</a> |");
 								out.print("		</td>");
 								out.print("</tr>");
 							}

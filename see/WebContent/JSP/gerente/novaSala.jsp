@@ -4,6 +4,7 @@
 <%@ page import="br.edu.ifpi.see.model.MicroControlador"%>
 <%@ page import="java.util.ArrayList"%>
 
+
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -149,12 +150,12 @@
 					
 					<table border="1">
 						<tr>
-							<td width="100">IP</td>
-							<td width="100">Sensor de Porta</td>
-							<td width="100">Sensor de Presença</td>
-							<td width="100">Sensor de Lâmpadas</td>
-							<td width="100">Sensor de Ar</td>
-							<td width="200">Opções</td>
+							<td width="130" height="30"><b>	IP	</b></td>
+							<td width="130" height="30"><b>	Sensor de Porta	</b></td>
+							<td width="130" height="30"><b>	Sensor de Presença	</b></td>
+							<td width="130" height="30"><b>	Sensor de Lâmpadas	</b></td>
+							<td width="130" height="30"><b>	Sensor de Ar	</b></td>
+							<td width="180" height="30"><b>	Opções				</b></td>
 						</tr>
 					
 					<%
@@ -167,9 +168,9 @@
 								out.print("		<td width=\"100\">"+mc.getSensorLampada()+"</td>");
 								out.print("		<td width=\"100\">"+mc.getSensorAr()+"</td>");
 								out.print("		<td width=\"210\" height=\"40\">");
-								out.print("<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+mc.getId()+"\">			Alterar		</a> |");
-								out.print("<a onclick='confirmaExclusaoGerente("+mc.getId()+")' href='#'> Excluir |</a>");
-								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+mc.getId()+"\">		Detalhes	</a>");
+								out.print("<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarMicroControlador?id="+mc.getId()+"\">			Alterar		</a> |");
+								//out.print("<a onclick='confirmaExclusaoMicroControlador("+mc.getId()+")' href='#'> Excluir |</a>");
+								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletExcluirMicroControlador?id="+mc.getId()+"\">Excluir</a> |");
 								out.print("		</td>");
 								out.print("</tr>");
 							}

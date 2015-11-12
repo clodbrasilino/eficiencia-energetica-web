@@ -82,9 +82,8 @@ public class ServletAlterarSala extends HttpServlet {
 			
 			// Este bloco de código é executado para salvar uma sala sem uma lista de micro controladores
 			}else{
-				//possivelmente teremos que apagar esse else
-				//ass: Rodrigo mas se for coisa boa foi o Joao
-				//s = new Sala();
+				
+				s = new Sala();
 				s.setNumero(numero);
 				s.setDescricao(descricao);
 				s.setPavimento(pavimento);
