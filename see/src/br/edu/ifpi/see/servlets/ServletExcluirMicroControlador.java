@@ -50,12 +50,18 @@ public class ServletExcluirMicroControlador extends HttpServlet {
 		Iterator<MicroControlador> i = s.getListaMicroControlador().iterator();
 		
 		
-		while(i.hasNext()) {
-			MicroControlador m = (MicroControlador) i.next();
-			if (m.getId() == id){
-				s.getListaMicroControlador().remove(m);
+		try{
+			while(i.hasNext()) {
+				MicroControlador m = (MicroControlador) i.next();
+				if (m.getId() == id){
+					s.getListaMicroControlador().remove(m);
+					request.getSession().removeAttribute("sala");
+				}
 			}
+		} catch(ConcurrentModificationException e){
+			//FIXME Se houver problema de acesso concorrente, verifique aqui!
 		}
+		
 		
 		et.begin();
 		microDao.apagar(mc);
