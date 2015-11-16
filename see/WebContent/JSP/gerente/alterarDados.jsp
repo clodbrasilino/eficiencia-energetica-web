@@ -8,7 +8,8 @@
 <title>Atualizando Dados Cadastrais</title>
 <meta name="author" content="Rita Aquino" />
 <meta name="description" content="Site Web Efeitos" />
-<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style2.css" />
+<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style.css" />
+<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style_alterarDados.css" />
 <style type="text/css">
 #popup {
 	background: rgba(0, 0, 0, 0.5);
@@ -22,43 +23,24 @@
 
 #box {
 	background: #fff;
-	width: 40%;
-	height: 300px;
-	position: absolute;
-	left: 60%;
-	top: 50%;
-	margin-left: -30%;
-	margin-top: -150px;
+	width: 400px;
+	height: 350px;
+		
 }
 
-#fechar {
-	padding: 5px 10px;
-	border: 1px solid #ccc;
-	position: absolute;
-	right: 3px;
-	top: 3px;
-	border-radius: 7px;
-	color: #ccc;
-	cursor: pointer;
-}
 
-#fechar:hover {
-	color: #666;
-	border-color: #666;
-}
+
+
+#fechar:hover {color: green;}
 
 #frm_popup {
-	width: 400px;
-	height: 220px;
-	margin: 50px auto;
+	width: 200px;
+	padding-top: 40px;
+	padding-left: 38px; 
+	
 }
 
-#fs {
-	width: 100px;
-	height: 100px;
-	margin: auto;
-}
-
+/*
 .lbl_senha {
 	margin-left: 76px;
 	margin-top: 10px;
@@ -89,6 +71,7 @@
 .btn_salvar {
 	margin: 10px 280px 10px;
 }
+*/
 </style>
 <script type="text/javascript">
 	function ativaCampo(campo){
@@ -109,41 +92,47 @@
 	<%
 		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 	%>
-	<img src="/<%=application.getInitParameter("app-name")%>/IMG/topo-site.png" id="img_topo" alt="Logo" title="Logo">
+	<div id="fundo">
+ 		<div id="corpo">
+     	 	<img  src="/<%= application.getInitParameter("app-name") %>/IMG/topo-site.png"  id="img_topo" title="Logo" class="antes">
 
-	<div class="corpo">
+	<div id="header">
 		<h4>Parnaiba - PI</h4>
 		<p>Bem vindo, <% out.print(u.getNome()); %></p>
-		<center><h1>Atualizando dados cadastrais</h1></center>
+		<h1>Atualizando dados cadastrais</h1>
 	</div>
 
-	<div class="form">
+	<div id="formulario" style="padding-top: 50px;">
 		<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarDadosGerente">
-			<table>
-				<tr>
-					<td><label>Número:</label></td>
-					<td><input type="text" name="numero" value="G00<%=u.getId()%>" disabled /></td>
-				</tr>
-				<tr>
-					<td><label>Nome:</label></td>
-					<td><input type="text" name="nome" value="<%= u.getNome() != null ? u.getNome() : "" %>" class="input" /></td>
-				</tr>
-				<tr>
-					<td><label>Endereço:</label></td>
-					<td><input type="text" name="endereco" value="<%= u.getEndereco() != null ? u.getEndereco() : "" %>" class="input" /></td>
-				</tr>
-				<tr>
-					<td><label>E-mail:</label></td>
-					<td><input type="text" name="email" value="<%= u.getEmail() != null ? u.getEmail() : "" %>" class="input" /></td>
-				</tr>
-				<tr>
-					<td><label>Telefone:</label></td>
-					<td><input type="text" name="telefone" value="<%= u.getTelefone() != null ? u.getTelefone() : "" %>" class="input" /></td>
-				</tr>
-			</table>
-			<a href="#" onclick="showPopup()">Alterar senha</a>
+		
+		<label>Número:</label>
+		<input type="text" name="numero" value="G00<%=u.getId()%>" disabled />
+		<br/>
+		
+		<label>Nome:</label>
+		<input type="text" name="nome" value="<%= u.getNome() != null ? u.getNome() : "" %>" />
+		<br/>
+		
+		<label>Endereço:</label>
+		<input type="text" name="endereco" value="<%= u.getEndereco() != null ? u.getEndereco() : "" %>" />
+		<br/>
+		
+		<label>Email:</label>
+		<input type="text" name="email" value="<%= u.getEmail() != null ? u.getEmail() : "" %>" />
+		<br/>
+		
+		<label>Telefone:</label>
+		<input type="text" name="telefone" value="<%= u.getTelefone() != null ? u.getTelefone() : "" %>" />
+		<br/><br/>
+		
+		
+		
+		
 			<input type="hidden" name="id" value="<%=u.getId()%>">
+			<a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/gerente.jsp">Voltar</a>
+			<a href="#" onclick="showPopup()">Alterar senha</a>
 			<input class="botao" type="submit" value="Salvar" />
+			
 		</form>
 
 		<%
@@ -154,14 +143,14 @@
 			}
 		%>
 		
-		<a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/gerente.jsp">Voltar</a>
+		
 
 	</div>
 	
 	<!-- Formulário de alteração da senha -->
 	<div id="popup">
 		<div id="box">
-			<div id="fechar" onclick="closePopup()">X</div>
+			<div id="fechar" onclick="closePopup()">FECHAR</div>
 			<form id="frm_popup" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarSenhaGerente" method="post">
 				<label class="lbl_senha">Senha atual: </label><input type="password" name="senhaAtual" class="txt_senha"><br>
 				<label class="lbl_nova_senha">Nova senha: </label><input type="password" name="novaSenha" class="txt_nova_senha"><br>
@@ -169,6 +158,9 @@
 				<input id="btn_salvar" type="submit" value="Salvar" class="btn_salvar">
 			</form>
 		</div>
+	</div>
+	
+	</div>
 	</div>
 	
 </body>

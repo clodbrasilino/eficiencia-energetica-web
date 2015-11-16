@@ -38,7 +38,7 @@
 				window.location="/see/AlternaPaginasServlet?resource=/see";
 			}
 			
-			alteraPagina();
+			//alteraPagina();
 		</script>
 	</head>
 	
@@ -92,8 +92,8 @@
 		                		SalaDAO dao = new SalaDAO();
 		                		Paginator p = (Paginator) request.getSession().getAttribute("paginator");
 		                		p.setLista(dao.pesquisar("select s from Sala s"));
-		                		p.setLinhas(5);
-		                		
+		                		p.setLinhas(20);
+		                		 
 		                		List<Sala> salas = (List<Sala>) p.getSublista();
 		                		
 		                		if(salas != null){

@@ -1,0 +1,286 @@
+/*
+ *	- Folha de estilos para 'index.jsp'
+ 	- Auror(es): Rita Aquino
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Handlee);
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans:600);
+@import url(http://fonts.googleapis.com/css?family=Patrick+Hand);
+@import url(http://fonts.googleapis.com/css?family=Pontano+Sans);
+/* -	Transição da img do topo 'descendo' 	*/
+.antes{
+	margin-top: -180px;
+}
+
+.depois{
+	margin-top: 0px;
+	transition: all 0.5s linear;
+	-webkit-transition: all 0.5s linear;
+	-moz-transition: all 0.5s linear;
+}
+
+/* -	Corpo/Containers principais		*/
+body{
+	margin: 0;
+	padding: 0;
+	background:url(../IMG/fundo_site_projeto.png) repeat;
+}
+
+#fundo{
+	width: 100%;
+}
+
+#corpo{
+	width: 1190px;
+	max-width: 100%;
+	height: 100%;
+	margin: 30px auto;
+}
+
+
+/*	
+ *	Cabeçalho
+ */
+
+
+/* - 	Login 	*/
+input:hover{background: #ffffff; border:1px solid #990000;}
+
+input{padding-right: 8px; border: thin solid #CCC;}
+
+input[type=text]{     
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    box-shadow: 1px 1px 2px #333333;    
+    -moz-box-shadow: 1px 1px 2px #333333;
+    -webkit-box-shadow: 1px 1px 2px #333333;
+    border:1px solid #000000;
+    width:190px;
+    height: 20px;
+}
+
+input[type=password]{
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    box-shadow: 1px 1px 2px #333333;    
+    -moz-box-shadow: 1px 1px 2px #333333;
+    -webkit-box-shadow: 1px 1px 2px #333333;
+    border:1px solid #000000;
+    width:190px;
+    height: 20px;
+}
+
+input[type=submit]{     
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    box-shadow: 1px 1px 3px #333333;    
+    -moz-box-shadow: 1px 1px 2px #333333;
+    -webkit-box-shadow: 1px 1px 2px #333333;
+    border:1px solid #000000;
+    width:100px;
+    height: 23px;
+}
+
+input:hover{
+	box-shadow: 1px 1px 10px #333333;    
+    -moz-box-shadow: 1px 1px 10px #333333;
+    -webkit-box-shadow: 1px 1px 10px #333333;
+}
+
+input:focus{
+	box-shadow: 1px 1px 10px #09F;    
+    -moz-box-shadow: 1px 1px 10px #09F;
+    -webkit-box-shadow: 1px 1px 10px #09F;
+}
+
+#erro_login{
+	float:right;
+	font-family: verdana;
+	font-size: 12px;
+	color: red;
+	margin-top: 42px;
+	margin-right: -490px;
+	
+}
+
+#header #login{
+	margin-top: 20px;
+	float: right;
+	margin-right: 10px;
+	font-family: 'Abel', sans-serif;
+	color: black;
+	font-size: 20px;
+}
+
+
+
+input{margin-left: 2px; margin-top:2px;}
+label{margin-left: 5px; margin-right: 5px;}
+
+#header h3{
+	font-family: 'Raleway', sans-serif;
+	margin: auto;
+	padding: 10px;
+}
+
+/*	'Sistema de Eficiência Energética'	*/
+#header>h1{
+	clear: both;
+	margin: auto;
+	margin-top: 90px;
+}
+
+
+#img_topo{
+	max-width: 100%;
+}
+
+
+#header{
+	font-family: Arial;
+	text-align: center;
+}
+
+/*	'Parnaíba-PI'	*/
+#header h4{
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 50px;
+	font-family: 'Raleway', sans-serif;
+	font-size: 14;	
+}
+
+
+/*	'Sistema de Eficiência Energética'	*/
+#header>h1{
+	font-family: 'Lato', sans-serif;
+	clear: both;
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 25px;
+}
+
+#header>p{
+	font-family: 'Raleway', sans-serif;
+	color: black;
+	float: right;
+	margin-right: 10px;
+}
+
+
+/*	Login - FIM	*/
+
+
+
+table.infa{
+	/*	Sombra */
+	box-shadow: 2px 2px 19px #333333;    
+    -moz-box-shadow: 2px 2px 19px #333333;
+    -webkit-box-shadow: 2px 2px 19px #333333;
+    /*	Borda*/
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius: 5px;
+}
+
+table.info:hover{
+		/*	Sombra */
+	box-shadow: 2px 2px 12px #333333;    
+    -moz-box-shadow: 2px 2px 12px #333333;
+    -webkit-box-shadow: 2px 2px 12px #333333;
+}
+
+fieldset {
+	width: 80%;
+	min-width: 850px;
+	max-width: 100%;
+	height: 300px;
+	margin: 0px auto;
+}
+
+.monit{
+	text-align: center;	
+}
+
+
+td{border:3px solid #FFF;}
+
+
+#rodape{
+	width: 100%;
+	height: 100px;
+	background: rgba(0,0,0,0.3);
+	position: absolute;
+	bottom: 0;
+	
+}
+
+a{
+	margin-bottom: 80px;
+	float:inherit;
+}
+
+.infor{
+	margin: 0 auto;	
+	text-align: center;
+	max-width: 750px;
+	max-height: 450px;
+	overflow: auto;
+	padding-left: 8px;
+	font-family: 'Josefin Sans', sans-serif;	
+}
+
+.theader{
+	text-align: center;
+	width: 740px;
+	margin-left: 50px;
+	margin: 0 auto;
+	padding-right: 50px;
+	font-family: 'Montserrat', sans-serif;
+	
+}
+
+
+.meus-dados{
+	padding-left: 5px; 	
+	font-family: 'Pontano Sans', sans-serif;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+a{text-decoration: none;}
+
+a:VISITED {
+	color: blue;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.btns{margin:20px auto;}
+
+#rodape{
+	width: 100%;
+	height: 100px;
+	background: rgba(0,0,0,0.3);
+	clear: both;
+	position: relative;
+	bottom: 0;
+}
+
+#rodape a{margin:0 auto;}
+
+#tabela{
+	margin:0 auto;
+	max-width: 730px;
+	box-shadow: 2px 2px 12px #333333;    
+    -moz-box-shadow: 2px 2px 12px #333333;
+    -webkit-box-shadow: 2px 2px 12px #333333;
+}
+

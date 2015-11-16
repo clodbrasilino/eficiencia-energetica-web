@@ -18,6 +18,8 @@
         <meta name="author" content="Rita Aquino" />
         <meta name="description" content="Site Web Efeitos" />
 		<link rel="stylesheet" href="/<%= application.getInitParameter("app-name") %>/CSS/style.css"/>
+		<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style_alterarDados.css" />
+		<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/tabela.css" />
 	</head>
  <body>
 	<div id="fundo">
@@ -34,13 +36,13 @@
 		SalaDAO dao = new SalaDAO();
 		
 	%>	
-	<div class="corpo">
+	<div id="header">
 		<h4>			Parnaiba - PI		</h4>
 		<p>				Bem vindo <%= u.getNome() %>	</p>
 		<h1>        	Atualizando Sala 	</h1>
 	</div>	
 		
-	<div class="form">
+	<div class="form" id="formulario" style="padding-top: 50px;">
 		<form method="POST" action="/<%= application.getInitParameter("app-name") %>/ServletAlterarSala">
 					<label>Número:</label><input type="text" name="numero" value="<%=sala.getNumero()%>"/><br></br>
 					<label>Descrição:</label><input type="text" name="descricao" value="<%=sala.getDescricao()%>"/><br></br>
@@ -56,9 +58,17 @@
 					
 					<input type="hidden" name="id" value="<%=sala.getId()%>"/>
 					
-					<input type="submit" name="add" value="Adicionar" class="btn_show_popup">
 					
-					<table border=1>
+					<br/>
+										
+				<a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/gerente.jsp">Voltar</a>
+				<input type="submit" name="add" value="Adicionar" class="btn_show_popup">
+				<input type="submit" name="salvar" value="Salvar"/>
+		</form>
+	</div>
+	
+	<div class="infor" style="padding-top: 50px;">	
+					<table border=0>
 	
 						<tr>
 							<td width="130" height="30"><b>	Número				</b></td>
@@ -85,20 +95,17 @@
 								out.print("		<td width=\"100\">"     +  mc.getSensorAr() + "	</td>");
 								out.print("		<td width=\"210\" height=\"40\">");
 								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarMicroControlador?id="+mc.getId()+"\">Alterar</a> |");
-								//out.print("<a onclick='confirmaExclusaoMicroControlador("+mc.getId()+")' href='#'> Excluir </a>");
-								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletExcluirMicroControlador?id="+mc.getId()+"\">Excluir</a> |");
+								out.print("<a onclick='confirmaExclusaoGerente("+mc.getId()+")' href='#'> Excluir </a>");
 								out.print("		</td>");
 								out.print("</tr>");
 							}
 						}
 					%>
 					</table>
-					
-				<a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/gerente.jsp">Voltar</a>
-				<input type="submit" name="salvar" value="Salvar"/>
-			</form>
-					
-	</div>
+					</div>
+	
+	
+	
 	</div>
 	</div>	
  </body>

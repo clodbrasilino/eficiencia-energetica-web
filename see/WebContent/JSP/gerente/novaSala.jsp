@@ -4,7 +4,6 @@
 <%@ page import="br.edu.ifpi.see.model.MicroControlador"%>
 <%@ page import="java.util.ArrayList"%>
 
-
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -12,8 +11,8 @@
 <title>Cadastrar Sala</title>
 <meta name="author" content="Rita Aquino" />
 <meta name="description" content="Site Web Efeitos" />
-<link rel="stylesheet"
-	href="/<%=application.getInitParameter("app-name")%>/CSS/style.css" />
+<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style.css" />
+<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/tabela.css" />
 
 
 <script type="text/javascript">
@@ -114,8 +113,7 @@
 				<h1>Cadastro de Sala</h1>
 			</div>
 
-			<div class="form">
-				<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletCadastroSala" method="post">
+			<form method="POST" action="/<%=application.getInitParameter("app-name")%>/ServletCadastroSala" method="post" style="padding: 50px 0 50px 0;" id="formulario">
 					<%if(s == null){ %>
 					<label>Número:</label><input type="text" name="numero"/><br></br>
 					<label>Descrição:</label><input type="text" name="descricao"/><br></br>
@@ -144,18 +142,26 @@
 					
 					<%} %>
 					
-					<input type="submit" name="botao" value="Adicionar" class="btn_show_popup">
+					
+					<a href="/<%=application.getInitParameter("app-name")%>/JSP/gerente/gerente.jsp"> Voltar </a>
+					<input type="submit" name="botao" value="Adicionar..." class="btn_show_popup">
 					
 					<!--<input type="button" value="Adicionar" onclick="showPopup();" class="btn_show_popup">-->
+							
 					
-					<table border="1">
+					<input class="botao" type="submit" name="botao" value="Salvar"/>
+					
+				</form>
+				
+				<div class="infor" style="padding-bottom: 100px;">
+					<table border="0">
 						<tr>
-							<td width="130" height="30"><b>	IP	</b></td>
-							<td width="130" height="30"><b>	Sensor de Porta	</b></td>
-							<td width="130" height="30"><b>	Sensor de Presença	</b></td>
-							<td width="130" height="30"><b>	Sensor de Lâmpadas	</b></td>
-							<td width="130" height="30"><b>	Sensor de Ar	</b></td>
-							<td width="180" height="30"><b>	Opções				</b></td>
+							<td width="100">IP</td>
+							<td width="100">Sensor de Porta</td>
+							<td width="100">Sensor de Presença</td>
+							<td width="100">Sensor de Lâmpadas</td>
+							<td width="100">Sensor de Ar</td>
+							<td width="200">Opções</td> 
 						</tr>
 					
 					<%
@@ -168,9 +174,9 @@
 								out.print("		<td width=\"100\">"+mc.getSensorLampada()+"</td>");
 								out.print("		<td width=\"100\">"+mc.getSensorAr()+"</td>");
 								out.print("		<td width=\"210\" height=\"40\">");
-								out.print("<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarMicroControlador?id="+mc.getId()+"\">			Alterar		</a> |");
-								//out.print("<a onclick='confirmaExclusaoMicroControlador("+mc.getId()+")' href='#'> Excluir |</a>");
-								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletExcluirMicroControlador?id="+mc.getId()+"\">Excluir</a> |");
+								out.print("<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletAlterarGerente?id="+mc.getId()+"\">			Alterar		</a> |");
+								out.print("<a onclick='confirmaExclusaoGerente("+mc.getId()+")' href='#'> Excluir |</a>");
+								out.print("			<a href=\"/"+getServletContext().getInitParameter("app-name")+"/ServletDetalhesGerente?id="+mc.getId()+"\">		Detalhes	</a>");
 								out.print("		</td>");
 								out.print("</tr>");
 							}
@@ -178,11 +184,7 @@
 					%>
 					
 					</table>
-										
-					<a href="/<%=application.getInitParameter("app-name")%>/JSP/gerente/gerente.jsp">Voltar</a>
-					<input class="botao" type="submit" name="botao" value="Salvar"/>
-					
-				</form>
+					</div>			
 				
 				<!--<form action="/<%=application.getInitParameter("app-name")%>/ServletCadastroSala" method="post">
 						<input class="botao" type="submit" value="Salvar" name="salvar"/>
@@ -210,6 +212,6 @@
 					
 			</div>
 		</div>
-	</div>
+	
 </body>
 </html>

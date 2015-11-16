@@ -80,8 +80,8 @@
 	<!-- Formulário de alteração da senha -->
 	<div id="popup">
 		<div id="box">
-			<div id="fechar" onclick="closePopup()"><p>X</p></div>
-			<form id="frm_popup" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarSenhaAdministrador" method="post">
+			<div id="fechar" onclick="closePopup()">FECHAR</div>
+			<form id="frm_popup" action="/<%=application.getInitParameter("app-name")%>/ServletAlterarSenhaAdministrador" method="post" style="padding:40px 35px;">
 				<label class="lbl_senha">Senha atual: </label>
 				<input type="password" name="senhaAtual" class="txt_senha">
 				<br>

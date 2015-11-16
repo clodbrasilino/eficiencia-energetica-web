@@ -13,6 +13,7 @@
 <meta name="author" content="Rita Aquino" />
 <meta name="description" content="Site Web Efeitos" />
 <link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/style.css" />
+<link rel="stylesheet" href="/<%=application.getInitParameter("app-name")%>/CSS/tabela.css" />
 </head>
 <body>
 	<%
@@ -25,22 +26,41 @@
 				src="/<%=application.getInitParameter("app-name")%>/IMG/topo-site.png"
 				id="img_topo" alt="Logo" title="Acompanhe a eficiência energética !">
 
-			<div class="corpo">
+			<div id="header">
 				<h4>Parnaiba - PI</h4>
 				<p>Bem vindo, <%=u.getNome()%></p>
 				<h1>Detalhes da Sala</h1>
 			</div>
+			<% Sala s = (Sala) request.getAttribute("sala"); %>
+			<br/><br/>
+			<div class="infor" style="border: 1px solid black; ">
+				<table>
+					<tr>
+						<td width="130" height="30"><b>	Número				</b></td>
+						<td width="130" height="30"><b>			</b></td>
+						<td width="130" height="30"><b>	Descrição				</b></td>
+						<td width="130" height="30"><b>			</b></td>
+						<td width="130" height="30"><b>	Pavimento					</b></td>
+						<td width="130" height="30"><b>			</b></td>
+						<td width="130" height="30"><b>	Ativa		</b></td>
+					</tr>
+					
+					<tr>
+						<td width="130" height="30"><b>	<%= s.getNumero() %>				</b></td>
+						<td width="130" height="30"><b>			</b></td>
+						<td width="130" height="30"><b>	<%= s.getDescricao() %>				</b></td>
+						<td width="130" height="30"><b>			</b></td>
+						<td width="130" height="30"><b>	<%= s.getPavimento() %>					</b></td>
+						<td width="130" height="30"><b>			</b></td>
+						<td width="130" height="30"><b>	<%= s.getAtiva() %>		</b></td>
+					</tr>
+				</table>
+			</div>
 
-			<fieldset>
-			<legend>Detalhes da Sala</legend>
-			<div>
-				<% Sala s = (Sala) request.getAttribute("sala"); %>
-				<p>Número: <%= s.getNumero() %></p>
-				<p>Descrição: <%= s.getDescricao() %></p>
-				<p>Pavimento: <%= s.getPavimento() %></p>
-				<p>Ativa: <%= s.getAtiva() %></p>
-	        
-	        <table border=1>
+			
+			
+			<div class="infor" style="padding-top: 50px;">
+	        <table border=0>
 	
 						<tr>
 							<td width="130" height="30"><b>	Número				</b></td>
@@ -70,10 +90,13 @@
 					%>
 					</table>
 					
-	        <a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/gerente.jsp">Voltar</a>
+					<br/>
+					<a href="/<%= application.getInitParameter("app-name") %>/JSP/gerente/gerente.jsp">Voltar</a>
+				</div>
+					
 	        
-			</div>	
-		</fieldset>
+				
+		
 
 		</div>
 	</div>

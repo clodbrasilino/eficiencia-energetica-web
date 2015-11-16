@@ -1,6 +1,5 @@
 <%@page import="br.edu.ifpi.see.util.GeneratedNumber"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!-- Imports JAVA -->
 <%@ page import="br.edu.ifpi.see.model.Usuario"%>
