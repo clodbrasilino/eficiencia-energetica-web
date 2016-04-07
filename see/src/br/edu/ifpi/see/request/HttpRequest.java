@@ -12,7 +12,7 @@ public class HttpRequest {
 	
 	public Response sendGet(MicroControlador mc) throws Exception{
 		// Request
-		URL url = new URL("http://" + mc.getIp() + ":8080/emulador-see");
+		URL url = new URL("http://" + mc.getIp());
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("GET");
 		
@@ -26,7 +26,7 @@ public class HttpRequest {
 			response.append(inputLine);
 		}
 		
-		// Separação dos números
+		// Separaï¿½ï¿½o dos nï¿½meros
 		//String sensores = response.toString().replace("=", "&");
 		String[] valores = response.toString().split("&");
 		HashMap<String, String> parametros = new HashMap<String, String>();
@@ -47,8 +47,8 @@ public class HttpRequest {
 		
 		/*System.out.println("Micro controlador: "+mc.getIp());
 		System.out.println("Porta: "+r.getPorta());
-		System.out.println("Presença: "+r.getPresenca());
-		System.out.println("Lâmpadas: "+r.getLampadas());
+		System.out.println("Presenï¿½a: "+r.getPresenca());
+		System.out.println("Lï¿½mpadas: "+r.getLampadas());
 		System.out.println("Ar: "+r.getAr()+"\n");*/
 		return r;
 	}
