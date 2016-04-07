@@ -15,17 +15,11 @@
 	    
 		<properties>
 			
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/see" />
-			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="lvc_informatica"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://clodbrasilino.eti.br:3306/see" />
+			<property name="javax.persistence.jdbc.user" value="see"/>
+			<property name="javax.persistence.jdbc.password" value="see@001125"/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			
-			<!--<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/see" />
-			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="lvc_informatica"/>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />-->
-			
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />

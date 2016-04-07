@@ -9,7 +9,7 @@
 <body>
 	
 	<h1>Página não encontrada!</h1>
-	<h3>Tente novamente em alguns segundos...</h3>
+	<h3>Verifique o endereço.</h3>
 	
 </body>
 </html>

@@ -90,6 +90,9 @@
 		                <table>
 		                	<%
 		                		SalaDAO dao = new SalaDAO();
+		                		if(request.getSession().getAttribute("paginator") == null){
+		                			request.getSession().setAttribute("paginator",new Paginator());
+		                		}
 		                		Paginator p = (Paginator) request.getSession().getAttribute("paginator");
 		                		p.setLista(dao.pesquisar("select s from Sala s"));
 		                		p.setLinhas(20);

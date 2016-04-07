@@ -3,6 +3,7 @@ package br.edu.ifpi.see.servlets;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -49,11 +50,12 @@ public class ServletSalvarMicroControlador extends HttpServlet {
 			Response resp = r.sendGet(mc);
 			int code = resp.getCode();
 			if(code != 0){
+				if(s.getListaMicroControlador() == null) s.setListaMicroControlador(new LinkedList<MicroControlador>());
 				s.getListaMicroControlador().add(mc);
 				response.sendRedirect("/"+ getServletContext().getInitParameter("app-name")+ "/JSP/gerente/novaSala.jsp");
 			}
 		} catch (Exception e) {
-			Message msg = new Message(request, response, "O Micro Controlador informado não foi encontrado!", "/JSP/gerente/novoMicroControlador.jsp");
+			Message msg = new Message(request, response, "O Micro Controlador informado nï¿½o foi encontrado!", "/JSP/gerente/novoMicroControlador.jsp");
 			msg.show();
 		}
 		

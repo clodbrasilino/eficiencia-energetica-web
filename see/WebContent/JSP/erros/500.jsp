@@ -8,8 +8,7 @@
 </head>
 <body>
 	
-	<h1>Ocorreu um erro!</h1>
-	<h3>Tente novamente em alguns segundos...</h3>
+	<h1>Desculpe! Ocorreu um erro aqui conosco!</h1>
 	
 </body>
 </html>
