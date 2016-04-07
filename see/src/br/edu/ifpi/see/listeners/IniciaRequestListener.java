@@ -11,11 +11,7 @@ public class IniciaRequestListener implements ServletContextListener {
     }
     
     public void contextInitialized(ServletContextEvent arg0) {
-		
-    	Thread t = new Thread(new Request(arg0));
-    	
-		t.start();
-		
+    	new Thread(new Request(arg0)).start();
     }
     
     public void contextDestroyed(ServletContextEvent arg0) {

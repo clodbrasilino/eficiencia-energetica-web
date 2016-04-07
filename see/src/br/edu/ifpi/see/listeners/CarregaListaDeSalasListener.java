@@ -1,5 +1,6 @@
 package br.edu.ifpi.see.listeners;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletRequestEvent;
@@ -18,10 +19,7 @@ public class CarregaListaDeSalasListener implements ServletRequestListener {
     	
     	SalaDAO dao = new SalaDAO();
     	
-    	@SuppressWarnings("unchecked")
-		List<Sala> salas = (List<Sala>) arg0.getServletContext().getAttribute("salas");
-    	
-    	salas = dao.pesquisar("select s from Sala s");
+    	List<Sala> salas = dao.pesquisar("select s from Sala s");
     	
     	arg0.getServletContext().setAttribute("salas", salas);
     	
