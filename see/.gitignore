@@ -6,3 +6,5 @@
 Servers/*
 /.settings/**
 /build/
+/dist/
+*.DS_Store

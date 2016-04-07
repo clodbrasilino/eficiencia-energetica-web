@@ -1,0 +1,10 @@
+/.metadata/
+/.metadata/*
+/RemoteSystemsTempFiles/
+/Servers/
+/dist/
+/emulador-see/.classpath
+/emulador-see/.project
+/emulador-see/.settings/
+/emulador-see/WebContent/WEB-INF/
+/emulador-see/build/
