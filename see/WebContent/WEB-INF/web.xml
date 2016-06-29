@@ -352,10 +352,12 @@
     <error-code>404</error-code>
     <location>/JSP/erros/404.jsp</location>
   </error-page>
+  <!--
   <error-page>
     <error-code>500</error-code>
     <location>/JSP/erros/500.jsp</location>
   </error-page>
+  -->
   <servlet>
     <description></description>
     <display-name>ServletExcluirMicroControlador</display-name>
