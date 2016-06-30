@@ -58,7 +58,7 @@
 			
 		<a href="/<%= application.getInitParameter("app-name") %>/JSP/administrador/administrador.jsp">Voltar</a>
 		<a href="#" onclick="showPopup()">Alterar senha</a>
-		<input type="hidden" name="id" value="<%=u.getId()%>"> <input class="botao" type="submit" value="Salvar" sltyle="float: right;"/>
+		<input type="hidden" name="id" value="<%=u.getId()%>"> <input class="botao" type="submit" value="Salvar" style="float: right;"/>
 		
 		
 		
