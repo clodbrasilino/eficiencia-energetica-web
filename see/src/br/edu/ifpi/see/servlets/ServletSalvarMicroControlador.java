@@ -57,6 +57,7 @@ public class ServletSalvarMicroControlador extends HttpServlet {
 		} catch (Exception e) {
 			Message msg = new Message(request, response, "O Micro Controlador informado n�o foi encontrado!", "/JSP/gerente/novoMicroControlador.jsp");
 			msg.show();
+			e.printStackTrace();
 		}
 		
 	}
