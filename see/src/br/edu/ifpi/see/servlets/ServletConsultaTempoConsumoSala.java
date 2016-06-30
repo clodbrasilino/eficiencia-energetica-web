@@ -13,10 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.edu.ifpi.see.dao.HistoricoSalaDAO;
+//import br.edu.ifpi.see.dao.HistoricoSalaDAO;
 import br.edu.ifpi.see.dao.SalaDAO;
 import br.edu.ifpi.see.historicos.HistoricoManager;
-import br.edu.ifpi.see.model.HistoricoSala;
 import br.edu.ifpi.see.model.Sala;
 
 public class ServletConsultaTempoConsumoSala extends HttpServlet {
@@ -32,7 +31,7 @@ public class ServletConsultaTempoConsumoSala extends HttpServlet {
 		String dataFinalTexto = request.getParameter("dataFinal");
 		
 		SalaDAO salaDao = new SalaDAO();
-		HistoricoSalaDAO historicosDao = new HistoricoSalaDAO();
+		//HistoricoSalaDAO historicosDao = new HistoricoSalaDAO();
 		
 		if(dataInicialTexto != null && dataFinalTexto != null){
 			
@@ -59,9 +58,9 @@ public class ServletConsultaTempoConsumoSala extends HttpServlet {
 			
 			List<Sala> salas = (List<Sala>) salaDao.pesquisar("select s from Sala s");
 			
-			DateFormat hf = new SimpleDateFormat("HH:mm:ss");
+			/*DateFormat hf = new SimpleDateFormat("HH:mm:ss");
 			
-			/*for(Sala s : salas){
+			for(Sala s : salas){
 				s.setListaHistorico(historicosDao.pesquisar(s, dataInicial, dataFinal));
 				s.carregaStatusTempo(dataInicial, dataFinal);
 				

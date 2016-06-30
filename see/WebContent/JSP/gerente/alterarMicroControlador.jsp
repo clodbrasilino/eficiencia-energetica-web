@@ -39,10 +39,10 @@
 				
 				<fieldset>
 					<legend>Sensores:</legend>
-					<input type="checkbox" value="true" <%= mc.isSensorPorta() ? "checked" : "" %> name="porta">Porta</br>
-					<input type="checkbox" value="true" <%= mc.isSensorPresenca() ? "checked" : "" %> name="presenca">Presença</br>
-					<input type="checkbox" value="true" <%= mc.isSensorLampada() ? "checked" : "" %> name="lampadas">Lâmpadas</br>
-					<input type="checkbox" value="true" <%= mc.isSensorAr() ? "checked" : "" %> name="ar">Ar</br>
+					<input type="checkbox" value="true" <%= mc.isSensorPorta() ? "checked" : "" %> name="porta">Porta<br>
+					<input type="checkbox" value="true" <%= mc.isSensorPresenca() ? "checked" : "" %> name="presenca">Presença<br>
+					<input type="checkbox" value="true" <%= mc.isSensorLampada() ? "checked" : "" %> name="lampadas">Lâmpadas<br>
+					<input type="checkbox" value="true" <%= mc.isSensorAr() ? "checked" : "" %> name="ar">Ar<br>
 				</fieldset>
 				<br><br>
 				

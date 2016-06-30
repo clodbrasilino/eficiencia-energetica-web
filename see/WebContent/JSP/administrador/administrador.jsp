@@ -80,13 +80,11 @@
 						UsuarioDAO dao = new UsuarioDAO();
 						//ArrayList<Usuario> gerentes = (ArrayList<Usuario>) dao.listaGerentes();
 						List<Usuario> gerentes = (List<Usuario>) request.getSession().getAttribute("gerentes");
-						
 						if (gerentes == null) {
 							out.print("<tr>");
 							out.print("	   <td width='100'>	Não há gerentes cadastrados! </td>");
 							out.print("</tr>");
 						} else {
-						
 							for(Usuario gerente : gerentes){
 								out.print("<tr>");
 								out.print("	   <td width=\"100\">" +   gn.converteNumeroGerente(gerente.getId())   + "	</td>");

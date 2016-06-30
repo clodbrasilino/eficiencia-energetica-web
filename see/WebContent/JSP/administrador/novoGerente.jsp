@@ -86,9 +86,7 @@
          %>
 			
 		</div>
-	</fieldset>
 	
-	</div>
 	</div>	
 	
  </body>

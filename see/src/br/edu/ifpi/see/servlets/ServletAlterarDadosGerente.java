@@ -1,9 +1,7 @@
 package br.edu.ifpi.see.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

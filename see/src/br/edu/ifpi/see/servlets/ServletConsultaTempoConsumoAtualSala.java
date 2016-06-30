@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.edu.ifpi.see.dao.HistoricoSalaDAO;
 import br.edu.ifpi.see.dao.SalaDAO;
 import br.edu.ifpi.see.historicos.HistoricoManager;
 import br.edu.ifpi.see.model.Sala;

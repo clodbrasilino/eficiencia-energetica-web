@@ -1,6 +1,5 @@
 package br.edu.ifpi.see.listeners;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletRequestEvent;

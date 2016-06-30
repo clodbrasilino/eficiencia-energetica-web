@@ -154,7 +154,7 @@
 				</form>
 				
 				<div class="infor" style="padding-bottom: 100px;">
-					<table border="0">
+					<table>
 						<tr>
 							<td width="100">IP</td>
 							<td width="100">Sensor de Porta</td>

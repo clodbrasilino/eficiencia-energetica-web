@@ -78,7 +78,7 @@
 							for(MicroControlador mc : s.getListaMicroControlador()){
 								out.print("<tr>");
 								out.print("	   <td width=\"100\">" +  mc.getId()    + "	</td>");
-								out.print("		<td width=\"100\">"     +  new SimpleDateFormat().getDateInstance(DateFormat.MEDIUM).format(mc.getDtInstalacao().getTimeInMillis())  + "	</td>");
+								out.print("		<td width=\"100\">"     +  SimpleDateFormat.getDateInstance(DateFormat.MEDIUM).format(mc.getDtInstalacao().getTimeInMillis())  + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getIp() + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getSensorPorta() + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getSensorPresenca() + "	</td>");

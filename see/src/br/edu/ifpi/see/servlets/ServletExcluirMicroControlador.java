@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifpi.see.dao.MicroControladorDAO;
-import br.edu.ifpi.see.dao.SalaDAO;
 import br.edu.ifpi.see.model.MicroControlador;
 import br.edu.ifpi.see.model.Sala;
 import br.edu.ifpi.see.util.Message;
@@ -28,7 +27,6 @@ public class ServletExcluirMicroControlador extends HttpServlet {
      */
     public ServletExcluirMicroControlador() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -68,7 +66,7 @@ public class ServletExcluirMicroControlador extends HttpServlet {
 		et.commit();
 		
 		
-		Message m = new Message(request, response, "Micro Controlador excluído com sucesso", "/ServletAlterarSala?id=" + s.getId());
+		Message m = new Message(request, response, "Micro Controlador excluï¿½do com sucesso", "/ServletAlterarSala?id=" + s.getId());
 		m.show();
 	}
 

@@ -68,7 +68,7 @@
 	</div>
 	
 	<div class="infor" style="padding-top: 50px;">	
-					<table border=0>
+					<table>
 	
 						<tr>
 							<td width="130" height="30"><b>	Número				</b></td>
@@ -87,7 +87,7 @@
 							for(MicroControlador mc : sala.getListaMicroControlador()){
 								out.print("<tr>");
 								out.print("	   <td width=\"100\">" +  mc.getId()    + "	</td>");
-								out.print("		<td width=\"100\">"     + new SimpleDateFormat().getDateInstance(DateFormat.MEDIUM).format(mc.getDtInstalacao().getTimeInMillis()) + "	</td>");
+								out.print("		<td width=\"100\">"     +  SimpleDateFormat.getDateInstance(DateFormat.MEDIUM).format(mc.getDtInstalacao().getTimeInMillis()) + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getIp() + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getSensorPorta() + "	</td>");
 								out.print("		<td width=\"100\">"     +  mc.getSensorPresenca() + "	</td>");

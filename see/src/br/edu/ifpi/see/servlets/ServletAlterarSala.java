@@ -1,7 +1,6 @@
 package br.edu.ifpi.see.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
@@ -50,7 +49,7 @@ public class ServletAlterarSala extends HttpServlet {
 		String salvar = request.getParameter("salvar");
 		String add = request.getParameter("add");
 		
-		/* Este bloco de código é executado quando o usuário clica no botão 'Salvar' e salva uma sala */
+		/* Este bloco de cï¿½digo ï¿½ executado quando o usuï¿½rio clica no botï¿½o 'Salvar' e salva uma sala */
 		if(salvar != null){
 			EntityTransaction et = JPAUtil.getTransaction();
 			SalaDAO salaDao = new SalaDAO();
@@ -62,13 +61,13 @@ public class ServletAlterarSala extends HttpServlet {
 			
 			Sala s = (Sala) request.getSession().getAttribute("sala");
 			
-			// Este bloco de código é executado para salvar uma sala com uma lista de micro controladores
+			// Este bloco de cï¿½digo ï¿½ executado para salvar uma sala com uma lista de micro controladores
 			if(s != null){
 				et.begin();
 				s.setUsuario((Usuario) request.getSession().getAttribute("usuario"));
 				s.setNumero(numero);
 				s.setDescricao(descricao);
-				//quando não se altera o pavimento, ele está vindo zero
+				//quando nï¿½o se altera o pavimento, ele estï¿½ vindo zero
 				//Gambiarra do Ro
 				if (pavimento > 0) {
 					s.setPavimento(pavimento);
@@ -80,7 +79,7 @@ public class ServletAlterarSala extends HttpServlet {
 				}
 				et.commit();
 			
-			// Este bloco de código é executado para salvar uma sala sem uma lista de micro controladores
+			// Este bloco de cï¿½digo ï¿½ executado para salvar uma sala sem uma lista de micro controladores
 			}else{
 				
 				s = new Sala();
@@ -100,14 +99,14 @@ public class ServletAlterarSala extends HttpServlet {
 			out.println("alert('Sala atualizada com sucesso!');");
 			out.println("</script>");*/
 			
-			// Remove o objeto sala da sessão e direciona para a página de gerente
+			// Remove o objeto sala da sessï¿½o e direciona para a pï¿½gina de gerente
 			request.getSession().removeAttribute("sala");
 			
 			Message msg = new Message(request, response, "Sala atualizada com sucesso!", "/JSP/gerente/gerente.jsp");
 			msg.show();
 			//response.sendRedirect("/"+getServletContext().getInitParameter("app-name")+"/JSP/gerente/gerente.jsp");
 		
-		/* Este bloco de código é executado quando o usuário clica no botão 'Adicionar' e chama a página de cadastro de micro controladores */
+		/* Este bloco de cï¿½digo ï¿½ executado quando o usuï¿½rio clica no botï¿½o 'Adicionar' e chama a pï¿½gina de cadastro de micro controladores */
 		}else if(add != null){
 			Sala s = (Sala) request.getSession().getAttribute("sala");
 			if(s == null){
