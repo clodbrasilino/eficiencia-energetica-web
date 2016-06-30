@@ -37,6 +37,12 @@ public class Request implements Runnable {
 
 			
 			this.salas = (List<Sala>) evt.getServletContext().getAttribute("salas");
+			while(this.salas == null){
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {}
+				this.salas = (List<Sala>) evt.getServletContext().getAttribute("salas");
+			}
 
 			synchronized (this.salas) {
 
